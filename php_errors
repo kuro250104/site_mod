@@ -1,0 +1,2 @@
+[30-Nov-2023 10:25:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_sqlsrv_81_nts_x64' (tried: ext\php_sqlsrv_81_nts_x64 (Le module spécifié est introuvable), ext\php_php_sqlsrv_81_nts_x64.dll (Le module spécifié est introuvable)) in Unknown on line 0
+[30-Nov-2023 10:25:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_pdo_sqlsrv_81_nts_x64' (tried: ext\php_pdo_sqlsrv_81_nts_x64 (Le module spécifié est introuvable), ext\php_php_pdo_sqlsrv_81_nts_x64.dll (Le module spécifié est introuvable)) in Unknown on line 0
