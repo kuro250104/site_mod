@@ -9,7 +9,7 @@ class StoreTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => 'required|regex:/^[A-Z]'
+            "name" => 'required'
         ];
     }
 

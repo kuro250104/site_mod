@@ -45,7 +45,7 @@
                 <h6 class="collapse-header">Gestion des équipes</h6>
                 <a class="collapse-item" href="{{route('worker.index')}}">Gestions des opérateurs</a>
                 <a class="collapse-item" href="{{route('team.index')}}">Gestions des équipes</a>
-                <a class="collapse-item" href="">Heures validés</a>
+                <a class="collapse-item" href="{{route('validated_hour.index')}}">Heures validés</a>
             </div>
         </div>
     </li>
@@ -61,9 +61,9 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="{{route('project.index')}}">Projets</a>
+                <a class="collapse-item" href="{{route("project.index")}}">Projets</a>
                 <a class="collapse-item" href="{{route("task.index")}}">Tache</a>
-                <a class="collapse-item" href="">Stade</a>
+                <a class="collapse-item" href={{route("stage.index")}}>Stade</a>
             </div>
         </div>
     </li>

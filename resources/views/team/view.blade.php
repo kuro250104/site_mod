@@ -9,29 +9,32 @@
 
 
         <div id="content">
-            <div class="card shadow mb-4">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered " id="dataTable">
-                            <thead>
-                            <tr>
-                                <th>Membres de l'équipe {{$team->name}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($arrayWorker as $worker)
-                                    <tr>
-                                        <td style="width: 50%;">{{$worker['surname']}} {{$worker['name']}}</td>
-                                    </tr>
-                                @endforeach
 
-                            </tbody>
-                        </table>
-{{--                        {{ $teams->links('pages.pagination') }}--}}
-                    </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered " id="dataTable">
+                        <thead>
+                        <tr>
+                            <th>Membres de l'équipe {{$team->name}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($arrayWorker as $worker)
+                            <tr>
+
+                                <td style="width: 50%;">{{$worker['surname']}} {{$worker['name']}}</td>
+
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+{{--
+            {{ $teams->links('pages.pagination') }}--}}
                 </div>
             </div>
         </div>
     </div>
+
 
 @endsection

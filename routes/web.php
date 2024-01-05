@@ -3,7 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\StageController;
+use App\Http\Controllers\StagesController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ValidatedHourController;
 use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +33,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+        Route::get('/users', [ProfileController::class, 'index'])->name('users.index');
+        Route::get('/users/{id}', [ProfileController::class, 'show'])->name('users.show');
+// Ajoutez d'autres routes RESTful pour les utilisateurs
+
+
     });
 
     Route::view('/', 'home.home');
@@ -57,6 +66,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/tasks', [TaskController::class, 'store'])->name('task.store');
     Route::get('/tasks/{id}/edit', [TaskController::class, 'edit'])->name('task.edit');
     Route::put('/tasks/{id}', [TaskController::class, 'update'])->name('task.update');
+
+    Route::get('/stage', [StagesController::class, 'home'])->name('stage.index');
+    Route::post('/stage', [StagesController::class, 'store'])->name('stage.store');
+    Route::get('/stage/{id}/edit', [StagesController::class, 'edit'])->name('stage.edit');
+    Route::put('/stage/{id}', [StagesController::class, 'update'])->name('stage.update');
+
+    Route::get('/validated-hour', [ValidatedHourController::class, 'home'])->name('validated_hour.index');
+    Route::post('/validated-hour', [ValidatedHourController::class, 'store'])->name('validated_hour.store');
+
+
+
 });
 
 require __DIR__.'/auth.php';

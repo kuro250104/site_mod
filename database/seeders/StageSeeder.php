@@ -12,6 +12,6 @@ class StageSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+
     }
 }
