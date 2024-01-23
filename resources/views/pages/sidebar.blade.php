@@ -7,7 +7,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-flask"></i>
         </div>
-        <div class="sidebar-brand-text mx-3" href="" >ZAMBON</div>
+        <div class="sidebar-brand-text mx-3" href="" >FEATURE</div>
     </a>
 
 
