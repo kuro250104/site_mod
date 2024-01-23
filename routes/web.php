@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\StageController;
 use App\Http\Controllers\StagesController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ValidatedHourController;
@@ -21,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/api/workers-for-selector', [WorkerController::class, 'getWorkersForSelector']);
 
 Route::middleware('auth')->group(function () {
 
@@ -36,7 +36,6 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/users', [ProfileController::class, 'index'])->name('users.index');
         Route::get('/users/{id}', [ProfileController::class, 'show'])->name('users.show');
-// Ajoutez d'autres routes RESTful pour les utilisateurs
 
 
     });
@@ -49,6 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/workers', [WorkerController::class, 'store'])->name('worker.store');
     Route::get('/workers/{id}/edit', [WorkerController::class, 'edit'])->name('worker.edit');
     Route::put('/workers/{id}', [WorkerController::class, 'update'])->name('worker.update');
+
+
+
 
     Route::get('/teams', [TeamController::class, 'home'])->name('team.index');
     Route::post('/teams', [TeamController::class, 'store'])->name('team.store');

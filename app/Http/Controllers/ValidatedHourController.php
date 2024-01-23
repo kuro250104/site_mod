@@ -15,7 +15,7 @@ class ValidatedHourController extends Controller
 {
     public function home()
     {
-        $valid_hours = ValidatedHour::with(['worker', 'team', 'stageOne', 'taskOne', 'projectOne', 'stageTwo', 'taskTwo', 'projectTwo', 'stageThree', 'taskThree', 'projectThree'])
+        $valid_hours = ValidatedHour::with(['worker', 'team', 'stageOne', 'taskOne', 'projectOne', 'stageTwo', 'taskTwo', 'projectTwo', 'stageThree', 'taskThree', 'projectThree','stageFour', 'taskFour', 'projectFour' ])
             ->paginate(15);
 
         $teams = Team::all();

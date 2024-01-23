@@ -22,6 +22,9 @@ return new class extends Migration
             $table->foreign('task_three')->references('id')->on('tasks');
             $table->foreign('stage_three')->references('id')->on('stages');
             $table->foreign('project_three')->references('id')->on('projects');
+            $table->foreign('task_four')->references('id')->on('tasks');
+            $table->foreign('stage_four')->references('id')->on('stages');
+            $table->foreign('project_four')->references('id')->on('projects');
         });
     }
 
@@ -38,6 +41,9 @@ return new class extends Migration
             $table->dropForeign(['task_three']);
             $table->dropForeign(['stage_three']);
             $table->dropForeign(['project_three']);
+            $table->dropForeign(['task_four']);
+            $table->dropForeign(['stage_four']);
+            $table->dropForeign(['project_four']);
         });
     }
 };
