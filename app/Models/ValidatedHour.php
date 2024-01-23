@@ -12,7 +12,7 @@ class ValidatedHour extends Model
     protected $table = "validated_hours";
 
     protected $fillable = [
-        "worker_id", "timer", "team_id", "timer_one", "number_one", "task_one", 'stage_one', "project_one", "timer_two", "number_two", "task_two", 'stage_two', "project_two", "timer_three", "number_three", "task_three", 'stage_three', "project_three"
+        "worker_id", "timer", "team_id", "timer_one","coment_one", "number_one", "task_one", 'stage_one', "project_one", "timer_two","coment_two", "number_two", "task_two", 'stage_two', "project_two", "timer_three", "coment_three", "number_three", "task_three", 'stage_three', "project_three", "timer_four","coment_four", "number_four", "task_four", "stage_four", "project_four"
     ];
 
     public function team(): BelongsTo
@@ -67,6 +67,20 @@ class ValidatedHour extends Model
     public function projectThree(): BelongsTo
     {
         return $this->belongsTo(Projects::class, 'project_three')->withDefault();
+    }
+    public function taskFour(): BelongsTo
+    {
+        return $this->belongsTo(Task::class, 'task_four')->withDefault();
+    }
+
+    public function stageFour(): BelongsTo
+    {
+        return $this->belongsTo(Stages::class, 'stage_four')->withDefault();
+    }
+
+    public function projectFour(): BelongsTo
+    {
+        return $this->belongsTo(Projects::class, 'project_four')->withDefault();
     }
 
 }

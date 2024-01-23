@@ -18,18 +18,31 @@ class StoreValidatedHourRequest extends FormRequest
             'stage_one' => 'nullable|exists:stages,id',
             'project_one' => 'nullable|exists:projects,id',
             'timer_one'=>'nullable',
+            'coment_one'=>'nullable',
 
             'number_two'=>'nullable',
             'task_two' => 'nullable|exists:tasks,id',
             'stage_two' => 'nullable|exists:stages,id',
             'project_two' => 'nullable|exists:projects,id',
             'timer_two'=>'nullable',
+            'coment_two'=>'nullable',
 
             'number_three'=>'nullable',
             'task_three' => 'nullable|exists:tasks,id',
             'stage_three' => 'nullable|exists:stages,id',
             'project_three' => 'nullable|exists:projects,id',
             'timer_three'=>'nullable',
+            'coment_three'=>'nullable',
+
+
+            'number_four'=>'nullable',
+            'task_four' => 'nullable|exists:tasks,id',
+            'stage_four' => 'nullable|exists:stages,id',
+            'project_four' => 'nullable|exists:projects,id',
+            'timer_four'=>'nullable',
+            'coment_four'=>'nullable',
+
+
 
         ];
     }

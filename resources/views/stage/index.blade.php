@@ -19,6 +19,7 @@
                         <option value="{{ $project->id }}"> {{ $project->name }}</option>
                     @endforeach
                 </select>
+                
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
                     <span class="icon text-white-50">

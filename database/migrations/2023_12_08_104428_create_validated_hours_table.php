@@ -22,18 +22,29 @@ return new class extends Migration
             $table->unsignedBigInteger('stage_one')->nullable();
             $table->unsignedBigInteger('project_one')->nullable();
             $table->string('timer_one')->nullable();
+            $table->string('coment_one')->nullable();
 
             $table->string('number_two')->nullable();
             $table->unsignedBigInteger('task_two')->nullable();
             $table->unsignedBigInteger('stage_two')->nullable();
             $table->unsignedBigInteger('project_two')->nullable();
             $table->string('timer_two')->nullable();
+            $table->string('coment_two')->nullable();
 
             $table->string('number_three')->nullable();
             $table->unsignedBigInteger('task_three')->nullable();
             $table->unsignedBigInteger('stage_three')->nullable();
             $table->unsignedBigInteger('project_three')->nullable();
             $table->string('timer_three')->nullable();
+            $table->string('coment_three')->nullable();
+
+
+            $table->string('number_four')->nullable();
+            $table->unsignedBigInteger('task_four')->nullable();
+            $table->unsignedBigInteger('stage_four')->nullable();
+            $table->unsignedBigInteger('project_four')->nullable();
+            $table->string('timer_four')->nullable();
+            $table->string('coment_four')->nullable();
 
 
 //            $table->timestamps();

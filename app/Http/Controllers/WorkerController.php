@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateWorkerRequest;
 use App\Models\Status;
 use App\Models\Team;
 use App\Models\Worker;
+use Illuminate\Http\JsonResponse;
 
 class WorkerController extends Controller
 
@@ -46,5 +47,11 @@ class WorkerController extends Controller
         Worker::findOrFail($workerId)->update($request->validated());
 
         return redirect()->route("worker.index");
+    }
+    public function getWorkersForSelector(): JsonResponse
+    {
+        $workers = Worker::all(); // Sélectionnez les champs que vous voulez afficher dans le sélecteur
+
+        return response()->json(['workers' => $workers]);
     }
 }

@@ -26,7 +26,7 @@
                         <p>Tâche 1</p>
 
                         <div class="input-group">
-                            <input type="text" name="number_one" class="form-control bg-light border small" value="{{old('name')}}"
+                            <input type="text" name="number_one" class="form-control bg-light border small" value="{{old('number_one')}}"
                                    placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
                             <input type="text" name="timer_one" class="form-control bg-light border small" value="{{old('time_one')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
@@ -48,12 +48,14 @@
                                     <option value="{{ $stage->id }}"> {{ $stage->name }}</option>
                                 @endforeach
                             </select>
+                            <input type="text" name="coment_one" class="form-control bg-light border small" value="{{old('coment_one')}}"
+                                   placeholder="Commentaire" aria-label="Search" aria-describedby="basic-addon2">
                         </div>
 
 
                         <p>Tâche 2</p>
                         <div class="input-group">
-                            <input type="text" name="number_two" class="form-control bg-light border small" value="{{old('name')}}"
+                            <input type="text" name="number_two" class="form-control bg-light border small" value="{{old('number_two')}}"
                                    placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
                             <input type="text" name="timer_two" class="form-control bg-light border small" value="{{old('timer_two')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
@@ -63,23 +65,25 @@
                                     <option value="{{ $task->id }}"> {{ $task->name }}</option>
                                 @endforeach
                             </select>
-                            <select type="text" name="project_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <select type="text" name="project_two" id="project_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez un projet</option>
                                 @foreach($projects as $project)
                                     <option value="{{ $project->id }}"> {{ $project->name }}</option>
                                 @endforeach
                             </select>
-                            <select type="text" name="stage_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <select type="text" name="stage_two" id="stage_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez un stade</option>
                                 @foreach($stages as $stage)
                                     <option value="{{ $stage->id }}"> {{ $stage->name }}</option>
                                 @endforeach
                             </select>
+                            <input type="text" name="coment_two" class="form-control bg-light border small" value="{{old('coment_two')}}"
+                                   placeholder="Commentaire" aria-label="Search" aria-describedby="basic-addon2">
                         </div>
 
                         <p>Tâche 3</p>
                         <div class="input-group">
-                            <input type="text" name="number_three" class="form-control bg-light border small" value="{{old('name')}}"
+                            <input type="text" name="number_three" class="form-control bg-light border small" value="{{old('number_three')}}"
                                    placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
                             <input type="text" name="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
@@ -89,19 +93,50 @@
                                     <option value="{{ $task->id }}"> {{ $task->name }}</option>
                                 @endforeach
                             </select>
-                            <select type="text" name="project_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <select type="text" name="project_three" id="project_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez un projet</option>
                                 @foreach($projects as $project)
                                     <option value="{{ $project->id }}"> {{ $project->name }}</option>
                                 @endforeach
                             </select>
-                            <select type="text" name="stage_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <select type="text" name="stage_three" id="stage_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez un stade</option>
                                 @foreach($stages as $stage)
                                     <option value="{{ $stage->id }}"> {{ $stage->name }}</option>
                                 @endforeach
                             </select>
+                            <input type="text" name="coment_three" class="form-control bg-light border small" value="{{old('coment_three')}}"
+                                   placeholder="Commentaire" aria-label="Search" aria-describedby="basic-addon2">
                         </div>
+
+                        <p>Tâche 4</p>
+                        <div class="input-group">
+                            <input type="text" name="number_four" class="form-control bg-light border small" value="{{old('number_four')}}"
+                                   placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" name="timer_four" class="form-control bg-light border small" value="{{old('timer_four')}}"
+                                   placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
+                            <select type="text" name="task_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                                <option value="">Choisissez une tâche</option>
+                                @foreach($tasks as $task)
+                                    <option value="{{ $task->id }}"> {{ $task->name }}</option>
+                                @endforeach
+                            </select>
+                            <select type="text" name="project_four" id="project_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                                <option value="">Choisissez un projet</option>
+                                @foreach($projects as $project)
+                                    <option value="{{ $project->id }}"> {{ $project->name }}</option>
+                                @endforeach
+                            </select>
+                            <select type="text" name="stage_four" id="stage_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                                <option value="">Choisissez un stade</option>
+                                @foreach($stages as $stage)
+                                    <option value="{{ $stage->id }}"> {{ $stage->name }}</option>
+                                @endforeach
+                            </select>
+                            <input type="text" name="coment_four" class="form-control bg-light border small" value="{{old('coment_four')}}"
+                                    placeholder="Commentaire" aria-label="Search" aria-describedby="basic-addon2">
+                        </div>
+
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false"><span class="icon text-white-50"><i class="fas fa-check"></i></span>
                                 <span class="text">Valider</span>
@@ -147,25 +182,33 @@
                                             <th>Numéro d'OP 3</th>
                                             <th>Projet 3</th>
                                             <th>Stade 3</th>
+                                            <th>Tâche 4</th>
+                                            <th>Numéro d'OP 4</th>
+                                            <th>Projet 4</th>
+                                            <th>Stade 4</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($valid_hours as $valid_hour)
                                         <tr>
-                                            <td style="width: 7%" >{{$valid_hour->worker->name ?? 'N/A'}} {{$valid_hour->worker->surname ?? 'N/A'}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->worker->team->name ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->taskOne->name ?? ''}} - {{$valid_hour->timer_one}} heures</td>
-                                            <td style="width: 7%" >{{$valid_hour->number_one ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->projectOne->name ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->stageOne->name ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->taskTwo->name ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->number_two ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->projectTwo->name ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->stageTwo->name ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->taskThree->name ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->number_three ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->projectThree->name ?? ''}}</td>
-                                            <td style="width: 7%" >{{$valid_hour->stageThree->name ?? ''}}</td>
+                                            <td >{{$valid_hour->worker->name ?? 'N/A'}} {{$valid_hour->worker->surname ?? 'N/A'}}</td>
+                                            <td >{{$valid_hour->worker->team->name ?? ''}}</td>
+                                            <td >{{$valid_hour->taskOne->name ?? ''}} - {{$valid_hour->timer_one}}</td>
+                                            <td >{{$valid_hour->number_one ?? ''}}</td>
+                                            <td >{{$valid_hour->projectOne->name ?? ''}}</td>
+                                            <td >{{$valid_hour->stageOne->name ?? ''}}</td>
+                                            <td >{{$valid_hour->taskTwo->name ?? ''}}</td>
+                                            <td >{{$valid_hour->number_two ?? ''}}</td>
+                                            <td >{{$valid_hour->projectTwo->name ?? ''}}</td>
+                                            <td >{{$valid_hour->stageTwo->name ?? ''}}</td>
+                                            <td >{{$valid_hour->taskThree->name ?? ''}}</td>
+                                            <td >{{$valid_hour->number_three ?? ''}}</td>
+                                            <td >{{$valid_hour->projectThree->name ?? ''}}</td>
+                                            <td >{{$valid_hour->stageThree->name ?? ''}}</td>
+                                            <td >{{$valid_hour->taskFour->name ?? ''}}</td>
+                                            <td >{{$valid_hour->number_four ?? ''}}</td>
+                                            <td >{{$valid_hour->projectFour->name ?? ''}}</td>
+                                            <td >{{$valid_hour->stageFour->name ?? ''}}</td>
                                         </tr>
                                     @endforeach
 
@@ -182,12 +225,5 @@
 
 
     </div>
-
-
-
-
-
-
-
-
+@include('pages.selects_stage')
 @endsection

@@ -12,4 +12,4 @@
 <script src="{{asset("js/chart-area-demo.js")}}"></script>
 <script src="{{asset("js/chart-pie-demo.js")}}"></script>
 <script src="{{asset("js/app.js")}}"></script>
-{{--<script src="{{ asset('js/selects.js') }}"></script>--}}
+
