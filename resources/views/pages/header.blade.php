@@ -19,7 +19,11 @@
 
     <link href="{{ asset('./css/sb-admin-2.css') }}" rel="stylesheet">
     <link href="{{ asset('./css/custom.css') }}" rel="stylesheet">
-
+    <!-- Ajoutez ces lignes dans la section <head> de votre document HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
 
 </head>

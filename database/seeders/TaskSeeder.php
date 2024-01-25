@@ -15,7 +15,7 @@ class TaskSeeder extends Seeder
         $datas = [
             "Production",
             "Nettoyage",
-            "Prépartation",
+            "Préparation",
             "Formation",
             "Contrôle",
             "Attente",

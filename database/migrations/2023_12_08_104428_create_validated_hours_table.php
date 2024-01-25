@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->datetimes();
             $table->unsignedBigInteger('worker_id');
-            $table->string('timer');
+            $table->unsignedBigInteger('timer');
 
             $table->string('number_one')->nullable();
             $table->unsignedBigInteger('task_one')->nullable();

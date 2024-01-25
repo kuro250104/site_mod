@@ -58,3 +58,11 @@ input[type="file"] {
     font-weight: bold;
     color: #fff;
 }
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+

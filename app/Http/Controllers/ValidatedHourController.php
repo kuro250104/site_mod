@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreValidatedHourRequest;
+use App\Models\Hour;
 use App\Models\Projects;
 use App\Models\Stages;
+use App\Models\Subtask;
 use App\Models\Task;
 use App\Models\Team;
 use App\Models\ValidatedHour;
@@ -23,8 +25,10 @@ class ValidatedHourController extends Controller
         $stages = Stages::all();
         $projects = Projects::all();
         $tasks = Task::all();
+        $hours = Hour::all();
+        $subtasks = Subtask::all();
 
-        return view('validated_hour.index', compact('valid_hours', 'projects', 'teams', 'workers', 'stages', 'tasks'));
+        return view('validated_hour.index', compact('valid_hours', 'projects', 'teams', 'workers', 'stages', 'tasks', 'hours', 'subtasks'));
     }
     public function index()
     {

@@ -5,6 +5,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Gestion des heures validés</h1>
         </div>
+
         <div class="card shadow mb-4">
             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                 <h6 class="m-0 font-weight-bold text-primary">Formulaire de validation d'heures</h6>
@@ -20,22 +21,33 @@
                                     <option value="{{ $worker->id }}"> {{ $worker->surname }} {{ $worker->name }}</option>
                                 @endforeach
                             </select>
-                            <input type="text" name="timer" class="form-control bg-light border small" value="{{old('time')}}"
-                                   placeholder="Temps total" aria-label="Search" aria-describedby="basic-addon2">
+                            <select type="text" name="timer" id="timer" class="form-control bg-light border small" oninput="verifierSomme()" value="{{old('time')}}"
+                                     aria-label="Search" aria-describedby="basic-addon2">
+                                    <option value="">Séléctionnez un poste</option>
+                                @foreach($hours as $hour)
+                                    <option value="{{$hour->value}}"> {{$hour->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <p>Tâche 1</p>
 
+                        <p>Tâche 1</p>
                         <div class="input-group">
-                            <input type="text" name="number_one" class="form-control bg-light border small" value="{{old('number_one')}}"
-                                   placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
-                            <input type="text" name="timer_one" class="form-control bg-light border small" value="{{old('time_one')}}"
+                            <input type="number" oninput="verifierSomme()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('time_one')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
-                            <select type="text" name="task_one" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <select name="task_one" id="task_one" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
                                 @foreach($tasks as $task)
                                     <option value="{{ $task->id }}"> {{ $task->name }}</option>
                                 @endforeach
+                            </select >
+                            <select name="subtask_one" id="subtask_one" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                                <option value="">Choisissez une sous-tâche</option>
+                                @foreach($subtasks as $subtask)
+                                    <option value="{{$subtask->id}}">{{$subtask->name}}</option>
+                                @endforeach
                             </select>
+                            <input type="text" name="number_one" class="form-control bg-light border small" value="{{old('number_one')}}"
+                                   placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
                             <select type="text" name="project_one" id="project_one" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez un projet</option>
                                 @foreach($projects as $project)
@@ -52,19 +64,26 @@
                                    placeholder="Commentaire" aria-label="Search" aria-describedby="basic-addon2">
                         </div>
 
-
                         <p>Tâche 2</p>
                         <div class="input-group">
-                            <input type="text" name="number_two" class="form-control bg-light border small" value="{{old('number_two')}}"
-                                   placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
-                            <input type="text" name="timer_two" class="form-control bg-light border small" value="{{old('timer_two')}}"
+                            <input type="text" oninput="verifierSomme()" name="timer_two" id="timer_two" class="form-control bg-light border small" value="{{old('timer_two')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
-                            <select type="text" name="task_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+
+                            <select type="text" name="task_two" id="task_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
                                 @foreach($tasks as $task)
                                     <option value="{{ $task->id }}"> {{ $task->name }}</option>
                                 @endforeach
                             </select>
+                            <select name="subtask_two" id="subtask_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                                <option value="">Choisissez une sous-tâche</option>
+                                @foreach($subtasks as $subtask)
+                                    <option value="{{$subtask->id}}">{{$subtask->name}}</option>
+                                @endforeach
+                            </select>
+                            <input type="text" name="number_two" class="form-control bg-light border small" value="{{old('number_two')}}"
+                                   placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
+
                             <select type="text" name="project_two" id="project_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez un projet</option>
                                 @foreach($projects as $project)
@@ -83,16 +102,22 @@
 
                         <p>Tâche 3</p>
                         <div class="input-group">
-                            <input type="text" name="number_three" class="form-control bg-light border small" value="{{old('number_three')}}"
-                                   placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
-                            <input type="text" name="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
+                            <input type="number" oninput="verifierSomme()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
-                            <select type="text" name="task_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <select type="text" id="task_three" name="task_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
                                 @foreach($tasks as $task)
                                     <option value="{{ $task->id }}"> {{ $task->name }}</option>
                                 @endforeach
                             </select>
+                            <select name="subtask_three" id="subtask_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                                <option value="">Choisissez une sous-tâche</option>
+                                @foreach($subtasks as $subtask)
+                                    <option value="{{$subtask->id}}">{{$subtask->name}}</option>
+                                @endforeach
+                            </select>
+                            <input type="text" name="number_three" class="form-control bg-light border small" value="{{old('number_three')}}"
+                                   placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
                             <select type="text" name="project_three" id="project_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez un projet</option>
                                 @foreach($projects as $project)
@@ -111,16 +136,22 @@
 
                         <p>Tâche 4</p>
                         <div class="input-group">
-                            <input type="text" name="number_four" class="form-control bg-light border small" value="{{old('number_four')}}"
-                                   placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
-                            <input type="text" name="timer_four" class="form-control bg-light border small" value="{{old('timer_four')}}"
+                            <input type="number" oninput="verifierSomme()" name="timer_four" id="timer_four" class="form-control bg-light border small" value="{{old('timer_four')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
-                            <select type="text" name="task_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <select type="text" name="task_four" id="task_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
                                 @foreach($tasks as $task)
                                     <option value="{{ $task->id }}"> {{ $task->name }}</option>
                                 @endforeach
                             </select>
+                            <select name="subtask_four" id="subtask_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                                <option value="">Choisissez une sous-tâche</option>
+                                @foreach($subtasks as $subtask)
+                                    <option value="{{$subtask->id}}">{{$subtask->name}}</option>
+                                @endforeach
+                            </select>
+                            <input type="text" name="number_four" class="form-control bg-light border small" value="{{old('number_four')}}"
+                                   placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
                             <select type="text" name="project_four" id="project_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez un projet</option>
                                 @foreach($projects as $project)
@@ -138,7 +169,7 @@
                         </div>
 
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false"><span class="icon text-white-50"><i class="fas fa-check"></i></span>
+                            <button id="submitBtn" type="submit"  class="btn btn-success btn-icon-split"  spellcheck="false"><span class="icon text-white-50"><i class="fas fa-check"></i></span>
                                 <span class="text">Valider</span>
                             </button>
                         </div>
@@ -159,13 +190,25 @@
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tableau des heures</h6>
             </div>
+
             <div class="card-body">
+                <a onclick="exportToExcel()" class="btn btn-info btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="text">Exporter sur Excel</span>
+                </a>
                 <div class="table-responsive">
+
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+
+
+
+
+                                <table class="table table-bordered dataTable" id="tableone" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Membres de l'équipe </th>

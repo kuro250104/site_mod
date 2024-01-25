@@ -1,94 +1,168 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var stageOptions = {
+            @foreach($projects as $project)
+            '{{ $project->id }}': [
+                    @foreach($stages->where('project_id', $project->id) as $stage)
+                { id: '{{ $stage->id }}', name: '{{ $stage->name }}' },
+                @endforeach
+            ],
+            @endforeach
+        };
+
+        function updateStageOptions(projectSelect, stageSelect) {
+            var selectedProject = projectSelect.value;
+
+
+            stageSelect.innerHTML = '<option value="">Choisissez un stade</option>';
+            if (stageOptions[selectedProject]) {
+                stageOptions[selectedProject].forEach(function (stage) {
+                    var option = document.createElement('option');
+                    option.value = stage.id;
+                    option.text = stage.name;
+                    stageSelect.add(option);
+                });
+            }
+        }
+
+        var projects = ['project_one', 'project_two', 'project_three', 'project_four'];
+        var stages = ['stage_one', 'stage_two', 'stage_three', 'stage_four'];
+
+        for (var i = 0; i < projects.length; i++) {
+            (function (index) {
+                var projectSelect = document.getElementById(projects[index]);
+                var stageSelect = document.getElementById(stages[index]);
+
+                projectSelect.addEventListener('change', function () {
+                    updateStageOptions(projectSelect, stageSelect);
+                });
+
+                updateStageOptions(projectSelect, stageSelect);
+            })(i);
+        }
+    });
+</script>
 
 <script>
-    var projectOneSelect = document.getElementById('project_one');
-    var stageOneSelect = document.getElementById('stage_one');
-
-    var projectTwoSelect = document.getElementById('project_two');
-    var stageTwoSelect = document.getElementById('stage_two');
-
-    var projectThreeSelect = document.getElementById('project_three');
-    var stageThreeSelect = document.getElementById('stage_three');
-
-    var projectFourSelect = document.getElementById('project_four');
-    var stageFourSelect = document.getElementById('stage_four');
-
-
-
-    var stageOptions = {
-        @foreach($projects as $project)
-        '{{ $project->id }}': [
-                @foreach($stages->where('project_id', $project->id) as $stage)
-            { id: '{{ $stage->id }}', name: '{{ $stage->name }}' },
+    document.addEventListener('DOMContentLoaded', function () {
+        var taskOptions = {
+            @foreach($tasks as $task)
+            '{{ $task->id }}': [
+                    @foreach($subtasks->where('task_id', $task->id) as $subtask)
+                { id: '{{ $subtask->id }}', name: '{{ $subtask->name }}' },
+                @endforeach
+            ],
             @endforeach
-        ],
-        @endforeach
-    };
+        };
+
+        function updateSubtaskOptions(taskSelect, subtaskSelect) {
+            var selectedTask = taskSelect.value;
 
 
-    function updateStageOptionsOne() {
-        var selectedProject = projectOneSelect.value;
 
-        stageOneSelect.innerHTML = '<option value="">Choisissez un stade</option>';
-        if (stageOptions[selectedProject]) {
-            stageOptions[selectedProject].forEach(function (stage) {
-                var option = document.createElement('option');
-                option.value = stage.id;
-                option.text = stage.name;
-                stageOneSelect.add(option);
+            subtaskSelect.innerHTML = '<option value="">Choisissez une sous-tâche</option>';
+            if (taskOptions[selectedTask]) {
+                taskOptions[selectedTask].forEach(function (subtask) {
+                    var option = document.createElement('option');
+                    option.value = subtask.id;
+                    option.text = subtask.name;
+                    subtaskSelect.add(option);
+                });
+            }
+        }
+
+        var tasks = ['task_one', 'task_two', 'task_three', 'task_four'];
+        var subtasks = ['subtask_one', 'subtask_two', 'subtask_three', 'subtask_four'];
+
+        for (var i = 0; i < tasks.length; i++) {
+            (function (index) {
+                var taskSelect = document.getElementById(tasks[index]);
+                var subtaskSelect = document.getElementById(subtasks[index]);
+
+                // Vérifiez si les éléments HTML existent
+                // if (!taskSelect) {
+                //     alert('L\'élément taskSelect avec l\'id ' + tasks[index] + ' n\'existe pas.');
+                //     return;
+                // }
+                //
+                // if (!subtaskSelect) {
+                //     alert('L\'élément subtaskSelect avec l\'id ' + subtasks[index] + ' n\'existe pas.');
+                //     return;
+                // }
+
+                taskSelect.addEventListener('change', function () {
+                    updateSubtaskOptions(taskSelect, subtaskSelect);
+                });
+
+                updateSubtaskOptions(taskSelect, subtaskSelect);
+            })(i);
+        }
+    });
+</script>
+
+
+
+
+
+
+<script>
+    function verifierSomme() {
+        var limite = parseInt(document.getElementById('timer').value);
+
+        var valeur1 = parseInt(document.getElementById('timer_one').value) || 0;
+        var valeur2 = parseInt(document.getElementById('timer_two').value) || 0;
+        var valeur3 = parseInt(document.getElementById('timer_three').value) || 0;
+        var valeur4 = parseInt(document.getElementById('timer_four').value) || 0;
+
+        var somme = valeur1 + valeur2 + valeur3 + valeur4;
+
+        if (somme > limite) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'La somme des heures dépasse la limite autorisée.',
+            }).then((result) => {
+
             });
+
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').className = "btn btn-secondary btn-icon-split";
+            return false;
+
+
+        } else {
+            document.getElementById('messageErreur').innerHTML = '';
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').className = "btn btn-success btn-icon-split";
         }
     }
 
-    projectOneSelect.addEventListener('change', updateStageOptionsOne);
-
-    function updateStageOptionsTwo() {
-        var selectedProject = projectTwoSelect.value;
-
-        stageTwoSelect.innerHTML = '<option value="">Choisissez un stade</option>';
-        if (stageOptions[selectedProject]) {
-            stageOptions[selectedProject].forEach(function (stage) {
-                var option = document.createElement('option');
-                option.value = stage.id;
-                option.text = stage.name;
-                stageTwoSelect.add(option);
-            });
-        }
-    }
-    projectTwoSelect.addEventListener('change', updateStageOptionsTwo);
-
-    function updateStageOptionsThree() {
-        var selectedProject = projectThreeSelect.value;
-
-        stageThreeSelect.innerHTML = '<option value="">Choisissez un stade</option>';
-        if (stageOptions[selectedProject]) {
-            stageOptions[selectedProject].forEach(function (stage) {
-                var option = document.createElement('option');
-                option.value = stage.id;
-                option.text = stage.name;
-                stageThreeSelect.add(option);
-            });
-        }
-    }
-    projectThreeSelect.addEventListener('change', updateStageOptionsThree);
-
-    function updateStageOptionsFour() {
-        var selectedProject = projectFourSelect.value;
-
-        stageFourSelect.innerHTML = '<option value="">Choisissez un stade</option>';
-        if (stageOptions[selectedProject]) {
-            stageOptions[selectedProject].forEach(function (stage) {
-                var option = document.createElement('option');
-                option.value = stage.id;
-                option.text = stage.name;
-                stageFourSelect.add(option);
-            });
-        }
-    }
-    projectFourSelect.addEventListener('change', updateStageOptionsFour);
-
-    updateStageOptionsOne();
-    updateStageOptionsTwo();
-    updateStageOptionsThree();
-    updateStageOptionsFour();
 
 </script>
+
+<script>
+    function exportToExcel() {
+        var table = document.getElementById("tableone");
+
+        var wb = XLSX.utils.table_to_book(table);
+
+        var binaryData = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+
+        var blob = new Blob([s2ab(binaryData)], { type: 'application/octet-stream' });
+
+        saveAs(blob, 'tableau_excel.xlsx');
+    }
+
+    function s2ab(s) {
+        var buf = new ArrayBuffer(s.length);
+        var view = new Uint8Array(buf);
+        for (var i = 0; i < s.length; i++) {
+            view[i] = s.charCodeAt(i) & 0xFF;
+        }
+        return buf;
+    }
+</script>
+
+
+
+
