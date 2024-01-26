@@ -13,51 +13,53 @@
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-success">Heures validé</h6>
+                        <h6 class="m-0 font-weight-bold text-success">Heures validées</h6>
                     </div>
                     <div class="card-body">
-                        Aller à la page des heures validés
+                        Aller à la page des heures validés  <a class="link-offset-1" href="{{route('validated_hour.index')}}">cliquez ici</a>
                     </div>
+
                 </div>
+
 
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-danger">Basic Card Example</h6>
+                        <h6 class="m-0 font-weight-bold text-warning">Gestion des opérateurs</h6>
                     </div>
                     <div class="card-body">
-                        Aller à la pages des équipes
+                        Aller à la page des opérateurs <a class="link-offset-1" href="{{route('worker.index')}}">cliquez ici</a>
                     </div>
                 </div>
 
             </div>
 
-            <div class="col-lg-6">
+{{--            <div class="col-lg-6">--}}
 
 
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-danger">Basic Card Example</h6>
-                    </div>
-                    <div class="card-body">
-                        The styling for this basic card example is created by using default Bootstrap
-                        utility classes. By using utility classes, the style of the card component can be
-                        easily modified with no need for any custom CSS!
-                    </div>
-                </div>
+{{--                <div class="card shadow mb-4">--}}
+{{--                    <div class="card-header py-3">--}}
+{{--                        <h6 class="m-0 font-weight-bold text-danger">Basic Card Example</h6>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-body">--}}
+{{--                        The styling for this basic card example is created by using default Bootstrap--}}
+{{--                        utility classes. By using utility classes, the style of the card component can be--}}
+{{--                        easily modified with no need for any custom CSS!--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-danger">Basic Card Example</h6>
-                    </div>
-                    <div class="card-body">
-                        The styling for this basic card example is created by using default Bootstrap
-                        utility classes. By using utility classes, the style of the card component can be
-                        easily modified with no need for any custom CSS!
-                    </div>
-                </div>
+{{--                <div class="card shadow mb-4">--}}
+{{--                    <div class="card-header py-3">--}}
+{{--                        <h6 class="m-0 font-weight-bold text-danger">Basic Card Example</h6>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-body">--}}
+{{--                        The styling for this basic card example is created by using default Bootstrap--}}
+{{--                        utility classes. By using utility classes, the style of the card component can be--}}
+{{--                        easily modified with no need for any custom CSS!--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-            </div>
+{{--            </div>--}}
 
         </div>
     </div>
