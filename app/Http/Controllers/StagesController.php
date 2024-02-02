@@ -32,12 +32,14 @@ class StagesController extends Controller
     public function edit($stageId)
     {
         $stages = Stages::find($stageId);
+        $projects = Projects::all();
 
-        return view('stage.edit', compact('stages'));
+        return view('stage.edit', compact('stages', 'projects'));
     }
     public function update(UpdateStageRequest $request, int $stageId)
     {
         Stages::findOrFail($stageId)->update($request->validated());
+
 
         return redirect()->route('stage.index');
     }

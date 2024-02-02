@@ -19,7 +19,7 @@
                         <option value="{{ $project->id }}"> {{ $project->name }}</option>
                     @endforeach
                 </select>
-                
+
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
                     <span class="icon text-white-50">
@@ -59,7 +59,7 @@
                                     <td style="width: 50%;">{{$stage->name}}</td>
                                     <td style="width: 50%;">{{$stage->project->name}}</td>
                                     <td class="custom-td">
-                                        <a href="{{route('project.edit', $project->id)}}"
+                                        <a href="{{route('stage.edit', $stage->id)}}"
                                            class="btn btn-light btn-icon-split" spellcheck="false">
                                         <span class="icon text-gray-600">
                                             <i class="far fa-edit"></i>

@@ -5,50 +5,67 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Gestion des opérateurs</h1>
     </div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <input type="text" class="form-control  bg-light border-black small" id="recherche" placeholder="Recherche par nom..." aria-label="Search" aria-describedby="basic-addon2">
 
-    <form action="{{ route('worker.store')}}" method="POST" class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        @csrf
-        <div class="input-group">
-            <input type="text" name="surname" class="form-control bg-light border small" value="{{old('surname')}}" placeholder="Nom" aria-label="Search" aria-describedby="basic-addon2">
+    </div>
 
-            <input type="text" name="name" class="form-control bg-light border small" value="{{old('name')}}" placeholder="Prénom" aria-label="Search" aria-describedby="basic-addon2">
-            <select type="text" name="team_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
-                <option value="">Choisissez une équipe</option>
-                @foreach($teams as $team)
-                    <option value="{{ $team->id }}"> {{ $team->name }}</option>
-                @endforeach
-            </select>
-            <select type="text" name="status_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
-                <option value="">Etat de l'opérateur</option>
-                @foreach($status as $statu)
-                    <option value="{{ $statu->id }}"> {{ $statu->name }}</option>
-                @endforeach
-            </select>
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
+    <div class="card shadow mb-4">
+        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouvel opérateur </h6>
+        </a>
+        <div class="collapse show" id="collapseCardExample" style="">
+            <div class="card-body">
+                <form action="{{ route('worker.store')}}" method="POST" class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    @csrf
+                    <div class="input-group">
+                        <input type="text" name="surname" class="form-control bg-light border small" value="{{old('surname')}}" placeholder="Nom" aria-label="Search" aria-describedby="basic-addon2">
+
+                        <input type="text" name="name" class="form-control bg-light border small" value="{{old('name')}}" placeholder="Prénom" aria-label="Search" aria-describedby="basic-addon2">
+                        <select type="text" name="team_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <option value="">Choisissez une équipe</option>
+                            @foreach($teams as $team)
+                                <option value="{{ $team->id }}"> {{ $team->name }}</option>
+                            @endforeach
+                        </select>
+                        <select type="text" name="status_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <option value="">Etat de l'opérateur</option>
+                            @foreach($status as $statu)
+                                <option value="{{ $statu->id }}"> {{ $statu->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
                     <span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                     </span>
-                    <span class="text">Valider</span>
-                </button>
-            </div>
-        </div>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+                                <span class="text">Valider</span>
+                            </button>
+                        </div>
+                    </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-    </form>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
     <div id="content">
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered " id="dataTable">
+                    <table class="table table-bordered " >
                         <thead>
                             <tr>
                                 <th>Nom</th>
@@ -60,11 +77,11 @@
                         </thead>
                         <tbody>
                             @foreach($workers as $worker)
-                                <tr>
-                                    <td style="width: 33%;">{{$worker->surname}}</td>
-                                    <td style="width: 33%;">{{$worker->name}}</td>
-                                    <td style="width: 33%;">{{$worker->team->name}}</td>
-                                    <td style="width: 33%;">{{$worker->status->name}}</td>
+                                <tr class="resultat-ligne">
+                                    <td >{{$worker->surname}}</td>
+                                    <td >{{$worker->name}}</td>
+                                    <td >{{$worker->team->name}}</td>
+                                    <td >{{$worker->status->name}}</td>
 
                                     <td class="custom-td">
                                         <a href="{{route('worker.edit', $worker->id)}}" class="btn btn-light btn-icon-split" spellcheck="false">
@@ -73,23 +90,75 @@
                                         </span>
                                             <span class="text">Modifier</span>
                                         </a>
-                                        <a href="#" class="btn btn-light btn-icon-split" spellcheck="false">
-                                        <span class="icon text-gray-600">
-                                            <i class="far fa-eye"></i>
-                                        </span>
-                                            <span class="text">Voir</span>
-                                        </a>
+{{--                                        <a href="#" class="btn btn-light btn-icon-split" spellcheck="false">--}}
+{{--                                        <span class="icon text-gray-600">--}}
+{{--                                            <i class="far fa-eye"></i>--}}
+{{--                                        </span>--}}
+{{--                                            <span class="text">Voir</span>--}}
+{{--                                        </a>--}}
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $workers->links('pages.pagination') }}
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#recherche').on('input', function () {
+            var termeRecherche = $(this).val();
+
+            if (termeRecherche.trim() === '') {
+                $('.resultat-ligne').show();
+            } else {
+                rechercherAvecTerme(termeRecherche);
+            }
+        });
+
+        function rechercherAvecTerme(termeRecherche) {
+            $('.resultat-ligne').hide();
+
+            $.ajax({
+                url: '/recherche',
+                type: 'GET',
+                data: { term: termeRecherche },
+            }).done(function (resultats) {
+                $.each(resultats, function (index, resultat) {
+                    if (resultat && resultat.surname) {
+                        var ligne = $('.resultat-ligne:contains(' + resultat.surname + ')');
+                        ligne.show();
+                        ligne.find('td:eq(1)').text(resultat.name);
+                        ligne.find('td:eq(2)').text(resultat.team.name);
+                        ligne.find('td:eq(3)').text(resultat.status.name);
+                    }
+                });
+            });
+        }
+
+        $('#recherche').on('keyup', function () {
+            var termeRecherche = $(this).val();
+
+            if (termeRecherche.trim() === '') {
+                $('.resultat-ligne').show();
+            }
+        });
+    });
+
+</script>
+
+
+
+
+
+
+
+
 
 
 

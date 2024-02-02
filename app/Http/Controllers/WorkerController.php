@@ -16,9 +16,9 @@ class WorkerController extends Controller
 {
     public function home()
     {
-        $workers = Worker::with("team")->paginate(10);
-        $teams = Team::paginate(10);
-        $status = Status::paginate(10);
+        $workers = Worker::all();
+        $teams = Team::all();
+        $status = Status::all();
 
         return view('worker.index', compact("workers", "teams", 'status'));
     }

@@ -5,34 +5,45 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Gestion des équipes</h1>
         </div>
-
-
-        <form action="{{ route('team.store')}}" method="POST"
-              class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            @csrf
-            <div class="input-group">
-                <input type="text" name="name" class="form-control bg-light border small" value="{{old('name')}}"
-                       placeholder="Nom de l'équipe" aria-label="Search" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
+        <div class="card shadow mb-4">
+            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">Ajouter une nouvelle équipe</h6>
+            </a>
+            <div class="collapse show" id="collapseCardExample" style="">
+                <div class="card-body">
+                    <form action="{{ route('team.store')}}" method="POST"
+                          class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" name="name" class="form-control bg-light border small" value="{{old('name')}}"
+                                   placeholder="Nom de l'équipe" aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
                     <span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                     </span>
-                        <span class="text">Valider</span>
-                    </button>
-                </div>
-            </div>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+                                    <span class="text">Ajouter</span>
+                                </button>
+                            </div>
+                        </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-        </form>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+
         <div id="content">
             <div class="card shadow mb-4">
                 <div class="card-body">

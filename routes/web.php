@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StagesController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ValidatedHourController;
@@ -42,6 +43,10 @@ Route::middleware('auth')->group(function () {
 
     Route::view('/', 'home.home');
     Route::get('/', [HomeController::class, 'home'])->name('home.home');
+    Route::get('/recherche', [SearchController::class, 'search'])->name('search');
+
+
+
 
 
     Route::get('/workers', [WorkerController::class, 'home'])->name('worker.index');

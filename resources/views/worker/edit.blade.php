@@ -22,7 +22,7 @@
                        value="{{ $worker->name }}">
                 <input type="hidden" name="worker_id" value='{{$worker->id}}'>
                 <select type="text" name="team_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
-                    <option value="">{{$worker->team->name}}</option>
+                    <option value="{{$worker->team->id}}">{{$worker->team->name}}</option>
                     @foreach($teams as $team)
                         <option value="{{ $team->id }}"> {{ $team->name }}</option>
                     @endforeach

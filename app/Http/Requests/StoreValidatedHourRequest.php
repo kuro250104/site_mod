@@ -11,7 +11,7 @@ class StoreValidatedHourRequest extends FormRequest
         return [
             'worker_id' =>'required',
             'team_id' =>'nullable',
-            'timer'=>'nullable',
+            'timer'=>'required',
 
             'number_one'=>'nullable',
             'task_one' => 'nullable|exists:tasks,id',
@@ -51,7 +51,7 @@ class StoreValidatedHourRequest extends FormRequest
     {
         return[
             'worker_id.required'=> "Veuillez remplir le nom de l'opérateur ",
-//            'timer.required'=>"Veuillez entrer un nombre d'heure total"
+            'timer.required'=>"Veuillez entrer un nombre d'heures totalle"
 
         ];
     }

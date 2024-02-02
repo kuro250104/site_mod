@@ -14,6 +14,8 @@ class Stages extends Model
         "name", "surname", "project_id"
     ];
 
+
+
     public function project(): BelongsTo
     {
         return $this->belongsTo(Projects::class, 'project_id');

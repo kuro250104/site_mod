@@ -6,8 +6,12 @@
             <h1 class="h3 mb-0 text-gray-800">Vue de l'équipe {{$team->name}}</h1>
         </div>
 
-
-
+        <a href="{{route('team.index')}}" class="btn btn-icon-split" spellcheck="false">
+                    <span class="icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+            <span class="text">Retour</span>
+        </a>
         <div id="content">
 
             <div class="card-body">

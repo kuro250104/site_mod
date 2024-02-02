@@ -17,7 +17,7 @@ class TeamSeeder extends Seeder
             "BEZIE / RAMPONT",
             "ESNAULT / GUENGANT",
             "FAUCHON / MANCEAU",
-            "NON RENSEINGÉ"
+            "N.A"
 
         ];
         foreach ($datas as $data) {

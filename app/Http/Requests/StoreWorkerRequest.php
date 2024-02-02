@@ -13,7 +13,7 @@ class StoreWorkerRequest extends FormRequest
         return true;
     }
 
-    public function rules() :array
+    public function rules(): array
     {
         return [
             'name' => 'required',
@@ -25,10 +25,12 @@ class StoreWorkerRequest extends FormRequest
 
     public function messages(): array
     {
-        return[
-            'name.required'=> 'Veuillez saisir un nom.',
-            'surname.required'=> 'Veuillez saisir un nom de famille.',
-            'surname.uppercase'=> 'Le nom de famille doit être en MAJUSCULE.',
+        return [
+            'name.required' => 'Veuillez saisir un prénom.',
+            'surname.required' => 'Veuillez saisir un nom de famille.',
+            'surname.uppercase' => 'Le nom de famille doit être en MAJUSCULE.',
+            'team_id.required' => 'Veuillez choisir une équipe',
+            'status_id' => "Veuillez renseigner si l'opérateur est actif",
         ];
     }
 }

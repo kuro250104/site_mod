@@ -14,13 +14,15 @@ class UpdateStageRequest extends FormRequest
     public function rules(Request $request) :array
     {
         return [
-            'name' => 'required' .  $request->post('team_id')
+            'name' => 'required' .  $request->post('team_id'),
+            'project_id'=>'required'
         ];
     }
     public function messages(): array
     {
         return[
             'name.required'=> 'Veuillez saisir un nom.',
+            'project_id.required'=> 'Veuillez saisir un projet.',
 
 
         ];
