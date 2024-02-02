@@ -65,41 +65,51 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered " >
+                    <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Equipes</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Equipes</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach($workers as $worker)
-                                <tr class="resultat-ligne">
-                                    <td >{{$worker->surname}}</td>
-                                    <td >{{$worker->name}}</td>
-                                    <td >{{$worker->team->name}}</td>
-                                    <td >{{$worker->status->name}}</td>
+                        @foreach($workers as $worker)
+                        <tr>
+                            <td>{{$worker->surname}}</td>
+                            <td>{{$worker->name}}</td>
+                            <td>{{$worker->team->name}}</td>
+                            <td>{{$worker->status->name}}</td>
 
-                                    <td class="custom-td">
-                                        <a href="{{route('worker.edit', $worker->id)}}" class="btn btn-light btn-icon-split" spellcheck="false">
-                                        <span class="icon text-gray-600">
-                                            <i class="far fa-edit"></i>
-                                        </span>
-                                            <span class="text">Modifier</span>
-                                        </a>
-{{--                                        <a href="#" class="btn btn-light btn-icon-split" spellcheck="false">--}}
-{{--                                        <span class="icon text-gray-600">--}}
-{{--                                            <i class="far fa-eye"></i>--}}
-{{--                                        </span>--}}
-{{--                                            <span class="text">Voir</span>--}}
-{{--                                        </a>--}}
-                                    </td>
-                                </tr>
-                            @endforeach
+                            <td class="custom-td">
+                                <a href="{{route('worker.edit', $worker->id)}}" class="btn btn-light btn-icon-split" spellcheck="false">
+                                    <span class="icon text-gray-600">
+                                        <i class="far fa-edit"></i>
+                                    </span>
+                                    <span class="text">Modifier</span>
+                                </a>
+{{--                                <a href="#" class="btn btn-light btn-icon-split" spellcheck="false">--}}
+{{--                                    <span class="icon text-gray-600">--}}
+{{--                                        <i class="far fa-eye"></i>--}}
+{{--                                    </span>--}}
+{{--                                    <span class="text">Voir</span>--}}
+{{--                                </a>--}}
+                            </td>
+                        </tr>
+                        @endforeach
+
                         </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Equipes</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </tfoot>
                     </table>
 
                 </div>
@@ -108,49 +118,8 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#recherche').on('input', function () {
-            var termeRecherche = $(this).val();
 
-            if (termeRecherche.trim() === '') {
-                $('.resultat-ligne').show();
-            } else {
-                rechercherAvecTerme(termeRecherche);
-            }
-        });
 
-        function rechercherAvecTerme(termeRecherche) {
-            $('.resultat-ligne').hide();
-
-            $.ajax({
-                url: '/recherche',
-                type: 'GET',
-                data: { term: termeRecherche },
-            }).done(function (resultats) {
-                $.each(resultats, function (index, resultat) {
-                    if (resultat && resultat.surname) {
-                        var ligne = $('.resultat-ligne:contains(' + resultat.surname + ')');
-                        ligne.show();
-                        ligne.find('td:eq(1)').text(resultat.name);
-                        ligne.find('td:eq(2)').text(resultat.team.name);
-                        ligne.find('td:eq(3)').text(resultat.status.name);
-                    }
-                });
-            });
-        }
-
-        $('#recherche').on('keyup', function () {
-            var termeRecherche = $(this).val();
-
-            if (termeRecherche.trim() === '') {
-                $('.resultat-ligne').show();
-            }
-        });
-    });
-
-</script>
 
 
 
