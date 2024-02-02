@@ -21,7 +21,7 @@ class StoreStageRequest extends FormRequest
     {
         return [
             'name.required' => "Veuillez saisir un nom pour le stade",
-            'project_id.required' => "Veuillez saisir un nom pour le stade",
+            'project_id.required' => "Veuillez saisir un projet",
 
         ];
 

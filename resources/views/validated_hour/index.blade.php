@@ -208,7 +208,7 @@
 
 
 
-                                <table class="table table-bordered dataTable" id="tableone" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Membres de l'équipe </th>

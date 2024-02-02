@@ -51,7 +51,7 @@ class StoreValidatedHourRequest extends FormRequest
     {
         return[
             'worker_id.required'=> "Veuillez remplir le nom de l'opérateur ",
-            'timer.required'=>"Veuillez entrer un nombre d'heures totalle"
+            'timer.required'=>"Veuillez entrer un nombre d'heures totale"
 
         ];
     }

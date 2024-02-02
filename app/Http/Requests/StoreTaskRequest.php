@@ -19,7 +19,7 @@ class StoreTaskRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => "Veuillez saisir un nom pour l'équipe",
+            'name.required' => "Veuillez saisir un nom pour la tache",
         ];
 
     }

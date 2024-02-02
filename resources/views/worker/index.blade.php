@@ -6,7 +6,7 @@
         <h1 class="h3 mb-0 text-gray-800">Gestion des opérateurs</h1>
     </div>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <input type="text" class="form-control  bg-light border-black small" id="recherche" placeholder="Recherche par nom..." aria-label="Search" aria-describedby="basic-addon2">
+        <input type="search" class="form-control  bg-light border-black small" id="dataTable_filter" placeholder="Recherche par nom..." aria-label="Search" aria-describedby="basic-addon2">
 
     </div>
 
@@ -35,7 +35,7 @@
                             @endforeach
                         </select>
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
+                            <button type="submit" class="btns  btn btn-success btn-icon-split" spellcheck="false">
                     <span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                     </span>

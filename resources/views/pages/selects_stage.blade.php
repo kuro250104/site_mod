@@ -142,7 +142,7 @@
 
 <script>
     function exportToExcel() {
-        var table = document.getElementById("tableone");
+        var table = document.getElementById("dataTable");
 
         var wb = XLSX.utils.table_to_book(table);
 
