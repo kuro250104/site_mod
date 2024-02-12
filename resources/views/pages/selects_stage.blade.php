@@ -131,7 +131,7 @@
 
 
         } else {
-            document.getElementById('messageErreur').innerHTML = '';
+            // document.getElementById('messageErreur').innerHTML = '';
             document.getElementById('submitBtn').disabled = false;
             document.getElementById('submitBtn').className = "btn btn-success btn-icon-split";
         }
