@@ -15,7 +15,8 @@ use Illuminate\Http\Request;
 
 class ValidatedHourController extends Controller
 {
-    public function home()
+
+    public function home(Request $request)
     {
         $valid_hours = ValidatedHour::with(['worker', 'team', 'stageOne', 'taskOne', 'projectOne', 'stageTwo', 'taskTwo', 'projectTwo', 'stageThree', 'taskThree', 'projectThree','stageFour', 'taskFour', 'projectFour' ])
             ->paginate(15);
@@ -28,8 +29,12 @@ class ValidatedHourController extends Controller
         $hours = Hour::all();
         $subtasks = Subtask::all();
 
+
+
         return view('validated_hour.index', compact('valid_hours', 'projects', 'teams', 'workers', 'stages', 'tasks', 'hours', 'subtasks'));
     }
+
+
     public function index()
     {
         $valid_hours = ValidatedHour::all();
@@ -38,7 +43,7 @@ class ValidatedHourController extends Controller
     }
     public function store(StoreValidatedHourRequest $request)
     {
-        ValidatedHour::create($request->validated());
+
 
         return redirect()->route('validated_hour.index');
     }
