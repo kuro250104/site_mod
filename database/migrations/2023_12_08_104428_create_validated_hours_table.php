@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('worker_id');
             $table->unsignedBigInteger('timer');
 
-            $table->string('number_one')->nullable();
+            $table->char('number_one')->nullable();
             $table->unsignedBigInteger('task_one')->nullable();
             $table->unsignedBigInteger('stage_one')->nullable();
             $table->unsignedBigInteger('project_one')->nullable();
