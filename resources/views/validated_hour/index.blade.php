@@ -32,7 +32,7 @@
 
                         <p>Tâche 1</p>
                         <div class="input-group">
-                            <input type="number" oninput="verifierSomme()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('time_one')}}"
+                            <input type="text" oninput="verifierSomme()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('time_one')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select name="task_one" id="task_one" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
@@ -102,7 +102,7 @@
 
                         <p>Tâche 3</p>
                         <div class="input-group">
-                            <input type="number" oninput="verifierSomme()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
+                            <input type="text" oninput="verifierSomme()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select type="text" id="task_three" name="task_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
@@ -136,7 +136,7 @@
 
                         <p>Tâche 4</p>
                         <div class="input-group">
-                            <input type="number" oninput="verifierSomme()" name="timer_four" id="timer_four" class="form-control bg-light border small" value="{{old('timer_four')}}"
+                            <input type="text" oninput="verifierSomme()" name="timer_four" id="timer_four" class="form-control bg-light border small" value="{{old('timer_four')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select type="text" name="task_four" id="task_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
