@@ -1,4 +1,38 @@
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Récupération des éléments select pour chaque tâche
+        var taskOneSelect = document.getElementById('task_one');
+        var taskTwoSelect = document.getElementById('task_two');
+        var taskThreeSelect = document.getElementById('task_three');
+        var taskFourSelect = document.getElementById('task_four');
+
+        // Ajout d'un écouteur d'événement 'change' pour chaque élément select
+        taskOneSelect.addEventListener('change', handleTaskChange);
+        taskTwoSelect.addEventListener('change', handleTaskChange);
+        taskThreeSelect.addEventListener('change', handleTaskChange);
+        taskFourSelect.addEventListener('change', handleTaskChange);
+
+        // Fonction pour gérer le changement de valeur d'une tâche
+        function handleTaskChange(event) {
+            var selectedOptionValue = event.target.value;
+            var taskNumber = event.target.id.split('_')[1];
+
+            // Affichage d'une alerte pour les tâches 2 et 4
+            if (taskNumber === 'one' ||taskNumber === 'two' ||taskNumber === 'three' || taskNumber === 'four') {
+                if (selectedOptionValue === '2') {
+                    Swal.fire({
+                        title: 'Nettoyage séléctionné!',
+                        text: 'Veuillez le décrire en commentaire.',
+                        icon: 'warning',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            }
+
+        }
+    });
+</script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         var stageOptions = {
             @foreach($projects as $project)
@@ -218,6 +252,7 @@
         return buf;
     }
 </script>
+
 
 
 
