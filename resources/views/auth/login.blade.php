@@ -46,14 +46,14 @@
                                 </div>
                                 <!-- Email -->
                                 <div class="form-group">
-                                    <input id="email" type="email" class="form-control form-control-user"
-                                           value="{{old('email')}}" required autofocus autocomplete="username"
-                                           aria-describedby="emailHelp"
-                                           placeholder="Enter Email Address..." name="email">
+                                    <label for="email"></label><input id="email" type="email" class="form-control form-control-user"
+                                                                      value="{{old('email')}}" required autofocus autocomplete="username"
+                                                                      aria-describedby="emailHelp"
+                                                                      placeholder="Enter Email Address..." name="email">
                                 </div>
                                 <!-- Password -->
                                 <div class="mt-4">
-                                    <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password" name="password" required autocomplete="current-password">
+                                    <label for="password"></label><input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password" name="password" required autocomplete="current-password">
                                 </div>
                                 @if ($errors->any())
                                     <div class="alert alert-danger">

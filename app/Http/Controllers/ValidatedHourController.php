@@ -44,7 +44,7 @@ class ValidatedHourController extends Controller
     public function store(StoreValidatedHourRequest $request)
     {
 
-
+        ValidatedHour::create($request->validated());
         return redirect()->route('validated_hour.index');
     }
 }

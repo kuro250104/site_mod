@@ -13,7 +13,7 @@ class StoreValidatedHourRequest extends FormRequest
             'team_id' =>'nullable',
             'timer'=>'required',
 
-            'number_one' => ['nullable', 'required_if:task_one,1,2,3', 'exists:tasks,id'],
+            'number_one' => 'nullable',
             'task_one' => 'nullable|exists:tasks,id',
             'stage_one' => 'nullable|exists:stages,id',
             'project_one' => 'nullable|exists:projects,id',

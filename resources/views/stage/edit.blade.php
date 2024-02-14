@@ -17,7 +17,7 @@
                 <select name="project_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                     <option value="{{$stages->project->id}}"> {{$stages->project->name}}</option>
                     @foreach($projects as $project)
-                        <option value="{{ $project->id }}"}> {{ $project->name }}</option>
+                        <option value="{{ $project->id }}"> {{ $project->name }}</option>
                     @endforeach
                 </select>
                 <div class="input-group-append">
