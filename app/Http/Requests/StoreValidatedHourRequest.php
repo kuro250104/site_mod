@@ -12,7 +12,7 @@ class StoreValidatedHourRequest extends FormRequest
             'worker_id' =>'required',
             'team_id' =>'nullable',
             'timer'=>'required',
-
+            'date'=>'required',
             'number_one' => 'nullable|digits:8',
             'task_one' => 'nullable|exists:tasks,id',
             'stage_one' => 'nullable|exists:stages,id',
@@ -50,6 +50,7 @@ class StoreValidatedHourRequest extends FormRequest
         return [
             'worker_id.required' => "Veuillez remplir le nom de l'opérateur ",
             'timer.required' => "Veuillez entrer un nombre d'heures totale",
+            'date.required'=>"",
             'number_one.digits' => "Vérifier que le numéro d'OP 1 continent bien 8 chiffres",
             'number_two.digits' => "Vérifier que le numéro d'OP 2 continent bien 8 chiffres",
             'number_three.digits' => "Vérifier que le numéro d'OP 3 continent bien 8 chiffres",

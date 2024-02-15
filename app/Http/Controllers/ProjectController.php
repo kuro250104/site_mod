@@ -11,7 +11,7 @@ class ProjectController extends Controller
 {
     public function home()
     {
-        $projects = Projects::paginate(10);
+        $projects = Projects::all();
 
         return view('project.index', compact("projects"));
     }

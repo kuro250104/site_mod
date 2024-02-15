@@ -9,7 +9,7 @@
             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                 <h6 class="m-0 font-weight-bold text-primary">Ajouter une nouvelle équipe</h6>
             </a>
-            <div class="collapse show" id="collapseCardExample" style="">
+            <div class="collapse" id="collapseCardExample" style="">
                 <div class="card-body">
                     <form action="{{ route('team.store')}}" method="POST"
                           class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -78,7 +78,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $teams->links('pages.pagination') }}
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@ class ValidatedHour extends Model
     protected $table = "validated_hours";
 
     protected $fillable = [
-        "worker_id", "timer", "team_id", "timer_one","coment_one", "number_one", "task_one", 'stage_one', "project_one", "timer_two","coment_two", "number_two", "task_two", 'stage_two', "project_two", "timer_three", "coment_three", "number_three", "task_three", 'stage_three', "project_three", "timer_four","coment_four", "number_four", "task_four", "stage_four", "project_four"
+        "worker_id", "timer", "date", "team_id", "timer_one","coment_one", "number_one", "task_one", 'stage_one', "project_one", "timer_two","coment_two", "number_two", "task_two", 'stage_two', "project_two", "timer_three", "coment_three", "number_three", "task_three", 'stage_three', "project_three", "timer_four","coment_four", "number_four", "task_four", "stage_four", "project_four"
     ];
 
     public function team(): BelongsTo

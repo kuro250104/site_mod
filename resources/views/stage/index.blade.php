@@ -6,40 +6,50 @@
             <h1 class="h3 mb-0 text-gray-800">Gestion des stades de projets</h1>
         </div>
 
+        <div class="card shadow mb-4">
+            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">Ajouter un stade</h6>
+            </a>
+            <div class="collapse" id="collapseCardExample">
+                <div class="card-body">
+                    <form action="{{ route('stage.store')}}" method="POST"
+                          class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" name="name" class="form-control bg-light border small" value="{{old('name')}}"
+                                   placeholder="Nom du stade de projet" aria-label="Search" aria-describedby="basic-addon2">
+                            <select type="text" name="project_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                                <option value="">Quel est le projet ?</option>
+                                @foreach($projects as $project)
+                                    <option value="{{ $project->id }}"> {{ $project->name }}</option>
+                                @endforeach
+                            </select>
 
-        <form action="{{ route('stage.store')}}" method="POST"
-              class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            @csrf
-            <div class="input-group">
-                <input type="text" name="name" class="form-control bg-light border small" value="{{old('name')}}"
-                       placeholder="Nom du stade de projet" aria-label="Search" aria-describedby="basic-addon2">
-                <select type="text" name="project_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
-                    <option value="">Quel est le projet ?</option>
-                    @foreach($projects as $project)
-                        <option value="{{ $project->id }}"> {{ $project->name }}</option>
-                    @endforeach
-                </select>
-
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
                     <span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                     </span>
-                        <span class="text">Valider</span>
-                    </button>
+                                    <span class="text">Valider</span>
+                                </button>
+                            </div>
+                        </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                    </form>
                 </div>
             </div>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+        </div>
 
-        </form>
+
         <div id="content">
             <div class="card shadow mb-4">
                 <div class="card-body">
@@ -54,7 +64,6 @@
                             </thead>
                             <tbody>
                             @foreach($stages as $stage)
-{{--                                {{dd($stage)}}--}}
                                 <tr>
                                     <td style="width: 50%;">{{$stage->name}}</td>
                                     <td style="width: 50%;">{{$stage->project->name}}</td>
@@ -77,7 +86,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $stages->links('pages.pagination') }}
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@
             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                 <h6 class="m-0 font-weight-bold text-primary">Formulaire de validation d'heures</h6>
             </a>
-            <div class="collapse show" id="collapseCardExample" style="">
+            <div class="collapse" id="collapseCardExample" style="">
                 <div class="card-body">
                     <form action="{{route('validated_hour.store')}}" method="POST" onsubmit="return verifierChamps()">
                         @csrf
@@ -28,6 +28,7 @@
                                     <option value="{{$hour->value}}"> {{$hour->name}}</option>
                                 @endforeach
                             </select>
+                            <input type="date" class="form-control bg-light border small" id="start" name="date"  min="2000-01-01" max="2050-12-31" />
                         </div>
 
                         <p>Tâche 1</p>
@@ -190,7 +191,6 @@
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tableau des heures</h6>
             </div>
-
             <div class="card-body">
                 <a onclick="exportToExcel()" class="btn btn-info btn-icon-split">
                     <span class="icon text-white-50">
@@ -198,33 +198,38 @@
                     </span>
                     <span class="text">Exporter sur Excel</span>
                 </a>
+            </div>
+
+            <div class="card-body">
+
                 <div class="table-responsive">
 
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
 
                         <div class="row">
                             <div class="col-sm-12">
-
-
-
-
-                                <table class="table table-bordered dataTable" id="dataTable" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <table class="table table-bordered dataTable" id="dataTable"  aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr>
+                                            <th>Date et heures</th>
                                             <th>Membres de l'équipe </th>
                                             <th>Équipe </th>
+                                            <th>Temps de tâche 1</th>
                                             <th>Tâche 1</th>
                                             <th>Numéro d'OP 1</th>
                                             <th>Projet 1</th>
                                             <th>Stade 1</th>
+                                            <th>Temps de tâche 2</th>
                                             <th>Tâche 2</th>
                                             <th>Numéro d'OP 2</th>
                                             <th>Projet 2</th>
                                             <th>Stade 2</th>
+                                            <th>Temps de tâche 3</th>
                                             <th>Tâche 3</th>
                                             <th>Numéro d'OP 3</th>
                                             <th>Projet 3</th>
                                             <th>Stade 3</th>
+                                            <th>Temps de tâche 4</th>
                                             <th>Tâche 4</th>
                                             <th>Numéro d'OP 4</th>
                                             <th>Projet 4</th>
@@ -234,30 +239,33 @@
                                     <tbody>
                                     @foreach($valid_hours as $valid_hour)
                                         <tr>
+                                            <td> {{$valid_hour->date}}</td>
                                             <td >{{$valid_hour->worker->name ?? 'N/A'}} {{$valid_hour->worker->surname ?? 'N/A'}}</td>
                                             <td >{{$valid_hour->worker->team->name ?? ''}}</td>
-                                            <td >{{$valid_hour->taskOne->name ?? ''}} - {{$valid_hour->timer_one}}</td>
+                                            <td >{{$valid_hour->timer_one ?? ''}}</td>
+                                            <td >{{$valid_hour->taskOne->name ?? ''}}</td>
                                             <td >{{$valid_hour->number_one ?? ''}}</td>
                                             <td >{{$valid_hour->projectOne->name ?? ''}}</td>
                                             <td >{{$valid_hour->stageOne->name ?? ''}}</td>
+                                            <td >{{$valid_hour->timer_two ?? ''}}</td>
                                             <td >{{$valid_hour->taskTwo->name ?? ''}}</td>
                                             <td >{{$valid_hour->number_two ?? ''}}</td>
                                             <td >{{$valid_hour->projectTwo->name ?? ''}}</td>
                                             <td >{{$valid_hour->stageTwo->name ?? ''}}</td>
+                                            <td >{{$valid_hour->timer_two ?? ''}}</td>
                                             <td >{{$valid_hour->taskThree->name ?? ''}}</td>
                                             <td >{{$valid_hour->number_three ?? ''}}</td>
                                             <td >{{$valid_hour->projectThree->name ?? ''}}</td>
                                             <td >{{$valid_hour->stageThree->name ?? ''}}</td>
+                                            <td >{{$valid_hour->timer_four ?? ''}}</td>
                                             <td >{{$valid_hour->taskFour->name ?? ''}}</td>
                                             <td >{{$valid_hour->number_four ?? ''}}</td>
                                             <td >{{$valid_hour->projectFour->name ?? ''}}</td>
                                             <td >{{$valid_hour->stageFour->name ?? ''}}</td>
                                         </tr>
                                     @endforeach
-
                                     </tbody>
                                 </table>
-                                {{ $valid_hours->links('pages.pagination') }}
                             </div>
                         </div>
                     </div>

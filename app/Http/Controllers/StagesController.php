@@ -12,7 +12,7 @@ class StagesController extends Controller
 {
     public function home()
     {
-        $stages = Stages::paginate(20);
+        $stages = Stages::all();
         $projects = Projects::all();
 
         return view('stage.index', compact('stages', 'projects'));

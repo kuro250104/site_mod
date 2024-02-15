@@ -5,16 +5,13 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Gestion des opérateurs</h1>
     </div>
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <input type="search" class="form-control  bg-light border-black small" id="dataTable_filter" placeholder="Recherche par nom..." aria-label="Search" aria-describedby="basic-addon2">
 
-    </div>
 
     <div class="card shadow mb-4">
         <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
             <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouvel opérateur </h6>
         </a>
-        <div class="collapse show" id="collapseCardExample" style="">
+        <div class="collapse" id="collapseCardExample" style="">
             <div class="card-body">
                 <form action="{{ route('worker.store')}}" method="POST" class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     @csrf
@@ -111,7 +108,6 @@
                         </tr>
                         </tfoot>
                     </table>
-
                 </div>
             </div>
         </div>

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('validated_hours', function (Blueprint $table) {
             $table->id();
-            $table->datetimes();
+            $table->timestamps();
+            $table->date('date')->nullable();
             $table->unsignedBigInteger('worker_id');
             $table->unsignedBigInteger('timer');
 
