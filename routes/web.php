@@ -3,9 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StagesController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidatedHourController;
 use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\TeamController;
@@ -25,6 +27,8 @@ Route::get('/api/workers-for-selector', [WorkerController::class, 'getWorkersFor
 
 Route::middleware('auth')->group(function () {
 
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
 
     Route::get('/dashboard', function () {
         return view('home.home');
@@ -35,8 +39,10 @@ Route::middleware('auth')->group(function () {
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-        Route::get('/users', [ProfileController::class, 'index'])->name('users.index');
-        Route::get('/users/{id}', [ProfileController::class, 'show'])->name('users.show');
+        Route::get('/user', [UserController::class, 'index'])->name('users.index');
+        Route::get('/user/{id}', [UserController::class, 'show'])->name('users.show');
+        Route::get('/user-create', [UserController::class, 'create'])->name('users.create');
+        Route::get('/user-delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
 
     });

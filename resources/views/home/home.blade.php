@@ -22,7 +22,7 @@
                 </div>
 
 
-
+                @can('user_manage')
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-warning">Gestion des opérateurs</h6>
@@ -31,6 +31,7 @@
                         Aller à la page des opérateurs <a class="link-offset-1" href="{{route('worker.index')}}">cliquez ici</a>
                     </div>
                 </div>
+                @endcan
 
             </div>
 

@@ -19,10 +19,10 @@
 
             // Affichage d'une alerte pour les tâches 2 et 4
             if (taskNumber === 'one' ||taskNumber === 'two' ||taskNumber === 'three' || taskNumber === 'four') {
-                if (selectedOptionValue === '2') {
+                if (selectedOptionValue === '6') {
                     Swal.fire({
-                        title: 'Nettoyage séléctionné!',
-                        text: 'Veuillez le décrire en commentaire.',
+                        title: 'Attente séléctionné!',
+                        text: 'Veuillez la décrire en commentaire.',
                         icon: 'warning',
                         confirmButtonText: 'OK'
                     });

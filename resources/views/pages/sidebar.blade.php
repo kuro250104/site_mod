@@ -43,13 +43,15 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Gestion des équipes</h6>
+                @can('user_manage')
                 <a class="collapse-item" href="{{route('worker.index')}}">Gestions des opérateurs</a>
                 <a class="collapse-item" href="{{route('team.index')}}">Gestions des équipes</a>
+                @endcan
                 <a class="collapse-item" href="{{route('validated_hour.index')}}">Heures validés</a>
             </div>
         </div>
     </li>
-
+    @can('production_manage', )
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -67,8 +69,7 @@
             </div>
         </div>
     </li>
-
-
+    @endcan
 
 
     <div class="text-center d-none d-md-inline">
