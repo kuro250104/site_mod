@@ -48,6 +48,7 @@
                 <a class="collapse-item" href="{{route('team.index')}}">Gestions des équipes</a>
                 @endcan
                 <a class="collapse-item" href="{{route('validated_hour.index')}}">Heures validés</a>
+{{--                <a class="collapse-item" href="{{route('validated_hour.table')}}">Heures validés</a>--}}
             </div>
         </div>
     </li>

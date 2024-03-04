@@ -10,7 +10,7 @@
             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                 <h6 class="m-0 font-weight-bold text-primary">Formulaire de validation d'heures</h6>
             </a>
-            <div class="collapse" id="collapseCardExample" style="">
+            <div class="collapse-show" id="collapseCardExample">
                 <div class="card-body">
                     <form action="{{route('validated_hour.store')}}" method="POST" onsubmit="return verifierChamps()">
                         @csrf

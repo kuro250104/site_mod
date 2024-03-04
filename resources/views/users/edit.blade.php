@@ -30,7 +30,7 @@
     @endif
 
 
-    {{dd($user)}}
+
     <form action="{{ route('users.update', $user->id) }}" method="PATCH">
 
         @csrf
@@ -77,7 +77,9 @@
 
 
             <div class="col-xs-12 mb-3 text-center">
+
                 <button type="submit" class="btn btn-primary">Submit</button>
+{{--                {{dd($user)}}--}}
             </div>
         </div>
     </form>
