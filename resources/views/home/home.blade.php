@@ -16,7 +16,7 @@
                         <h6 class="m-0 font-weight-bold text-success">Heures validées</h6>
                     </div>
                     <div class="card-body">
-                        Aller à la page des heures validés  <a class="link-offset-1" href="{{route('validated_hour.table')}}">cliquez ici</a>
+                        Aller à la page des heures validés  <a class="link-offset-1" href="{{route('validated_hour.index')}}">cliquez ici</a>
                     </div>
 
                 </div>
