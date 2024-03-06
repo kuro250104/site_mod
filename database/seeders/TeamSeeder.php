@@ -14,9 +14,9 @@ class TeamSeeder extends Seeder
     {
         $datas = [
             "BENETEAU / BLANCHARD",
-            "BEZIE / RAMPONT",
+            "MANCEAU / BEZIE",
             "ESNAULT / GUENGANT",
-            "FAUCHON / MANCEAU",
+            "FAUCHON / BOUGOULA",
             "N.A"
 
         ];

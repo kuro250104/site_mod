@@ -1,11 +1,12 @@
 @extends('pages.app')
 
 @section('content')
+
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Gestion des heures validées</h1>
         </div>
-
+        @can('operator')
         <div class="card shadow mb-4">
             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                 <h6 class="m-0 font-weight-bold text-primary">Formulaire de validation d'heures</h6>
@@ -184,9 +185,15 @@
                             </div>
                         @endif
                     </form>
+
                 </div>
+
             </div>
+
         </div>
+        @endcan
+
+        @can('finance_manage')
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tableau des heures</h6>
@@ -273,6 +280,7 @@
             </div>
 
         </div>
+        @endcan
 
 
     </div>

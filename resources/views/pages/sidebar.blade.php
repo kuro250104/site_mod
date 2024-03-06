@@ -37,8 +37,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-users"></i>
-            <span>Gestionnaires
-                d'équipes</span>
+            <span>Gestionnaires d'équipes</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -46,8 +45,12 @@
                 @can('user_manage')
                 <a class="collapse-item" href="{{route('worker.index')}}">Gestions des opérateurs</a>
                 <a class="collapse-item" href="{{route('team.index')}}">Gestions des équipes</a>
-                @endcan
+                @endcan()
+
+                @if(Gate::any(['operator', 'finance_manage']))
                 <a class="collapse-item" href="{{route('validated_hour.index')}}">Heures validés</a>
+                @endif
+
 {{--                <a class="collapse-item" href="{{route('validated_hour.table')}}">Heures validés</a>--}}
             </div>
         </div>
