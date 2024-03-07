@@ -14,15 +14,19 @@ return new class extends Migration
         Schema::table('validated_hours', function(Blueprint $table) {
             $table->foreign('worker_id')->references('id')->on('workers');
             $table->foreign('task_one')->references('id')->on('tasks');
+            $table->foreign('subtask_one')->references('id')->on('subtask');
             $table->foreign('stage_one')->references('id')->on('stages');
             $table->foreign('project_one')->references('id')->on('projects');
             $table->foreign('task_two')->references('id')->on('tasks');
+            $table->foreign('subtask_two')->references('id')->on('subtask');
             $table->foreign('stage_two')->references('id')->on('stages');
             $table->foreign('project_two')->references('id')->on('projects');
             $table->foreign('task_three')->references('id')->on('tasks');
+            $table->foreign('subtask_three')->references('id')->on('subtask');
             $table->foreign('stage_three')->references('id')->on('stages');
             $table->foreign('project_three')->references('id')->on('projects');
             $table->foreign('task_four')->references('id')->on('tasks');
+            $table->foreign('subtask_four')->references('id')->on('subtask');
             $table->foreign('stage_four')->references('id')->on('stages');
             $table->foreign('project_four')->references('id')->on('projects');
         });
@@ -33,6 +37,7 @@ return new class extends Migration
         Schema::table('validated_hours', function (Blueprint $table) {
             $table->dropForeign(['worker_id']);
             $table->dropForeign(['task_one']);
+            $table->dropForeign(['subtask_one']);
             $table->dropForeign(['stage_one']);
             $table->dropForeign(['project_one']);
             $table->dropForeign(['task_two']);

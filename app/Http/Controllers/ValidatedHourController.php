@@ -45,6 +45,7 @@ class ValidatedHourController extends Controller
     {
 
         ValidatedHour::create($request->validated());
+//        dd($request->all());
         return redirect()->route('validated_hour.index');
     }
 }
