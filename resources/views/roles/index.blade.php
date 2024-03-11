@@ -16,7 +16,7 @@
                             </h2>
                         </div>
                         <div class="alert alert-warning ">
-                            <p>Attention, la gestion de la modification des utilisateurs n'est pas active pour le moment. Aucune modification ne sera enregistrée.
+                            <p>Attention, la gestion de la modification des rôles n'est pas active pour le moment. Aucune modification ne sera enregistrée.
                                 <br>Pour effectuer  des modifications, veuillez contacter votre administrateur.</p>
                         </div>
                     </div>
