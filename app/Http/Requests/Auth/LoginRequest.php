@@ -29,6 +29,18 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+
+
+        ];
+
+
+    }
+
+    public function messages(): array
+    {
+        return[
+            "email"=> "L'email est inconnue",
+            "password"=> "Le mots de passe n'est pas reconnu",
         ];
     }
 

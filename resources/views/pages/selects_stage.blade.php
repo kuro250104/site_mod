@@ -154,28 +154,28 @@
 
         let errorMessage = "";
 
-        if (taskOne.value === "1" || taskOne.value === "2" || taskOne.value === "3") {
+        if (taskOne.value === "1" || taskOne.value === "3" ) {
             numberOne.required = true;
             if (numberOne.value.trim() === "") {
                 errorMessage += "Veuillez remplir le champs numéro d'Op 1.\n";
             }
         }
 
-        if (taskTwo.value === "1" || taskTwo.value === "2" || taskTwo.value === "3") {
+        if (taskTwo.value === "1"  || taskTwo.value === "3") {
             numberTwo.required = true;
             if (numberTwo.value === "") {
                 errorMessage += "Veuillez remplir le champs numéro d'Op 2.\n";
             }
         }
 
-        if (taskThree.value === "1" || taskThree.value === "2" || taskThree.value === "3") {
+        if (taskThree.value === "1"  || taskThree.value === "3") {
             numberThree.required = true;
             if (numberThree.value.trim() === "") {
                 errorMessage += "Veuillez remplir le champs numéro d'Op 3.\n";
             }
         }
 
-        if (taskFour.value === "1" || taskFour.value === "2" || taskFour.value === "3") {
+        if (taskFour.value === "1" || taskFour.value === "3") {
             numberFour.required = true;
             if (numberFour.value.trim() === "") {
                 errorMessage += "Veuillez remplir le champs numéro d'Op 4.\n";
