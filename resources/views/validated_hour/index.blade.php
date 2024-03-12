@@ -218,6 +218,7 @@
                                 <table class="table table-bordered dataTable" id="dataTable"  aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr>
+                                            <th>Actions</th>
                                             <th>Date et heures</th>
                                             <th>Membres de l'équipe </th>
                                             <th>Équipe </th>
@@ -250,6 +251,14 @@
                                     <tbody>
                                     @foreach($valid_hours as $valid_hour)
                                         <tr>
+                                            <td>
+                                                <a href="{{route('validated_hour.edit', $valid_hour->id)}}" class="btn btn-light btn-icon-split" spellcheck="false">
+                                                <span class="icon text-gray-600">
+                                                    <i class="far fa-edit"></i>
+                                                </span>
+                                                    <span class="text">Modifier</span>
+                                                </a>
+                                            </td>
                                             <td> {{$valid_hour->date}}</td>
                                             <td >{{$valid_hour->worker->name ?? 'N/A'}} {{$valid_hour->worker->surname ?? 'N/A'}}</td>
                                             <td >{{$valid_hour->worker->team->name ?? ''}}</td>

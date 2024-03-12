@@ -50,7 +50,7 @@ class WorkerController extends Controller
     }
     public function getWorkersForSelector(): JsonResponse
     {
-        $workers = Worker::all(); // Sélectionnez les champs que vous voulez afficher dans le sélecteur
+        $workers = Worker::all();
 
         return response()->json(['workers' => $workers]);
     }

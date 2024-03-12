@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreValidatedHourRequest;
+use App\Http\Requests\UpdateValidatedHourRequest;
 use App\Models\Hour;
 use App\Models\Projects;
 use App\Models\Stages;
@@ -16,7 +17,7 @@ use Illuminate\Http\Request;
 class ValidatedHourController extends Controller
 {
 
-    public function home(Request $request)
+    public function home()
     {
         $valid_hours = ValidatedHour::with(['worker', 'team', 'stageOne', 'taskOne', 'projectOne', 'stageTwo', 'taskTwo', 'projectTwo', 'stageThree', 'taskThree', 'projectThree','stageFour', 'taskFour', 'projectFour' ])
             ->paginate(15);
@@ -47,5 +48,29 @@ class ValidatedHourController extends Controller
         ValidatedHour::create($request->validated());
 //        dd($request->all());
         return redirect()->route('validated_hour.index');
+    }
+    public function edit()
+    {
+        $valid_hours = ValidatedHour::with(['worker', 'team', 'stageOne', 'taskOne', 'projectOne', 'stageTwo', 'taskTwo', 'projectTwo', 'stageThree', 'taskThree', 'projectThree','stageFour', 'taskFour', 'projectFour' ])
+            ->paginate(15);
+
+        $teams = Team::all();
+        $workers = Worker::all();
+        $stages = Stages::all();
+        $projects = Projects::all();
+        $tasks = Task::all();
+        $hours = Hour::all();
+        $subtasks = Subtask::all();
+
+
+
+        return view('validated_hour.edit', compact('valid_hours', 'projects', 'teams', 'workers', 'stages', 'tasks', 'hours', 'subtasks'));
+    }
+
+    public function update(UpdateValidatedHourRequest $request, int $valid_hour)
+    {
+        ValidatedHour::findOrFail($valid_hour)->update($request->validated());
+
+        return redirect()->route("validated_hour.index");
     }
 }
