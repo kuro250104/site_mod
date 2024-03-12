@@ -13,7 +13,7 @@
             </a>
             <div class="collapse-show" id="collapseCardExample">
                 <div class="card-body">
-                    <form action="{{route('validated_hour.store')}}" method="POST" onsubmit="return verifierChamps()">
+                    <form action="{{route('validated_hour.store')}}" method="POST" onsubmit="return fieldCondition()">
                         @csrf
                         <div class="input-group">
                             <select type="text" name="worker_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
@@ -290,7 +290,7 @@
             </div>
 
         </div>
-      
+
 
 
     </div>

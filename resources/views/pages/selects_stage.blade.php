@@ -136,11 +136,16 @@
 
 
 <script>
-    function verifierChamps() {
+    function fieldCondition() {
         const taskOne = document.getElementById("task_one");
         const taskTwo = document.getElementById("task_two");
         const taskThree = document.getElementById("task_three");
         const taskFour = document.getElementById("task_four");
+
+        const subtaskOne = document.getElementById("subtask_one")
+        const subtaskTwo = document.getElementById("subtask_two")
+        const subtaskThree = document.getElementById("subtask_three")
+        const subtaskFour = document.getElementById("subtask_three")
 
         const numberOne = document.getElementsByName("number_one")[0];
         const numberTwo = document.getElementsByName("number_two")[0];
@@ -154,31 +159,34 @@
 
         let errorMessage = "";
 
-        if (taskOne.value === "1" || taskOne.value === "3" ) {
-            numberOne.required = true;
-            if (numberOne.value.trim() === "") {
-                errorMessage += "Veuillez remplir le champs numéro d'Op 1.\n";
+        if (taskOne.value === "1" || taskOne.value === "2"|| taskOne.value ==="3" ) {
+            if(subtaskOne.value ==="1"||subtaskOne.value ==="2"||subtaskOne.value ==="3"||subtaskOne.value ==="6"||subtaskOne.value ==="7"||subtaskOne.value ==="8"){
+                if (numberOne.value.trim() === "") {
+                    errorMessage += "Veuillez remplir le champs numéro d'OP de la tâche 1.\n";
+                }
             }
         }
 
-        if (taskTwo.value === "1"  || taskTwo.value === "3") {
-            numberTwo.required = true;
-            if (numberTwo.value === "") {
-                errorMessage += "Veuillez remplir le champs numéro d'Op 2.\n";
+        if (taskTwo.value === "1"  || taskTwo.value === "2" || taskTwo.value ==="3") {
+            if (subtaskTwo.value === "1" || subtaskTwo.value === "2" || subtaskTwo.value === "3" || subtaskTwo.value === "6" || subtaskTwo.value === "7" || subtaskTwo.value === "8"){
+                if (numberTwo.value === "") {
+                    errorMessage += "Veuillez remplir le champs numéro d'OP de la tâche 2.\n";
+                }
             }
         }
 
-        if (taskThree.value === "1"  || taskThree.value === "3") {
-            numberThree.required = true;
-            if (numberThree.value.trim() === "") {
-                errorMessage += "Veuillez remplir le champs numéro d'Op 3.\n";
+        if (taskThree.value === "1"  || taskThree.value === "2"||taskThree.value ==="3") {
+            if(subtaskThree.value ==="1"||subtaskThree.value ==="2"||subtaskThree.value ==="3"||subtaskThree.value ==="6"||subtaskThree.value ==="7"||subtaskThree.value ==="8"){
+                if (numberThree.value.trim() === "") {
+                    errorMessage += "Veuillez remplir le champs numéro d'OP de la tâche 3.\n";
+                }
             }
         }
 
-        if (taskFour.value === "1" || taskFour.value === "3") {
-            numberFour.required = true;
+        if (taskFour.value === "1"|| taskFour.value === "2" || taskFour.value === "3") {
+            if(subtaskFour.value ==="1" ||subtaskFour.value ==="2" ||subtaskFour.value ==="3" ||subtaskFour.value ==="1" ||subtaskFour.value ==="7" ||subtaskFour.value ==="8" )
             if (numberFour.value.trim() === "") {
-                errorMessage += "Veuillez remplir le champs numéro d'Op 4.\n";
+                errorMessage += "Veuillez remplir le champs numéro d'OP de la tâche 4.\n";
             }
         }
 
@@ -187,6 +195,7 @@
             console.log('oui')
             return false;
         }
+
 
         return true;
     }
