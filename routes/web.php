@@ -87,7 +87,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/validated-hour', [ValidatedHourController::class, 'home'])->name('validated_hour.index');
     Route::post('/validated-hour', [ValidatedHourController::class, 'store'])->name('validated_hour.store');
-    Route::post('/validated-hour/{id}/edit', [ValidatedHourController::class, 'edit'])->name('validated_hour.edit');
+    Route::get('/validated-hour/{id}/edit', [ValidatedHourController::class, 'edit'])->name('validated_hour.edit');
     Route::post('/validated-hour/{id}', [ValidatedHourController::class, 'update'])->name('validated_hour.update');
 
 

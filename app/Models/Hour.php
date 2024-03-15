@@ -15,9 +15,5 @@ class Hour extends Model
         "name", "value"
     ];
 
-    public function team(): HasMany
-    {
-        return $this->hasMany(Hour::class, 'timer');
-    }
-
+   
 }

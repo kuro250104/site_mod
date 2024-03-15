@@ -22,11 +22,11 @@
                                     <option value="{{ $worker->id }}"> {{ $worker->surname }} {{ $worker->name }}</option>
                                 @endforeach
                             </select>
-                            <select type="text" name="timer" id="timer" class="form-control bg-light border small" oninput="verifierSomme()" value="{{old('time')}}"
+                            <select type="text" name="hour_id" id="hour_id" class="form-control bg-light border small" oninput="verifierSomme()" value="{{old('time')}}"
                                      aria-label="Search" aria-describedby="basic-addon2">
                                     <option value="">Séléctionnez un poste</option>
                                 @foreach($hours as $hour)
-                                    <option value="{{$hour->value}}"> {{$hour->name}}</option>
+                                    <option value="{{$hour->id}}"> {{$hour->name}}</option>
                                 @endforeach
                             </select>
                             <input type="date" class="form-control bg-light border small" id="start" name="date"  min="2000-01-01" max="2050-12-31" />
@@ -34,7 +34,7 @@
 
                         <p>Tâche 1</p>
                         <div class="input-group">
-                            <input type="text" oninput="verifierSomme()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('time_one')}}"
+                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('time_one')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select name="task_one" id="task_one" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
@@ -68,7 +68,7 @@
 
                         <p>Tâche 2</p>
                         <div class="input-group">
-                            <input type="text" oninput="verifierSomme()" name="timer_two" id="timer_two" class="form-control bg-light border small" value="{{old('timer_two')}}"
+                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_two" id="timer_two" class="form-control bg-light border small" value="{{old('timer_two')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
 
                             <select type="text" name="task_two" id="task_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
@@ -104,7 +104,7 @@
 
                         <p>Tâche 3</p>
                         <div class="input-group">
-                            <input type="text" oninput="verifierSomme()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
+                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select type="text" id="task_three" name="task_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
@@ -138,7 +138,7 @@
 
                         <p>Tâche 4</p>
                         <div class="input-group">
-                            <input type="text" oninput="verifierSomme()" name="timer_four" id="timer_four" class="form-control bg-light border small" value="{{old('timer_four')}}"
+                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_four" id="timer_four" class="form-control bg-light border small" value="{{old('timer_four')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select type="text" name="task_four" id="task_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
@@ -219,6 +219,7 @@
                                     <thead>
                                         <tr>
                                             <th>Actions</th>
+                                            <th>Poste</th>
                                             <th>Date et heures</th>
                                             <th>Membres de l'équipe </th>
                                             <th>Équipe </th>
@@ -228,6 +229,7 @@
                                             <th>Numéro d'OP 1</th>
                                             <th>Projet 1</th>
                                             <th>Stade 1</th>
+                                            <th>Commentaire 1</th>
                                             <th>Temps de tâche 2</th>
                                             <th>Tâche 2</th>
                                             <th>Sous tâche 2</th>
@@ -259,6 +261,7 @@
                                                     <span class="text">Modifier</span>
                                                 </a>
                                             </td>
+                                            <td> {{$valid_hour->hour->name}}</td>
                                             <td> {{$valid_hour->date}}</td>
                                             <td >{{$valid_hour->worker->name ?? 'N/A'}} {{$valid_hour->worker->surname ?? 'N/A'}}</td>
                                             <td >{{$valid_hour->worker->team->name ?? ''}}</td>
@@ -268,6 +271,8 @@
                                             <td >{{$valid_hour->number_one ?? ''}}</td>
                                             <td >{{$valid_hour->projectOne->name ?? ''}}</td>
                                             <td >{{$valid_hour->stageOne->name ?? ''}}</td>
+                                            <td >{{$valid_hour->coment_one?? ''}}</td>
+
                                             <td >{{$valid_hour->timer_two ?? ''}}</td>
                                             <td >{{$valid_hour->taskTwo->name ?? ''}}</td>
                                             <td >{{$valid_hour->subtaskTwo->name ?? ''}}</td>

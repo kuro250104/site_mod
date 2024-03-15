@@ -19,8 +19,7 @@ class ValidatedHourController extends Controller
 
     public function home()
     {
-        $valid_hours = ValidatedHour::with(['worker', 'team', 'stageOne', 'taskOne', 'projectOne', 'stageTwo', 'taskTwo', 'projectTwo', 'stageThree', 'taskThree', 'projectThree','stageFour', 'taskFour', 'projectFour' ])
-            ->paginate(15);
+        $valid_hours = ValidatedHour::all();
 
         $teams = Team::all();
         $workers = Worker::all();
@@ -49,10 +48,9 @@ class ValidatedHourController extends Controller
 //        dd($request->all());
         return redirect()->route('validated_hour.index');
     }
-    public function edit()
+    public function edit( int $validHoursId)
     {
-        $valid_hours = ValidatedHour::with(['worker', 'team', 'stageOne', 'taskOne', 'projectOne', 'stageTwo', 'taskTwo', 'projectTwo', 'stageThree', 'taskThree', 'projectThree','stageFour', 'taskFour', 'projectFour' ])
-            ->paginate(15);
+        $valid_hours = ValidatedHour::find($validHoursId);
 
         $teams = Team::all();
         $workers = Worker::all();

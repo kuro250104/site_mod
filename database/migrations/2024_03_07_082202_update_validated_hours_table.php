@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('validated_hours', function(Blueprint $table) {
+            $table->foreign('hour_id')->references('id')->on('hours');
             $table->foreign('worker_id')->references('id')->on('workers');
             $table->foreign('task_one')->references('id')->on('tasks');
             $table->foreign('subtask_one')->references('id')->on('subtask');
@@ -35,6 +36,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('validated_hours', function (Blueprint $table) {
+
+            $table->dropForeign(['hour_id']);
             $table->dropForeign(['worker_id']);
             $table->dropForeign(['task_one']);
             $table->dropForeign(['subtask_one']);

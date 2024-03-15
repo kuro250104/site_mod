@@ -12,7 +12,7 @@ class ValidatedHour extends Model
     protected $table = "validated_hours";
 
     protected $fillable = [
-        "worker_id", "timer", "date", "team_id",
+        "worker_id", "hour_id", "date", "team_id",
         "timer_one","coment_one", "number_one", "task_one","subtask_one", 'stage_one', "project_one",
         "timer_two","coment_two", "number_two", "task_two","subtask_two", 'stage_two', "project_two",
         "timer_three", "coment_three", "number_three", "task_three","subtask_three", 'stage_three', "project_three",
@@ -22,6 +22,10 @@ class ValidatedHour extends Model
     public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class, 'team_id')->withDefault();
+    }
+    public function hour(): BelongsTo
+    {
+        return $this->belongsTo(Hour::class, 'hour_id')->withDefault();
     }
 
     public function worker(): BelongsTo

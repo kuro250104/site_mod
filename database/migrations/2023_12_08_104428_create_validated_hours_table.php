@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->date('date')->nullable();
             $table->unsignedBigInteger('worker_id');
-            $table->unsignedBigInteger('timer');
+            $table->unsignedBigInteger('hour_id');
 
             $table->char('number_one')->nullable();
             $table->unsignedBigInteger('task_one')->nullable();

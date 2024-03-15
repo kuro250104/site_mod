@@ -7,6 +7,7 @@
         </div>
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Opérateurs</h1>
+        {{dd($worker)}}
         <p class="mb-4">Modification de {{ $worker->name }} {{$worker->surname}}</p>
         <form action="{{ route('worker.update', $worker->id)}}" method="POST"
               class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">

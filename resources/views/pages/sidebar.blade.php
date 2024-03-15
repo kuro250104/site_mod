@@ -48,7 +48,7 @@
                 @endcan()
 
                 @if(Gate::any(['operator', 'finance_manage']))
-                <a class="collapse-item" href="{{route('validated_hour.index')}}">Heures validés</a>
+                <a class="collapse-item" href="{{route('validated_hour.index')}}">Heures validées</a>
                 @endif
 
 {{--                <a class="collapse-item" href="{{route('validated_hour.table')}}">Heures validés</a>--}}
