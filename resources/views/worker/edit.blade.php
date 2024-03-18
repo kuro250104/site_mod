@@ -6,7 +6,7 @@
             <h1 class="h3 mb-0 text-gray-800">Modification de l'opérateur</h1>
         </div>
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Opérateurs</h1>
+        <h1 class="h3 mb-2 text-gray-800">Opérateur</h1>
         {{dd($worker)}}
         <p class="mb-4">Modification de {{ $worker->name }} {{$worker->surname}}</p>
         <form action="{{ route('worker.update', $worker->id)}}" method="POST"

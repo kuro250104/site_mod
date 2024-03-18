@@ -9,7 +9,7 @@
         @can('operator')
         <div class="card shadow mb-4">
             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                <h6 class="m-0 font-weight-bold text-primary">Formulaire de validation d'heures</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Formulaire de validation des heures</h6>
             </a>
             <div class="collapse-show" id="collapseCardExample">
                 <div class="card-body">
@@ -17,14 +17,14 @@
                         @csrf
                         <div class="input-group">
                             <select type="text" name="worker_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
-                                <option value="">Séléctionnez un opérateur</option>
+                                <option value="">Sélectionnez un opérateur</option>
                                 @foreach($workers as $worker)
                                     <option value="{{ $worker->id }}"> {{ $worker->surname }} {{ $worker->name }}</option>
                                 @endforeach
                             </select>
                             <select type="text" name="hour_id" id="hour_id" class="form-control bg-light border small" oninput="verifierSomme()" value="{{old('time')}}"
                                      aria-label="Search" aria-describedby="basic-addon2">
-                                    <option value="">Séléctionnez un poste</option>
+                                    <option value="">Sélectionnez un poste</option>
                                 @foreach($hours as $hour)
                                     <option value="{{$hour->id}}"> {{$hour->name}}</option>
                                 @endforeach
@@ -220,8 +220,8 @@
                                         <tr>
                                             <th>Actions</th>
                                             <th>Poste</th>
-                                            <th>Date et heures</th>
-                                            <th>Membres de l'équipe </th>
+                                            <th>Date</th>
+                                            <th>Nom / Prénom </th>
                                             <th>Équipe </th>
                                             <th>Temps de tâche 1</th>
                                             <th>Tâche 1</th>
@@ -272,17 +272,15 @@
                                             <td >{{$valid_hour->projectOne->name ?? ''}}</td>
                                             <td >{{$valid_hour->stageOne->name ?? ''}}</td>
                                             <td >{{$valid_hour->coment_one?? ''}}</td>
-
                                             <td >{{$valid_hour->timer_two ?? ''}}</td>
                                             <td >{{$valid_hour->taskTwo->name ?? ''}}</td>
                                             <td >{{$valid_hour->subtaskTwo->name ?? ''}}</td>
                                             <td >{{$valid_hour->number_two ?? ''}}</td>
                                             <td >{{$valid_hour->projectTwo->name ?? ''}}</td>
                                             <td >{{$valid_hour->stageTwo->name ?? ''}}</td>
-                                            <td >{{$valid_hour->timer_two ?? ''}}</td>
+                                            <td >{{$valid_hour->timer_three ?? ''}}</td>
                                             <td >{{$valid_hour->taskThree->name ?? ''}}</td>
                                             <td >{{$valid_hour->subtaskThree->name ?? ''}}</td>
-
                                             <td >{{$valid_hour->number_three ?? ''}}</td>
                                             <td >{{$valid_hour->projectThree->name ?? ''}}</td>
                                             <td >{{$valid_hour->stageThree->name ?? ''}}</td>

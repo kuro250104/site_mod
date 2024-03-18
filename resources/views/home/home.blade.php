@@ -16,7 +16,7 @@
                         <h6 class="m-0 font-weight-bold text-success">Heures validées</h6>
                     </div>
                     <div class="card-body">
-                        Aller à la page des heures validés  <a class="link-offset-1" href="{{route('validated_hour.index')}}">cliquez ici</a>
+                        <a class="link-offset-1" href="{{route('validated_hour.index')}}">Cliquez-ici</a> pour accéder à la page des heures validées
                     </div>
 
                 </div>
@@ -28,7 +28,7 @@
                         <h6 class="m-0 font-weight-bold text-warning">Gestion des opérateurs</h6>
                     </div>
                     <div class="card-body">
-                        Aller à la page des opérateurs <a class="link-offset-1" href="{{route('worker.index')}}">cliquez ici</a>
+                        <a class="link-offset-1" href="{{route('worker.index')}}">Cliquez ici</a> pour accéder à la page des opérateurs
                     </div>
                 </div>
                 @endcan

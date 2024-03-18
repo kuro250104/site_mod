@@ -67,9 +67,9 @@
                         <tr>
                             <th>Nom</th>
                             <th>Prénom</th>
-                            <th>Equipes</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>Equipe</th>
+                            <th>Statut</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
