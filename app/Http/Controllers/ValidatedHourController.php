@@ -71,4 +71,11 @@ class ValidatedHourController extends Controller
 
         return redirect()->route("validated_hour.index");
     }
+
+    public function destroy($valid_hours)
+    {
+        ValidatedHour::destroy($valid_hours);
+
+        return redirect()->route("validated_hour.index");
+    }
 }

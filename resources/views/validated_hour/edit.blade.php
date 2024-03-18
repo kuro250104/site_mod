@@ -167,23 +167,42 @@
                     </div>
 
                     <div class="input-group-append">
-                        <button id="submitBtn" type="submit"  class="btn btn-success btn-icon-split"  spellcheck="false"><span class="icon text-white-50"><i class="fas fa-check"></i></span>
-                            <span class="text">Valider</span>
-                        </button>
-                    </div>
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                        <div>
+
+                            <button id="submitBtn" type="submit"  class="btn btn-success btn-icon-split"  spellcheck="false"><span class="icon text-white-50"><i class="fas fa-check"></i></span>
+                                <span class="text">Valider</span>
+                            </button>
+
+
+
+
                         </div>
-                    @endif
+                    </div>
+
                 </form>
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @can('user_manage')
+                <form class="pt-3" action="{{route('validated_hour.destroy', $valid_hours->id)}}" method="POST">
+                    @method("delete")
+                    @csrf
+                    <button id="submitBtn" type="submit"  class="btn btn-danger btn-icon-split"  spellcheck="false"><span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                        <span class="text">Supprimer</span>
+                    </button>
+                </form>
+                @endcan
             </div>
+
         </div>
+
 
         @if (\Session::has('error'))
             <div class="alert alert-danger">
