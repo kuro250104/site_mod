@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
@@ -55,10 +56,10 @@ Route::middleware('auth')->group(function () {
 
 
 
-    Route::get('/workers', [WorkerController::class, 'home'])->name('worker.index');
-    Route::post('/workers', [WorkerController::class, 'store'])->name('worker.store');
-    Route::get('/workers/{id}/edit', [WorkerController::class, 'edit'])->name('worker.edit');
-    Route::put('/workers/{id}', [WorkerController::class, 'update'])->name('worker.update');
+    Route::get('/operators', [OperatorController::class, 'home'])->name('operator.index');
+    Route::post('/operators', [OperatorController::class, 'store'])->name('operator.store');
+    Route::get('/operators/{id}/edit', [OperatorController::class, 'edit'])->name('operator.edit');
+    Route::put('/operators/{id}', [OperatorController::class, 'update'])->name('operator.update');
 
 
 

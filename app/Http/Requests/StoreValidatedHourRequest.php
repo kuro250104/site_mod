@@ -9,7 +9,7 @@ class StoreValidatedHourRequest extends FormRequest
     public function rules(): array
     {
         return[
-            'worker_id' =>'required',
+            'user_id' =>'required',
             'team_id' =>'nullable',
             'hour_id'=>'required',
             'date'=>'required',
@@ -52,7 +52,7 @@ class StoreValidatedHourRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'worker_id.required' => "Veuillez remplir le nom de l'opérateur ",
+            'user_id.required' => "Veuillez remplir le nom de l'opérateur ",
             'hour_id.required' => "Veuillez entrer un nombre d'heures totale",
             'date.required'=>"Veuillez sélectionner la date",
             'number_one.digits' => "Vérifier que le numéro d'OP 1 continent bien 8 chiffres",

@@ -40,7 +40,7 @@
                         <h6 class="m-0 font-weight-bold text-warning">Gestion des opérateurs</h6>
                     </div>
                     <div class="card-body">
-                        <a class="link-offset-1" href="{{route('worker.index')}}">Cliquez ici</a> pour accéder à la page des opérateurs
+                        <a class="link-offset-1" href="{{route('operator.index')}}">Cliquez ici</a> pour accéder à la page des opérateurs
                     </div>
                 </div>
                 @endcan

@@ -16,12 +16,14 @@
                     <form action="{{route('validated_hour.store')}}" method="POST" onsubmit="return fieldCondition()">
                         @csrf
                         <div class="input-group">
-                            <select type="text" name="worker_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
-                                <option value="">Sélectionnez un opérateur</option>
-                                @foreach($workers as $worker)
-                                    <option value="{{ $worker->id }}"> {{ $worker->surname }} {{ $worker->name }}</option>
-                                @endforeach
-                            </select>
+                            <input name="user_id"  type="hidden" value="{{Auth::user()->id}}">
+{{--                            <select type="text" name="user_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">--}}
+{{--                                <option value="">Sélectionnez un opérateur</option>--}}
+{{--                                @foreach($users as $user)--}}
+{{--                                    <option value="{{ $user->id }}">{{ $user->name }}</option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+
                             <select type="text" name="hour_id" id="hour_id" class="form-control bg-light border small" oninput="verifierSomme()" value="{{old('time')}}"
                                      aria-label="Search" aria-describedby="basic-addon2">
                                     <option value="">Sélectionnez un poste</option>
@@ -186,6 +188,7 @@
                         @endif
                     </form>
 
+
                 </div>
 
             </div>
@@ -252,6 +255,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($valid_hours as $valid_hour)
+
                                         <tr>
                                             <td>
                                                 <a href="{{route('validated_hour.edit', $valid_hour->id)}}" class="btn btn-light btn-icon-split" spellcheck="false">
@@ -261,10 +265,11 @@
                                                     <span class="text">Modifier</span>
                                                 </a>
                                             </td>
+
                                             <td> {{$valid_hour->hour->name}}</td>
                                             <td> {{$valid_hour->date}}</td>
-                                            <td >{{$valid_hour->worker->name ?? 'N/A'}} {{$valid_hour->worker->surname ?? 'N/A'}}</td>
-                                            <td >{{$valid_hour->worker->team->name ?? ''}}</td>
+                                            <td >{{$valid_hour->user->name ?? 'N/A'}}</td>
+                                            <td >{{$valid_hour->user->team->name ?? 'N/A'}}</td>
                                             <td >{{$valid_hour->timer_one ?? ''}}</td>
                                             <td >{{$valid_hour->taskOne->name ?? ''}}</td>
                                             <td >{{$valid_hour->subtaskOne->name ?? ''}}</td>
@@ -287,7 +292,6 @@
                                             <td >{{$valid_hour->timer_four ?? ''}}</td>
                                             <td >{{$valid_hour->taskFour->name ?? ''}}</td>
                                             <td >{{$valid_hour->subtaskFour->name ?? ''}}</td>
-
                                             <td >{{$valid_hour->number_four ?? ''}}</td>
                                             <td >{{$valid_hour->projectFour->name ?? ''}}</td>
                                             <td >{{$valid_hour->stageFour->name ?? ''}}</td>

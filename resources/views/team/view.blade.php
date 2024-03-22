@@ -23,10 +23,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($arrayWorker as $worker)
+                        @foreach($arrayUser as $user)
                             <tr>
 
-                                <td style="width: 50%;">{{$worker['surname']}} {{$worker['name']}}</td>
+                                <td style="width: 50%;"> {{$user['name']}}</td>
 
                             </tr>
                         @endforeach

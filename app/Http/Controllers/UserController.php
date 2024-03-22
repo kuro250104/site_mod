@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -14,17 +16,28 @@ use Spatie\Permission\Traits\HasRoles;
 class UserController extends Controller
 {
     use HasRoles;
-    public function index(Request $request)
+
+    public function home()
+    {
+        $users = User::all();
+        $teams = Team::all();
+        $status = Status::all();
+
+        return view('operator.index', compact("users", "teams", 'status'));
+    }
+    public function index()
     {
         $data = User::all();
-        return view('users.index',compact('data'));
+
+        return view('users.index', compact("data"));
     }
 
 
     public function create()
     {
         $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        $teams = Team::all();
+         return view('users.create',compact('roles', 'teams'));
     }
 
 
@@ -68,7 +81,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required|array', // Assurez-vous que 'roles' est un tableau
+            'roles' =>  'required|exists:roles,name', // Assurez-vous que 'roles' est un tableau
         ]);
 
 
@@ -84,13 +97,17 @@ class UserController extends Controller
 
 
         $user->update($input);
-        $roles = $request->input('roles');
 
-        foreach ($roles as $role) {
-            $user->assignRole($role);
-        }
-        return redirect()->route('users.index')
-            ->with('success', 'User updated successfully');
+        $selectedRole = Role::where('name', $request->input('role'))->first();
+
+        // Assigner le rôle sélectionné à l'utilisateur
+        $user->syncRoles([$selectedRole->name]);
+
+        // Rediriger avec un message de succès
+
+//        return redirect()->route('users.index')
+//            ->with('success', 'User updated successfully');
+
 
     }
 

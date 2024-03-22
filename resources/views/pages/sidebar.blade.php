@@ -43,7 +43,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Gestion des équipes</h6>
                 @can('user_manage')
-                <a class="collapse-item" href="{{route('worker.index')}}">Gestion des opérateurs</a>
+                <a class="collapse-item" href="{{route('operator.index')}}">Gestion des opérateurs</a>
                 <a class="collapse-item" href="{{route('team.index')}}">Gestion des équipes</a>
                 @endcan()
 

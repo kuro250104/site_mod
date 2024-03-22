@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('validated_hours', function(Blueprint $table) {
             $table->foreign('hour_id')->references('id')->on('hours');
-            $table->foreign('worker_id')->references('id')->on('workers');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('task_one')->references('id')->on('tasks');
             $table->foreign('subtask_one')->references('id')->on('subtask');
             $table->foreign('stage_one')->references('id')->on('stages');

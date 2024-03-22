@@ -5,8 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
-
-class UpdateWorkerRequest extends FormRequest
+class UpdateOperatorRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -17,7 +16,6 @@ class UpdateWorkerRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'surname' => 'required|uppercase:' . $request->post('worker_id'),
             'team_id' => 'required',
             'status_id' => 'required'
         ];
@@ -27,8 +25,7 @@ class UpdateWorkerRequest extends FormRequest
     {
         return[
             'name.required'=> 'Veuillez saisir un nom.',
-            'surname.required'=> 'Veuillez saisir un nom de famille.',
-            'surname.uppercase'=> 'Le nom de famille doit être en MAJUSCULE.',
+
         ];
     }
 }

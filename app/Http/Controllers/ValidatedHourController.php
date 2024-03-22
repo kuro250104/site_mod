@@ -10,36 +10,48 @@ use App\Models\Stages;
 use App\Models\Subtask;
 use App\Models\Task;
 use App\Models\Team;
+use App\Models\User;
 use App\Models\ValidatedHour;
-use App\Models\Worker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ValidatedHourController extends Controller
 {
 
     public function home()
     {
-        $valid_hours = ValidatedHour::all();
 
         $teams = Team::all();
-        $workers = Worker::all();
         $stages = Stages::all();
         $projects = Projects::all();
         $tasks = Task::all();
         $hours = Hour::all();
         $subtasks = Subtask::all();
+        $user = Auth::user();
 
 
 
-        return view('validated_hour.index', compact('valid_hours', 'projects', 'teams', 'workers', 'stages', 'tasks', 'hours', 'subtasks'));
+        if($user->can('user_manage')){
+
+            $valid_hours = ValidatedHour::all();
+        }
+        else{
+            $valid_hours = ValidatedHour::where('user_id', $user->id)->get();
+        }
+
+
+
+
+        return view('validated_hour.index', compact('valid_hours', 'projects','user', 'teams', 'stages', 'tasks', 'hours', 'subtasks'));
     }
 
 
     public function index()
     {
-        $valid_hours = ValidatedHour::all();
+        $user = Auth::user();
+        $valid_hours = ValidatedHour::where('user_id', $user->id)->get();
 
-        return view('validated_hour.index', compact('valid_hours'));
+        return view('validated_hour.index', ['valid_hours'=> $valid_hours]);
     }
     public function store(StoreValidatedHourRequest $request)
     {
@@ -53,7 +65,7 @@ class ValidatedHourController extends Controller
         $valid_hours = ValidatedHour::find($validHoursId);
 
         $teams = Team::all();
-        $workers = Worker::all();
+        $users = User::all();
         $stages = Stages::all();
         $projects = Projects::all();
         $tasks = Task::all();
@@ -62,7 +74,7 @@ class ValidatedHourController extends Controller
 
 
 
-        return view('validated_hour.edit', compact('valid_hours', 'projects', 'teams', 'workers', 'stages', 'tasks', 'hours', 'subtasks'));
+        return view('validated_hour.edit', compact('valid_hours', 'projects', 'teams', 'users', 'stages', 'tasks', 'hours', 'subtasks'));
     }
 
     public function update(UpdateValidatedHourRequest $request, int $valid_hour)

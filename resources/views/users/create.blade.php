@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb mb-4">
                 <div class="pull-left">
-                    <h2>Create New User
+                    <h2>Créé un nouvel utilisateur
                         <div class="float-end">
                             <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
                         </div>
@@ -30,8 +30,8 @@
             <div class="row">
                 <div class="col-xs-12 mb-3">
                     <div class="form-group">
-                        <strong>Name:</strong>
-                        <input type="text" name="name" class="form-control" placeholder="Name">
+                        <strong>Nom et prénom:</strong>
+                        <input type="text" name="name" class="form-control" placeholder="Nom et prénom">
                     </div>
                 </div>
                 <div class="col-xs-12 mb-3">
@@ -42,28 +42,40 @@
                 </div>
                 <div class="col-xs-12 mb-3">
                     <div class="form-group">
-                        <strong>Password:</strong>
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <strong>Mot de passe:</strong>
+                        <input type="password" name="password" class="form-control" placeholder="Mot de passe">
                     </div>
                 </div>
                 <div class="col-xs-12 mb-3">
                     <div class="form-group">
-                        <strong>Confirm Password:</strong>
-                        <input type="password" name="confirm-password" class="form-control" placeholder="Confirm Password">
+                        <strong>Confirmer le mot de passe:</strong>
+                        <input type="password" name="confirm-password" class="form-control" placeholder="Confirmer le mot de passe">
                     </div>
                 </div>
                 <div class="col-xs-12 mb-3">
                     <div class="form-group">
                         <strong>Role:</strong>
-                        <select class="form-control multiple" multiple name="roles[]">
+                        <select class="form-control multiple">
+                            <option>Veuillez sélectionnez un role</option>
                             @foreach ($roles as $role)
                                 <option value="{{ $role }}">{{ $role }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
+                <div class="col-xs-12 mb-3">
+                    <div class="form-group">
+                        <strong>Role:</strong>
+                        <select class="form-control multiple">
+                            <option>Veuillez sélectionnez un role</option>
+                            @foreach ($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <div class="col-xs-12 mb-3 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
                 </div>
             </div>
         </form>

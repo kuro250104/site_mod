@@ -75,26 +75,33 @@ return new class extends Migration
 
         Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames, $columnNames, $pivotRole, $teams) {
             $table->unsignedBigInteger($pivotRole);
-
             $table->string('model_type');
-            $table->unsignedBigInteger($columnNames['model_morph_key']);
-            $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_roles_model_id_model_type_index');
+            $table->unsignedBigInteger('model_id'); // Modification de la colonne pour être une clé étrangère
 
-            $table->foreign($pivotRole)
-                ->references('id') // role id
-                ->on($tableNames['roles'])
-                ->onDelete('cascade');
+            $table->index(['model_id', 'model_type'], 'model_has_roles_model_id_model_type_index');
+
             if ($teams) {
                 $table->unsignedBigInteger($columnNames['team_foreign_key']);
                 $table->index($columnNames['team_foreign_key'], 'model_has_roles_team_foreign_key_index');
 
-                $table->primary([$columnNames['team_foreign_key'], $pivotRole, $columnNames['model_morph_key'], 'model_type'],
+                $table->primary([$columnNames['team_foreign_key'], $pivotRole, 'model_id', 'model_type'],
                     'model_has_roles_role_model_type_primary');
             } else {
-                $table->primary([$pivotRole, $columnNames['model_morph_key'], 'model_type'],
+                $table->primary([$pivotRole, 'model_id', 'model_type'],
                     'model_has_roles_role_model_type_primary');
             }
+
+            $table->foreign('model_id') // Définition de la clé étrangère vers la table des utilisateurs
+            ->references('id')
+                ->on('users') // Modifier ici pour correspondre au nom de votre table des utilisateurs
+                ->onDelete('cascade');
+
+            $table->foreign($pivotRole) // Définition de la clé étrangère vers la table des rôles
+            ->references('id')
+                ->on($tableNames['roles'])
+                ->onDelete('cascade');
         });
+        ;
 
 
         Schema::create($tableNames['role_has_permissions'], function (Blueprint $table) use ($tableNames, $pivotRole, $pivotPermission) {

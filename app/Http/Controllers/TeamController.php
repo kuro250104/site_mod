@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
 use App\Models\Team;
+use App\Models\User;
 use App\Models\Worker;
 
 class TeamController extends Controller
@@ -11,7 +12,7 @@ class TeamController extends Controller
 
     public function home()
     {
-        $teams = Team::paginate(10);
+        $teams = Team::all();
 
         return view('team.index', compact("teams"));
     }
@@ -49,10 +50,10 @@ class TeamController extends Controller
             if (!$team) {
                 abort(404);
             }
-            $worker = Worker::where('team_id', $id)->get();
-            $arrayWorker = $worker->toArray();
+            $user = User::where('team_id', $id)->get();
+            $arrayUser = $user->toArray();
 
-            return view('team.view', compact('team', 'arrayWorker'));
+            return view('team.view', compact('team', 'arrayUser'));
         }
     }
 }

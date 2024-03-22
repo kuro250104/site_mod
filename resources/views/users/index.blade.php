@@ -10,6 +10,7 @@
                     <div class="col-lg-12 margin-tb mb-4">
                         <div class="pull-left">
                             <h2>Gestion des utilisateurs
+
                                 <div class="float-end">
                                     <a class="btn btn-success" href="{{ route('users.create') }}"> Création d'un nouvel utilisateur</a>
                                 </div>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-2 text-gray-800">Modifications des heures de {{$valid_hours->worker->name}} {{$valid_hours->worker->surname}}, à la date du {{$valid_hours->date}}</h1>
+            <h1 class="h3 mb-2 text-gray-800">Modifications des heures de {{$valid_hours->user->name}} , à la date du {{$valid_hours->date}}</h1>
         </div>
         <!-- Page Heading -->
         <div class="collapse-show" id="collapseCardExample">
@@ -12,12 +12,7 @@
                 <form action="{{route('validated_hour.update', $valid_hours->id)}}" method="POST" onsubmit="return fieldCondition()">
                     @csrf
                     <div class="input-group">
-                        <select type="text" name="worker_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
-                            <option value="{{ $valid_hours->worker->id }}">{{$valid_hours->worker->name}} {{$valid_hours->worker->surname}}</option>
-                            @foreach($workers as $worker)
-                                <option value="{{ $worker->id }}"> {{ $worker->surname }} {{ $worker->name }}</option>
-                            @endforeach
-                        </select>
+                        <input name="user_id"  type="hidden" value="{{Auth::user()->id}}">
                         <select type="text" name="hour_id" id="hour_id" class="form-control bg-light border small" oninput="verifierSomme()" value="{{old('time')}}"
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <option value="{{$valid_hours->hour->id}}">{{$valid_hours->hour->name}}</option>

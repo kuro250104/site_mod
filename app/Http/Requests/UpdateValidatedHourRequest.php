@@ -22,7 +22,7 @@ class UpdateValidatedHourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'worker_id' =>'required',
+            'user_id' =>'required',
             'team_id' =>'nullable',
             'hour_id'=>'required',
             'date'=>'required',
