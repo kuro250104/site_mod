@@ -95,7 +95,7 @@
 
                     <p>Tâche 3</p>
                     <div class="input-group">
-                        <input type="number" step="0.5" oninput="verifierSomme()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{$valid_hours->timer_two}}"
+                        <input type="number" step="0.5" oninput="verifierSomme()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{$valid_hours->timer_three}}"
                                placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                         <select type="text" id="task_three" name="task_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                             <option value="{{$valid_hours->taskThree->id}}">{{$valid_hours->taskThree->name}}</option>
@@ -167,10 +167,6 @@
                             <button id="submitBtn" type="submit"  class="btn btn-success btn-icon-split"  spellcheck="false"><span class="icon text-white-50"><i class="fas fa-check"></i></span>
                                 <span class="text">Valider</span>
                             </button>
-
-
-
-
                         </div>
                     </div>
 

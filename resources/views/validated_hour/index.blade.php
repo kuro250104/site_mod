@@ -36,7 +36,7 @@
 
                         <p>Tâche 1</p>
                         <div class="input-group">
-                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('time_one')}}"
+                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('timer_one')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select name="task_one" id="task_one" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
