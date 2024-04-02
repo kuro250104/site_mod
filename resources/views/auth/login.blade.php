@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email"></label>
-                                    <input id="email" type="email" class="form-control form-control-user"  value="@zambongroup.com" required autofocus autocomplete="username" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email">
+                                    <input id="email" type="email" class="form-control form-control-user" id="email" required autofocus autocomplete="username" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="password"></label>
@@ -76,4 +76,7 @@
     </div>
 </div>
 </body>
+<script>
+    document.getElementById("email").setAttribute("value", "@zambongroup.com");
+</script>
 </html>
