@@ -12,7 +12,7 @@
                 <form action="{{route('validated_hour.update', $valid_hours->id)}}" method="POST" onsubmit="return fieldCondition()">
                     @csrf
                     <div class="input-group">
-                        <input name="user_id"  type="hidden" value="{{Auth::user()->id}}">
+                        <input name="user_id"  type="hidden" value="{{$valid_hours->user->id}}">
                         <select type="text" name="hour_id" id="hour_id" class="form-control bg-light border small" oninput="verifierSomme()" value="{{old('time')}}"
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <option value="{{$valid_hours->hour->id}}">{{$valid_hours->hour->name}}</option>
