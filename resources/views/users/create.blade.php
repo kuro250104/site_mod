@@ -55,7 +55,7 @@
                 <div class="col-xs-12 mb-3">
                     <div class="form-group">
                         <strong>Role:</strong>
-                        <select class="form-control multiple">
+                        <select name="roles" class="form-control multiple">
                             <option>Veuillez sélectionnez un role</option>
                             @foreach ($roles as $role)
                                 <option value="{{ $role }}">{{ $role }}</option>
@@ -65,9 +65,9 @@
                 </div>
                 <div class="col-xs-12 mb-3">
                     <div class="form-group">
-                        <strong>Role:</strong>
-                        <select class="form-control multiple">
-                            <option>Veuillez sélectionnez un role</option>
+                        <strong>Equipe:</strong>
+                        <select name="teams" class="form-control multiple">
+                            <option>Veuillez sélectionnez une equipe</option>
                             @foreach ($teams as $team)
                                 <option value="{{ $team->id }}">{{ $team->name }}</option>
                             @endforeach
