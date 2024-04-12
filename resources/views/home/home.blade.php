@@ -17,8 +17,8 @@
                         <h6 class="m-0 font-weight-bold text-success">Notes de mise à jour</h6>
                     </div>
                     <div class="card-body">
-                        <H5>Mise à jour des permissions CP/AM</H5>
-                        <p>- Les agents de maîtrise et les chefs de poste pourront désormais corriger et supprimer les heures que les opérateurs rentrent s'il y a des fautes</p>
+                        <h5>Nouvelle fonctionnalité</h5>
+                        <p>- Affichage du temps total saisi</p>
                     </div>
 
                 </div>

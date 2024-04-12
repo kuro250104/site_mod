@@ -205,37 +205,64 @@
 
 
 <script>
-    function verifierSomme() {
-        var limite = parseInt(document.getElementById('timer').value);
+    function verifyTimer() {
+        let hourId = parseInt(document.getElementById('hour_id').value);
+        let fields = ['timer_one', 'timer_two', 'timer_three', 'timer_four', 'timer_five'];
 
-        var valeur1 = parseInt(document.getElementById('timer_one').value) || 0;
-        var valeur2 = parseInt(document.getElementById('timer_two').value) || 0;
-        var valeur3 = parseInt(document.getElementById('timer_three').value) || 0;
-        var valeur4 = parseInt(document.getElementById('timer_four').value) || 0;
+        let sum = 0;
+        let limit = 0;
 
-        var somme = valeur1 + valeur2 + valeur3 + valeur4;
-
-        if (somme > limite) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Erreur',
-                text: 'La somme des heures dépasse la limite autorisée.',
-            }).then((result) => {
-
-            });
-
-            document.getElementById('submitBtn').disabled = false;
-            document.getElementById('submitBtn').className = "btn btn-secondary btn-icon-split";
-            return false;
-
-
-        } else {
-            // document.getElementById('messageErreur').innerHTML = '';
-            document.getElementById('submitBtn').disabled = false;
-            document.getElementById('submitBtn').className = "btn btn-success btn-icon-split";
+        switch (hourId) {
+            case 1:
+                limit = 6;
+                break;
+            case 2:
+                limit = 7;
+                break;
+            case 3:
+                limit = 7;
+                break;
+            case 4:
+                limit = 8.5;
+                break;
+            case 5:
+                limit = 6;
+                break;
+            default:
+                limit = 0;
         }
+
+
+        fields.forEach(function(field) {
+            let fieldValue = parseFloat(document.getElementById(field).value) || 0;
+            sum += fieldValue;
+
+            if (sum > limit) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur',
+                    text: 'La somme des heures dépasse la limite autorisée.'
+                }).then((result) => {
+                    document.getElementById('submitBtn').disabled = true;
+                    document.getElementById('submitBtn').className = "btn btn-secondary btn-icon-split";
+                    document.getElementById('sumDisplay').className = "text-danger";
+                });
+            } else {
+                // Si la somme est dans la limite, réactiver le bouton de soumission
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('submitBtn').className = "btn btn-success btn-icon-split";
+                document.getElementById('sumDisplay').className = ""; // Supprimer les classes de style d'erreur
+            }
+            document.getElementById('sumDisplay').innerText = 'Total des heures : ' + sum;
+        });
     }
 
+    verifyTimer();
+
+    let fields = document.querySelectorAll('[id^="timer_"]');
+    fields.forEach(function(field) {
+        field.addEventListener('input', verifyTimer);
+    });
 
 </script>
 

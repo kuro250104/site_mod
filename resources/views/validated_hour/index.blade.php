@@ -24,7 +24,7 @@
 {{--                                @endforeach--}}
 {{--                            </select>--}}
 
-                            <select type="text" name="hour_id" id="hour_id" class="form-control bg-light border small" oninput="verifierSomme()" value="{{old('time')}}"
+                            <select type="text" name="hour_id" id="hour_id" class="form-control bg-light border small" oninput="verifyTimer()" value="{{old('time')}}"
                                      aria-label="Search" aria-describedby="basic-addon2">
                                     <option value="">Sélectionnez un poste</option>
                                 @foreach($hours as $hour)
@@ -36,7 +36,7 @@
 
                         <p>Tâche 1</p>
                         <div class="input-group">
-                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('timer_one')}}"
+                            <input type="number" step="0.5" oninput="verifyTimer()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('timer_one')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select name="task_one" id="task_one" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
@@ -70,7 +70,7 @@
 
                         <p>Tâche 2</p>
                         <div class="input-group">
-                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_two" id="timer_two" class="form-control bg-light border small" value="{{old('timer_two')}}"
+                            <input type="number" step="0.5" oninput="verifyTimer()" name="timer_two" id="timer_two" class="form-control bg-light border small" value="{{old('timer_two')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
 
                             <select type="text" name="task_two" id="task_two" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
@@ -106,7 +106,7 @@
 
                         <p>Tâche 3</p>
                         <div class="input-group">
-                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
+                            <input type="number" step="0.5" oninput="verifyTimer()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select type="text" id="task_three" name="task_three" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
@@ -140,7 +140,7 @@
 
                         <p>Tâche 4</p>
                         <div class="input-group">
-                            <input type="number" step="0.5" oninput="verifierSomme()" name="timer_four" id="timer_four" class="form-control bg-light border small" value="{{old('timer_four')}}"
+                            <input type="number" step="0.5" oninput="verifyTimer()" name="timer_four" id="timer_four" class="form-control bg-light border small" value="{{old('timer_four')}}"
                                    placeholder="Temps de la tâche" aria-label="Search" aria-describedby="basic-addon2">
                             <select type="text" name="task_four" id="task_four" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
                                 <option value="">Choisissez une tâche</option>
@@ -171,7 +171,7 @@
                             <input type="text" name="coment_four" class="form-control bg-light border small" value="{{old('coment_four')}}"
                                     placeholder="Commentaire" aria-label="Search" aria-describedby="basic-addon2">
                         </div>
-
+                        <H4 class="font-bold" id="sumDisplay">  </H4>
                         <div class="input-group-append">
                             <button id="submitBtn" type="submit"  class="btn btn-success btn-icon-split"  spellcheck="false"><span class="icon text-white-50"><i class="fas fa-check"></i></span>
                                 <span class="text">Valider</span>
