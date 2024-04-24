@@ -28,7 +28,7 @@
                         <div>
                             <div class="p-5">
                                 <div class="form-group">
-                                    <label for="email">Veuillez rentré votre adresse mail</label>
+                                    <label for="email">Veuillez rentrer votre adresse mail</label>
                                     <input id="email" class="form-control form-control-user" type="email" name="email" value="{{ old('email') }}" required autofocus />
                                 </div>
 
