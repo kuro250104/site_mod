@@ -24,6 +24,13 @@ class TeamController extends Controller
         return view('team.index', compact("teams"));
 
     }
+    public function getTeamsDetails()
+    {
+        $teams = Team::all();
+
+        return response()->json($teams);
+
+    }
     public function store(StoreTeamRequest $request)
     {
         Team::create($request->validated());
