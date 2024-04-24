@@ -24,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/api/workers-for-selector', [WorkerController::class, 'getWorkersForSelector']);
 
 Route::middleware('auth')->group(function () {
 
