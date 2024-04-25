@@ -47,7 +47,6 @@ class NewResetPasswordNotification extends Notification
                     ->line('Merci,')
                     ->salutation("L'équipe IT, Zach System");
     }
-
     /**
      * Get the array representation of the notification.
      *
@@ -56,7 +55,7 @@ class NewResetPasswordNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+
         ];
     }
 }

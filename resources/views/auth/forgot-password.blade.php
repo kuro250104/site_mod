@@ -48,7 +48,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                                                <button type="submit" class="ml-3 btn btn-primary btn-user btn-block">
+                                                                <button type="submit" class=" btn btn-primary btn-user btn-block">
                                     Envoyer le mail de recupération
                                 </button>
                             </div>

@@ -50,12 +50,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox small">
-                                        <input name="remember" type="checkbox" class="custom-control-input" id="customCheck">
-                                        <label class="custom-control-label" for="customCheck">Se souvenir de moi</label>
-                                    </div>
-                                </div>
+
                                 <div class="form-group">
 
                                     <div class="custom-control small">
@@ -64,7 +59,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <button type="submit" class="ml-3 btn btn-primary btn-user btn-block">
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Connexion
                                 </button>
                             </div>

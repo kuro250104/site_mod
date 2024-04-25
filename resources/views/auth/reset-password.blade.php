@@ -1,39 +1,102 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login - Gestion MOD</title>
+    <link href="{{asset('css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+</head>
+<body class="bg-gradient-primary">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card o-hidden border-0 shadow-lg my-5 pt-5">
+                <div class="card-body p-0">
+                    <div class="text-center">
+                        <h4 class="text-gray-900 mb-4">Bienvenue</h4>
+                    </div>
+                    <form id="resetPasswordForm" class="user" method="POST" action="{{ route('password.update') }}">
+                        @csrf
+                        <div>
+                            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                            <div class="p-5">
+                                <div class="form-group">
+                                    <input id="email" class="form-control form-control-user" type="email" name="email" value="{{ old('email', $request->email) }}" required autofocus autocomplete="username" />
+                                    @error('email')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input id="password" class="form-control form-control-user" type="password" name="password" placeholder="Veuillez saisir le nouveau mots de passe" required autocomplete="new-password" />
+                                    @error('password')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                        <input id="password_confirmation" class="form-control form-control-user" type="password" placeholder="Veuillez confirmer votre nouveau mots de passe" name="password_confirmation" required autocomplete="new-password" />
+                                        @error('password_confirmation')
+                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        Envoyer le mail de recupération
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                    </form>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
+
+                    {{--                    <form class="user" method="POST" action="{{ route('password.email') }}">--}}
+{{--                        @csrf--}}
+{{--                        <div>--}}
+{{--                            <div class="p-5">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="email">Veuillez rentrer votre adresse mail</label>--}}
+{{--                                    <input id="email" class="form-control form-control-user" type="email" name="email" value="{{ old('email') }}" required autofocus />--}}
+{{--                                </div>--}}
+
+{{--                                @if ($errors->any())--}}
+{{--                                    <div class="alert alert-danger">--}}
+{{--                                        <ul>--}}
+{{--                                            @foreach ($errors->all() as $error)--}}
+{{--                                                <li>{{ $error }}</li>--}}
+{{--                                            @endforeach--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                @endif--}}
+{{--                                @if (\Session::has('error'))--}}
+{{--                                    <div class="alert alert-danger">--}}
+{{--                                        <ul>--}}
+{{--                                            <li>{{ \Session::get('error') }}</li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                @endif--}}
+{{--                                <button type="submit" class="ml-3 btn btn-primary btn-user btn-block">--}}
+{{--                                    Envoyer le mail de recupération--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+</body>
+<script>
+    document.getElementById("email").setAttribute("value", "@zambongroup.com");
+</script>
+</html>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
