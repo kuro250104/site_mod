@@ -5,8 +5,7 @@ use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
 use App\Models\Team;
 use App\Models\User;
-use App\Models\Worker;
-
+use Illuminate\Http\Response;
 class TeamController extends Controller
 {
 
@@ -28,7 +27,7 @@ class TeamController extends Controller
     {
         $teams = Team::all();
 
-        return response()->json($teams);
+        return response()->json($teams, Response::HTTP_OK);
 
     }
     public function store(StoreTeamRequest $request)
