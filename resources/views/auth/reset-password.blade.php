@@ -20,9 +20,10 @@
             <div class="card o-hidden border-0 shadow-lg my-5 pt-5">
                 <div class="card-body p-0">
                     <div class="text-center">
-                        <h4 class="text-gray-900 mb-4">Bienvenue</h4>
+                        <h4 class="text-gray-900 mb-4">Changer le mot de passe
+                        </h4>
                     </div>
-                    <form id="resetPasswordForm" class="user" method="POST" action="{{ route('password.update') }}">
+                    <form id="resetPasswordForm" class="user" method="POST" action="{{ route('password.store') }}">
                         @csrf
                         <div>
                             <input type="hidden" name="token" value="{{ $request->route('token') }}">
@@ -40,14 +41,14 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                        <input id="password_confirmation" class="form-control form-control-user" type="password" placeholder="Veuillez confirmer votre nouveau mots de passe" name="password_confirmation" required autocomplete="new-password" />
-                                        @error('password_confirmation')
-                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
+                                    <input id="password_confirmation" class="form-control form-control-user" type="password" placeholder="Veuillez confirmer votre nouveau mots de passe" name="password_confirmation" required autocomplete="new-password" />
+                                    @error('password_confirmation')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Envoyer le mail de recupération
+Changer le mot de passe
                                     </button>
                                 </div>
                             </div>
@@ -58,36 +59,36 @@
 
 
                     {{--                    <form class="user" method="POST" action="{{ route('password.email') }}">--}}
-{{--                        @csrf--}}
-{{--                        <div>--}}
-{{--                            <div class="p-5">--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="email">Veuillez rentrer votre adresse mail</label>--}}
-{{--                                    <input id="email" class="form-control form-control-user" type="email" name="email" value="{{ old('email') }}" required autofocus />--}}
-{{--                                </div>--}}
+                    {{--                        @csrf--}}
+                    {{--                        <div>--}}
+                    {{--                            <div class="p-5">--}}
+                    {{--                                <div class="form-group">--}}
+                    {{--                                    <label for="email">Veuillez rentrer votre adresse mail</label>--}}
+                    {{--                                    <input id="email" class="form-control form-control-user" type="email" name="email" value="{{ old('email') }}" required autofocus />--}}
+                    {{--                                </div>--}}
 
-{{--                                @if ($errors->any())--}}
-{{--                                    <div class="alert alert-danger">--}}
-{{--                                        <ul>--}}
-{{--                                            @foreach ($errors->all() as $error)--}}
-{{--                                                <li>{{ $error }}</li>--}}
-{{--                                            @endforeach--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
-{{--                                @if (\Session::has('error'))--}}
-{{--                                    <div class="alert alert-danger">--}}
-{{--                                        <ul>--}}
-{{--                                            <li>{{ \Session::get('error') }}</li>--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
-{{--                                <button type="submit" class="ml-3 btn btn-primary btn-user btn-block">--}}
-{{--                                    Envoyer le mail de recupération--}}
-{{--                                </button>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </form>--}}
+                    {{--                                @if ($errors->any())--}}
+                    {{--                                    <div class="alert alert-danger">--}}
+                    {{--                                        <ul>--}}
+                    {{--                                            @foreach ($errors->all() as $error)--}}
+                    {{--                                                <li>{{ $error }}</li>--}}
+                    {{--                                            @endforeach--}}
+                    {{--                                        </ul>--}}
+                    {{--                                    </div>--}}
+                    {{--                                @endif--}}
+                    {{--                                @if (\Session::has('error'))--}}
+                    {{--                                    <div class="alert alert-danger">--}}
+                    {{--                                        <ul>--}}
+                    {{--                                            <li>{{ \Session::get('error') }}</li>--}}
+                    {{--                                        </ul>--}}
+                    {{--                                    </div>--}}
+                    {{--                                @endif--}}
+                    {{--                                <button type="submit" class="ml-3 btn btn-primary btn-user btn-block">--}}
+                    {{--                                    Envoyer le mail de recupération--}}
+                    {{--                                </button>--}}
+                    {{--                            </div>--}}
+                    {{--                        </div>--}}
+                    {{--                    </form>--}}
                 </div>
             </div>
         </div>
@@ -98,5 +99,3 @@
     document.getElementById("email").setAttribute("value", "@zambongroup.com");
 </script>
 </html>
-
-
