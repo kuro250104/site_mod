@@ -24,7 +24,7 @@ class TeamController extends Controller
         return view('team.index', compact("teams"));
 
     }
-    public function getTeamsDetails()
+    public function getTeamsDetails(): \Illuminate\Http\JsonResponse
     {
         $teams = Team::all();
 
