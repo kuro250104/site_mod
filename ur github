@@ -1,0 +1,292 @@
+[33mcommit deed5a622c821596615a5b213653434cad9f1c99[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Thu May 2 08:46:46 2024 +0200
+
+    V0.7.1 - Correcting bug
+
+[33mcommit 34968728b4bbf2275a2306aae93800200874f202[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Tue Apr 30 11:09:23 2024 +0200
+
+    V2.0.9 - Correct Password issues
+
+[33mcommit 5c1664fb850fc0c22f022e2386c9221d34df2c7c[m
+Merge: f9262070 38cae1ec
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Tue Apr 30 09:20:36 2024 +0200
+
+    V2.0.8 - API Update
+
+[33mcommit f92620709a130d4842b8cd11c265dfa302146e05[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Tue Apr 30 09:18:52 2024 +0200
+
+    V2.0.8 - API Update
+
+[33mcommit 38cae1ec12679a25184ac6bb24390fa4c69ce4d9[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Tue Apr 30 09:03:42 2024 +0200
+
+    V2.0.8 - API Update
+
+[33mcommit a297ca554b8a1a71d595087ddb95152e01134325[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Thu Apr 25 09:25:53 2024 +0200
+
+    V2.0.7 - Update - CSS
+
+[33mcommit ca0842d5caa51d1fe7d500b37c909fcab4667e9e[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Wed Apr 24 16:01:28 2024 +0200
+
+    V2.0.6 - Update - MailMessage
+
+[33mcommit 61e2dca511261ac294bc73cff3aa55b29ebe5afb[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Wed Apr 24 12:03:02 2024 +0200
+
+    V2.0.5 - Change password by SMTP
+
+[33mcommit e867d5b6d5ab9ddaf9355415edf20d38910c99a8[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Wed Apr 24 08:38:28 2024 +0200
+
+    V2.0.4 - Add API
+
+[33mcommit 925dd0b787748f7c78dd89845896ae4b3f737a3a[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Fri Apr 12 14:47:32 2024 +0200
+
+    V2.0.3 - Add new functionality
+
+[33mcommit 40b3b0df035a23ce821ae66892ff9b234d1b2772[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Mon Apr 8 14:18:22 2024 +0200
+
+    V2.0.2 - User acc update
+
+[33mcommit 4ee59d22ea3847338559ff289ca06baaeea621ba[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Wed Apr 3 11:29:49 2024 +0200
+
+    V0.0.3 - Bug fix
+
+[33mcommit 7c83bca50e2687782cc412ef716ce02ced5b87b9[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Tue Apr 2 15:52:28 2024 +0200
+
+    V2.0.1 - New Database System
+
+[33mcommit c499541d0ca5019db3f210279b122c2b730859d3[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Tue Apr 2 11:42:15 2024 +0200
+
+    V2.0.0 - New Database System
+
+[33mcommit c7f060001ce108b6f02dfbe2a836030a8eb8f90f[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Fri Mar 22 16:11:00 2024 +0100
+
+    V1.6.8 - Change entry
+
+[33mcommit 80b4f3d8cb3dba37cd046a2a2a5be4c410b299a5[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Mon Mar 18 16:51:48 2024 +0100
+
+    V1.6.7 - Add delete hours  for CP/AM
+
+[33mcommit 8671ad91facabe9094017d425be4b35cd59e5c88[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Mon Mar 18 16:44:23 2024 +0100
+
+    V1.6.7 - Add delete hours  for CP/AM
+
+[33mcommit a62f3c486f75171c8bb76812b69fffa6dfcb420b[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Mon Mar 18 10:44:39 2024 +0100
+
+    V1.6.6 - Fix bug
+
+[33mcommit 2804fb3971970d90569922a49ed72a8f5d1c8029[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Fri Mar 15 15:21:57 2024 +0100
+
+    V1.6.5 - Add hours FK
+
+[33mcommit d3463c6dbb8abebbc39ef5bb5f4c4b9a5ba9089a[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Tue Mar 12 16:03:15 2024 +0100
+
+    V1.6.4 - test NoVendor
+
+[33mcommit fc1bca516ff5c8c6af46054f4cdd1d913df9a560[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Tue Mar 12 12:05:01 2024 +0100
+
+    V1.6.4 -Update OP Number
+
+[33mcommit 0affde03ad353c6c57c14b87b0f4ff1aadd5e3de[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Mon Mar 11 09:16:26 2024 +0100
+
+    V1.6.3 - Correcting
+
+[33mcommit a891b695ef81d416adf20d5d4fa959c94ec5f0c9[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Mon Mar 11 08:45:39 2024 +0100
+
+    V1.6.3 - Fix entry table
+
+[33mcommit 6f931df4f12ddb26b7f984af44888ef6d2f32fdb[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Thu Mar 7 16:23:32 2024 +0100
+
+    V1.6.2 - Update - Fix Bug
+
+[33mcommit 6aa4fd80b1e96fb9f3df7a50def747f20143351d[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Wed Mar 6 10:09:22 2024 +0100
+
+    V1.6.1 - Fix Bug
+
+[33mcommit 22a79171f7624d25a339a48654c38fb6ce93a8f4[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Wed Mar 6 09:32:04 2024 +0100
+
+    V1.6 - Launch Beta Test
+
+[33mcommit fcdabed9ee1bf204c60d48d377998b2b7aad3fdf[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Mon Mar 4 11:21:26 2024 +0100
+
+    V1.5.4 - Update - Bugs Fix
+
+[33mcommit e0d958af63ec1ceddc2d3e5d26873b820d4b890b[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Mon Mar 4 09:47:15 2024 +0100
+
+    V1.5.3 - Update - Bugs Fix
+
+[33mcommit a5a3ec4f66fe5204915f510a3a8b7168ca400c07[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Fri Feb 23 14:39:23 2024 +0100
+
+    V1.5.2 - Vendor pubish
+
+[33mcommit 25350871d7e9b49fc1f697c1776ba8889cb5f8ed[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Fri Feb 23 14:13:48 2024 +0100
+
+    V1.5.2 - Update - Account Management
+
+[33mcommit a44b6fde2b08eb573221e8d50f19c624bb8511b7[m
+Merge: 560cde1c 6e81e01f
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Thu Feb 15 11:24:22 2024 +0100
+
+    Merge branch 'main' of https://github.com/kuro250104/site_mod
+
+[33mcommit 560cde1c05b1941c24ed823679f4dc17f811f753[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Thu Feb 15 11:23:55 2024 +0100
+
+    V1.5.1 - Update - Adjustement
+
+[33mcommit 6e81e01f6083b19df56cbe8f3552b3ab8aa658f3[m
+Merge: f87b2468 a33109fb
+Author: Kuro <45374906+kuro250104@users.noreply.github.com>
+Date:   Wed Feb 14 16:21:27 2024 +0100
+
+    Merge pull request #1 from kuro250104/dev
+    
+    V1.5 - Launch new version
+
+[33mcommit a33109fbba3a6338dd9e6a11d7929ad6939c64ba[m[33m ([m[1;31morigin/dev[m[33m)[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Wed Feb 14 16:20:50 2024 +0100
+
+    V1.5 - Launch new version
+
+[33mcommit f87b24684dbc19120c9e874ba6270458973d9f62[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Wed Feb 14 14:38:59 2024 +0100
+
+    V1.4.7 - Update - Adjutement in Time Entry
+
+[33mcommit f0100ba8fda3f5b5fe93427321c9129bf38aa20b[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Wed Feb 14 11:11:12 2024 +0100
+
+    V1.4.6 - Fix Entry Form
+
+[33mcommit f1a9466dfa312f8f0068c6c2385c3a1a66672b5e[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Wed Feb 14 11:00:08 2024 +0100
+
+    V1.4.5 - Fix Entry Form
+
+[33mcommit 5045b63fa66d0e594c19f02200e55313084a8f80[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Tue Feb 13 13:39:13 2024 +0100
+
+    V1.4.4 - Adjustments - Time Entires
+
+[33mcommit 4d506996afec86f6684858fc5c5dea6c7829e1c1[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Mon Feb 12 08:34:41 2024 +0100
+
+    V1.4.3 - Update - Bugs Fixes
+
+[33mcommit 46540d7a93a0d8f6b185f3973322e152e7840c0a[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Fri Feb 2 15:56:33 2024 +0100
+
+    V1.4.2 - Update - Bugs fixes
+
+[33mcommit cce7c008aa867c1c6ec13523028d346d9eeac191[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Fri Feb 2 13:34:26 2024 +0100
+
+    V1.4.1 - Update - Bugs fixes
+
+[33mcommit b85823c60cf116e430751b31b7fe97d93bc86967[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Fri Feb 2 09:26:35 2024 +0100
+
+    V1.4 - Update - Bugs fixes
+
+[33mcommit d7731de4b79f9ef192a39f60e358f94fc6fdfb39[m
+Author: Bougoula <gaetan.bougoula@zambongroup.com>
+Date:   Fri Jan 26 12:19:27 2024 +0100
+
+    V1.3 - Update home page
+
+[33mcommit cf443a80abe9e3e7b4a631f9b379d8e404e227ce[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Thu Jan 25 16:13:09 2024 +0100
+
+    V1.3 - Add Excel export
+
+[33mcommit 772210c50becdc18ba99b6795758fe48cb30d063[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Tue Jan 23 14:00:27 2024 +0100
+
+    V1.1 - Update hour validation
+
+[33mcommit eb449869c6f2565ea30b81e797e685867588c85e[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Fri Jan 5 11:37:17 2024 +0100
+
+    v1 - ending
+
+[33mcommit 35f93a43c9b953044af614339ff2e21b9b026892[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Thu Dec 7 17:04:52 2023 +0100
+
+    first commit
+
+[33mcommit 66d4ead03e9ffc09d92a51f0ab8b34c25d76a416[m
+Author: Kuro <gaetan.bougoula@orange.fr>
+Date:   Thu Dec 7 17:04:17 2023 +0100
+
+    first commit

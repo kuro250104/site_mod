@@ -26,7 +26,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/private-data', [ApiController::class, 'getData']);
+Route::get('/private-data', [ApiController::class, 'getUserData']);
+Route::get('/production-data', [ApiController::class, 'getUserData']);
 
 Route::middleware('auth')->group(function () {
 
