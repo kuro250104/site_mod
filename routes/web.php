@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/private-data', [ApiController::class, 'getUserData']);
-Route::get('/production-data', [ApiController::class, 'getUserData']);
+Route::get('/production-data', [ApiController::class, 'getProductionData']);
 
 Route::middleware('auth')->group(function () {
 
