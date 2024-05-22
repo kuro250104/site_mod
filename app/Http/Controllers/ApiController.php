@@ -30,7 +30,7 @@ class ApiController extends Controller
 
     public function getProductionData()
     {
-        $tasks = Task::all();
+        $tasks = Task::select('id', 'name')->get();
         $subtasks = Subtask::all();
         $projects = Projects::all();
         $stages = Stages::all();

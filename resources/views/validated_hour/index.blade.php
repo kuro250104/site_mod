@@ -222,8 +222,9 @@
                                     <thead>
                                         <tr>
                                             <th>Actions</th>
-                                            <th>Poste</th>
+                                            <th>ID</th>
                                             <th>Date</th>
+                                            <th>Poste</th>
                                             <th>Nom / Prénom </th>
                                             <th>Équipe </th>
                                             <th>Temps de tâche 1</th>
@@ -239,18 +240,21 @@
                                             <th>Numéro d'OP 2</th>
                                             <th>Projet 2</th>
                                             <th>Stade 2</th>
+                                            <th>Commentaire 2</th>
                                             <th>Temps de tâche 3</th>
                                             <th>Tâche 3</th>
                                             <th>Sous tâche 3</th>
                                             <th>Numéro d'OP 3</th>
                                             <th>Projet 3</th>
                                             <th>Stade 3</th>
+                                            <th>Commentaire 3</th>
                                             <th>Temps de tâche 4</th>
                                             <th>Tâche 4</th>
                                             <th>Sous tâche 4</th>
                                             <th>Numéro d'OP 4</th>
                                             <th>Projet 4</th>
                                             <th>Stade 4</th>
+                                            <th>Commentaire 4</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -265,36 +269,39 @@
                                                     <span class="text">Modifier</span>
                                                 </a>
                                             </td>
-
-                                            <td> {{$valid_hour->hour->name}}</td>
-                                            <td> {{$valid_hour->date}}</td>
-                                            <td >{{$valid_hour->user->name ?? 'N/A'}}</td>
-                                            <td >{{$valid_hour->user->team->name ?? 'N/A'}}</td>
-                                            <td >{{$valid_hour->timer_one ?? ''}}</td>
-                                            <td >{{$valid_hour->taskOne->name ?? ''}}</td>
-                                            <td >{{$valid_hour->subtaskOne->name ?? ''}}</td>
-                                            <td >{{$valid_hour->number_one ?? ''}}</td>
-                                            <td >{{$valid_hour->projectOne->name ?? ''}}</td>
-                                            <td >{{$valid_hour->stageOne->name ?? ''}}</td>
-                                            <td >{{$valid_hour->coment_one?? ''}}</td>
-                                            <td >{{$valid_hour->timer_two ?? ''}}</td>
-                                            <td >{{$valid_hour->taskTwo->name ?? ''}}</td>
-                                            <td >{{$valid_hour->subtaskTwo->name ?? ''}}</td>
-                                            <td >{{$valid_hour->number_two ?? ''}}</td>
-                                            <td >{{$valid_hour->projectTwo->name ?? ''}}</td>
-                                            <td >{{$valid_hour->stageTwo->name ?? ''}}</td>
-                                            <td >{{$valid_hour->timer_three ?? ''}}</td>
-                                            <td >{{$valid_hour->taskThree->name ?? ''}}</td>
-                                            <td >{{$valid_hour->subtaskThree->name ?? ''}}</td>
-                                            <td >{{$valid_hour->number_three ?? ''}}</td>
-                                            <td >{{$valid_hour->projectThree->name ?? ''}}</td>
-                                            <td >{{$valid_hour->stageThree->name ?? ''}}</td>
-                                            <td >{{$valid_hour->timer_four ?? ''}}</td>
-                                            <td >{{$valid_hour->taskFour->name ?? ''}}</td>
-                                            <td >{{$valid_hour->subtaskFour->name ?? ''}}</td>
-                                            <td >{{$valid_hour->number_four ?? ''}}</td>
-                                            <td >{{$valid_hour->projectFour->name ?? ''}}</td>
-                                            <td >{{$valid_hour->stageFour->name ?? ''}}</td>
+                                            <td>{{$valid_hour->id}}</td>
+                                            <td>{{$valid_hour->date}}</td>
+                                            <td>{{$valid_hour->hour->name}}</td>
+                                            <td>{{$valid_hour->user->name ?? 'N/A'}}</td>
+                                            <td>{{$valid_hour->user->team->name ?? 'N/A'}}</td>
+                                            <td>{{$valid_hour->timer_one ?? ''}}</td>
+                                            <td>{{$valid_hour->taskOne->name ?? ''}}</td>
+                                            <td>{{$valid_hour->subtaskOne->name ?? ''}}</td>
+                                            <td>{{$valid_hour->number_one ?? ''}}</td>
+                                            <td>{{$valid_hour->projectOne->name ?? ''}}</td>
+                                            <td>{{$valid_hour->stageOne->name ?? ''}}</td>
+                                            <td>{{$valid_hour->coment_one?? ''}}</td>
+                                            <td>{{$valid_hour->timer_two ?? ''}}</td>
+                                            <td>{{$valid_hour->taskTwo->name ?? ''}}</td>
+                                            <td>{{$valid_hour->subtaskTwo->name ?? ''}}</td>
+                                            <td>{{$valid_hour->number_two ?? ''}}</td>
+                                            <td>{{$valid_hour->projectTwo->name ?? ''}}</td>
+                                            <td>{{$valid_hour->stageTwo->name ?? ''}}</td>
+                                            <td>{{$valid_hour->coment_two?? ''}}</td>
+                                            <td>{{$valid_hour->timer_three ?? ''}}</td>
+                                            <td>{{$valid_hour->taskThree->name ?? ''}}</td>
+                                            <td>{{$valid_hour->subtaskThree->name ?? ''}}</td>
+                                            <td>{{$valid_hour->number_three ?? ''}}</td>
+                                            <td>{{$valid_hour->projectThree->name ?? ''}}</td>
+                                            <td>{{$valid_hour->stageThree->name ?? ''}}</td>
+                                            <td>{{$valid_hour->coment_three?? ''}}</td>
+                                            <td>{{$valid_hour->timer_four ?? ''}}</td>
+                                            <td>{{$valid_hour->taskFour->name ?? ''}}</td>
+                                            <td>{{$valid_hour->subtaskFour->name ?? ''}}</td>
+                                            <td>{{$valid_hour->number_four ?? ''}}</td>
+                                            <td>{{$valid_hour->projectFour->name ?? ''}}</td>
+                                            <td>{{$valid_hour->stageFour->name ?? ''}}</td>
+                                            <td>{{$valid_hour->coment_four?? ''}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -304,11 +311,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
     </div>
 @include('pages.selects_stage')
 @endsection
