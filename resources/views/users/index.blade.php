@@ -1,8 +1,5 @@
 @extends('pages.app')
-
-
 @section('content')
-
     <div class="container-fluid">
         <div class="card shadow mb-4">
             <div class="card-body">
@@ -15,27 +12,19 @@
                                     <a class="btn btn-success" href="{{ route('users.create') }}"> Création d'un nouvel utilisateur</a>
                                 </div>
                             </h2>
-
                         </div>
-
                     </div>
-
                 </div>
-                <div class="alert alert-warning ">
+                <div class="alert alert">
                     <p>Attention, la gestion de la modification des utilisateurs n'est pas active pour le moment. Aucune modification ne sera enregistrée.
                         <br>Pour effectuer  des modifications, veuillez contacter votre administrateur.</p>
                 </div>
-
-
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success my-2">
                         <p>{{ $message }}</p>
                     </div>
                 @endif
-
                 <div class="table-responsive">
-
-
                     <table class="table table-bordered" id="dataTable">
                         <thead>
                         <tr>
@@ -85,6 +74,4 @@
             </div>
         </div>
     </div>
-
-
 @endsection

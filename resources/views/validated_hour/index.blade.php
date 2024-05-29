@@ -1,7 +1,5 @@
 @extends('pages.app')
-
 @section('content')
-
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Gestion des heures validées</h1>
@@ -23,7 +21,6 @@
 {{--                                    <option value="{{ $user->id }}">{{ $user->name }}</option>--}}
 {{--                                @endforeach--}}
 {{--                            </select>--}}
-
                             <select type="text" name="hour_id" id="hour_id" class="form-control bg-light border small" oninput="verifyTimer()" value="{{old('time')}}"
                                      aria-label="Search" aria-describedby="basic-addon2">
                                     <option value="">Sélectionnez un poste</option>
@@ -33,7 +30,6 @@
                             </select>
                             <input type="date" class="form-control bg-light border small" id="start" name="date"  min="2000-01-01" max="2050-12-31" />
                         </div>
-
                         <p>Tâche 1</p>
                         <div class="input-group">
                             <input type="number" step="0.5" oninput="verifyTimer()" name="timer_one" id="timer_one" class="form-control bg-light border small" value="{{old('timer_one')}}"
@@ -67,7 +63,6 @@
                             <input type="text" name="coment_one" class="form-control bg-light border small" value="{{old('coment_one')}}"
                                    placeholder="Commentaire" aria-label="Search" aria-describedby="basic-addon2">
                         </div>
-
                         <p>Tâche 2</p>
                         <div class="input-group">
                             <input type="number" step="0.5" oninput="verifyTimer()" name="timer_two" id="timer_two" class="form-control bg-light border small" value="{{old('timer_two')}}"
@@ -103,7 +98,6 @@
                             <input type="text" name="coment_two" class="form-control bg-light border small" value="{{old('coment_two')}}"
                                    placeholder="Commentaire" aria-label="Search" aria-describedby="basic-addon2">
                         </div>
-
                         <p>Tâche 3</p>
                         <div class="input-group">
                             <input type="number" step="0.5" oninput="verifyTimer()" name="timer_three" id="timer_three" class="form-control bg-light border small" value="{{old('timer_three')}}"
@@ -187,16 +181,10 @@
                             </div>
                         @endif
                     </form>
-
-
                 </div>
-
             </div>
-
         </div>
         @endcan
-
-
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tableau des heures</h6>
@@ -218,7 +206,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <table class="table table-bordered dataTable" id="dataTable"  aria-describedby="dataTable_info" style="width: 100%;">
+                                <table class="table table-bordered dataTable"  aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Actions</th>
@@ -306,6 +294,8 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                {{ $valid_hours->links('pages.pagination') }}
+
                             </div>
                         </div>
                     </div>

@@ -45,7 +45,7 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered " id="dataTable">
+                        <table class="table table-bordered " >
                             <thead>
                             <tr>
                                 <th>Nom du projet</th>
@@ -73,8 +73,11 @@
                                     </td>
                                 </tr>
                             @endforeach
+
+
                             </tbody>
                         </table>
+                        {{ $projects->links('pages.pagination') }}
                     </div>
                 </div>
             </div>

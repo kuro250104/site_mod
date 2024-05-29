@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Worker;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -16,8 +16,8 @@ class SearchController extends Controller
             $term = $request->input('term');
             Log::info('Terme de recherche : ' . $term);
 
-            $resultats = Worker::where('surname', 'like', '%' . $term . '%')->get();
-            Log::info('Requête SQL : ' . Worker::where('surname', 'like', '%' . $term . '%')->toSql());
+            $resultats = User::where('surname', 'like', '%' . $term . '%')->get();
+            Log::info('Requête SQL : ' . User::where('surname', 'like', '%' . $term . '%')->toSql());
 
             return response()->json($resultats);
         } catch (\Exception $e) {
