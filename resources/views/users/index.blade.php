@@ -15,9 +15,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="alert alert">
-                    <p>Attention, la gestion de la modification des utilisateurs n'est pas active pour le moment. Aucune modification ne sera enregistrée.
-                        <br>Pour effectuer  des modifications, veuillez contacter votre administrateur.</p>
+                <div class="alert alert-danger">
+                    <h4 class="font-weight-bold">Attention, la gestion de la modification des utilisateurs n'est pas active pour le moment. Aucune modification ne sera enregistrée.
+                        <br>Pour effectuer  des modifications, veuillez contacter votre administrateur.</h4>
                 </div>
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success my-2">

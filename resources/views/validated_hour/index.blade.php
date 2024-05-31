@@ -294,8 +294,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                {{ $valid_hours->links('pages.pagination') }}
-
+                                @can('user_mange')
+                                    {{ $valid_hours->links('pages.pagination') }}
+                                @endcan
                             </div>
                         </div>
                     </div>
