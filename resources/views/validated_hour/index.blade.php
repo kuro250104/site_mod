@@ -294,9 +294,14 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                @can('user_mange')
+                                @cannot("operator")
                                     {{ $valid_hours->links('pages.pagination') }}
-                                @endcan
+
+                                @endcannot
+{{--                                @if(Gate::any(['user_manage', 'finance_manage']))--}}
+{{--                                    {{ $valid_hours->links('pages.pagination') }}--}}
+{{--                                @endif--}}
+
                             </div>
                         </div>
                     </div>

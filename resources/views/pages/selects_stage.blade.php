@@ -266,30 +266,34 @@
 
 </script>
 
+{{--<script>--}}
+{{--    function exportToExcel() {--}}
+{{--        var table = document.getElementById("dataTable");--}}
+
+{{--        var wb = XLSX.utils.table_to_book(table);--}}
+
+{{--        var binaryData = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });--}}
+
+{{--        var blob = new Blob([s2ab(binaryData)], { type: 'application/octet-stream' });--}}
+
+{{--        saveAs(blob, 'tableau_excel.xlsx');--}}
+{{--    }--}}
+
+{{--    function s2ab(s) {--}}
+{{--        var buf = new ArrayBuffer(s.length);--}}
+{{--        var view = new Uint8Array(buf);--}}
+{{--        for (var i = 0; i < s.length; i++) {--}}
+{{--            view[i] = s.charCodeAt(i) & 0xFF;--}}
+{{--        }--}}
+{{--        return buf;--}}
+{{--    }--}}
+{{--</script>--}}
+
+
 <script>
     function exportToExcel() {
-        var table = document.getElementById("dataTable");
-
-        var wb = XLSX.utils.table_to_book(table);
-
-        var binaryData = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
-
-        var blob = new Blob([s2ab(binaryData)], { type: 'application/octet-stream' });
-
-        saveAs(blob, 'tableau_excel.xlsx');
-    }
-
-    function s2ab(s) {
-        var buf = new ArrayBuffer(s.length);
-        var view = new Uint8Array(buf);
-        for (var i = 0; i < s.length; i++) {
-            view[i] = s.charCodeAt(i) & 0xFF;
-        }
-        return buf;
+        window.location.href = '/export-validated-hours';
     }
 </script>
-
-
-
 
 

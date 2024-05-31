@@ -31,9 +31,13 @@ class ValidatedHourController extends Controller
         $hours = Hour::all();
         $subtasks = Subtask::all();
         $user = Auth::user();
-        if($user->can('user_manage')){
+        if($user->can('user_manage',)){
 
             $valid_hours = ValidatedHour::paginate(50);
+        }
+        else if($user->can('finance_manage',)){
+
+        $valid_hours = ValidatedHour::paginate(50);
         }
         else{
             $valid_hours = ValidatedHour::where('user_id', $user->id)->get();
