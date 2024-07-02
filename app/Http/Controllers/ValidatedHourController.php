@@ -51,6 +51,8 @@ class ValidatedHourController extends Controller
         $user = Auth::user();
         $valid_hours = ValidatedHour::where('user_id', $user->id)->get();
 
+
+
         return view('validated_hour.index', ['valid_hours'=> $valid_hours]);
     }
     public function store(StoreValidatedHourRequest $request)
@@ -60,6 +62,8 @@ class ValidatedHourController extends Controller
 //        dd($request->all());
         return redirect()->route('validated_hour.index');
     }
+
+
     public function edit( int $validHoursId)
     {
         $valid_hours = ValidatedHour::find($validHoursId);
@@ -156,7 +160,7 @@ class ValidatedHourController extends Controller
             $sheet->setCellValue('N' . $row, $valid_hour->taskTwo->name);#temps tache 1
             $sheet->setCellValue('O' . $row, $valid_hour->subtaskTwo->name);#temps tache 1
             $sheet->setCellValue('P' . $row, $valid_hour->number_two);#temps tache 1
-            $sheet->setCellValue('Q' . $row, $valid_hour->projectTwo->name);#temps tache 1
+            $sheet->setCellValue('Q' . $row, $valid_hour->projectTwo->name);#temps tache 1--
             $sheet->setCellValue('R' . $row, $valid_hour->stageTwo->name);#temps tache 1
             $sheet->setCellValue('T' . $row, $valid_hour->coment_two);#temps tache 1
 
@@ -190,4 +194,4 @@ class ValidatedHourController extends Controller
 
         return $response;
     }
-}
+   }

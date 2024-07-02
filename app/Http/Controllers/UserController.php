@@ -101,10 +101,8 @@ class UserController extends Controller
 
         $selectedRole = Role::where('name', $request->input('role'))->first();
 
-        // Assigner le rôle sélectionné à l'utilisateur
         $user->syncRoles([$selectedRole->name]);
 
-        // Rediriger avec un message de succès
 
 //        return redirect()->route('users.index')
 //            ->with('success', 'User updated successfully');

@@ -1,23 +1,18 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Récupération des éléments select pour chaque tâche
         var taskOneSelect = document.getElementById('task_one');
         var taskTwoSelect = document.getElementById('task_two');
         var taskThreeSelect = document.getElementById('task_three');
         var taskFourSelect = document.getElementById('task_four');
 
-        // Ajout d'un écouteur d'événement 'change' pour chaque élément select
         taskOneSelect.addEventListener('change', handleTaskChange);
         taskTwoSelect.addEventListener('change', handleTaskChange);
         taskThreeSelect.addEventListener('change', handleTaskChange);
         taskFourSelect.addEventListener('change', handleTaskChange);
-
-        // Fonction pour gérer le changement de valeur d'une tâche
         function handleTaskChange(event) {
             var selectedOptionValue = event.target.value;
             var taskNumber = event.target.id.split('_')[1];
 
-            // Affichage d'une alerte pour les tâches 2 et 4
             if (taskNumber === 'one' ||taskNumber === 'two' ||taskNumber === 'three' || taskNumber === 'four') {
                 if (selectedOptionValue === '6') {
                     Swal.fire({
@@ -113,7 +108,6 @@
                 var taskSelect = document.getElementById(tasks[index]);
                 var subtaskSelect = document.getElementById(subtasks[index]);
 
-                // Vérifiez si les éléments HTML existent
                 // if (!taskSelect) {
                 //     alert('L\'élément taskSelect avec l\'id ' + tasks[index] + ' n\'existe pas.');
                 //     return;
@@ -248,10 +242,9 @@
                     document.getElementById('sumDisplay').className = "text-danger";
                 });
             } else {
-                // Si la somme est dans la limite, réactiver le bouton de soumission
                 document.getElementById('submitBtn').disabled = false;
                 document.getElementById('submitBtn').className = "btn btn-success btn-icon-split";
-                document.getElementById('sumDisplay').className = ""; // Supprimer les classes de style d'erreur
+                document.getElementById('sumDisplay').className = "";
             }
             document.getElementById('sumDisplay').innerText = 'Total des heures : ' + sum;
         });
@@ -266,28 +259,6 @@
 
 </script>
 
-{{--<script>--}}
-{{--    function exportToExcel() {--}}
-{{--        var table = document.getElementById("dataTable");--}}
-
-{{--        var wb = XLSX.utils.table_to_book(table);--}}
-
-{{--        var binaryData = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });--}}
-
-{{--        var blob = new Blob([s2ab(binaryData)], { type: 'application/octet-stream' });--}}
-
-{{--        saveAs(blob, 'tableau_excel.xlsx');--}}
-{{--    }--}}
-
-{{--    function s2ab(s) {--}}
-{{--        var buf = new ArrayBuffer(s.length);--}}
-{{--        var view = new Uint8Array(buf);--}}
-{{--        for (var i = 0; i < s.length; i++) {--}}
-{{--            view[i] = s.charCodeAt(i) & 0xFF;--}}
-{{--        }--}}
-{{--        return buf;--}}
-{{--    }--}}
-{{--</script>--}}
 
 
 <script>
@@ -295,5 +266,4 @@
         window.location.href = '/export-validated-hours';
     }
 </script>
-
 

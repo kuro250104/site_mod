@@ -73,12 +73,15 @@ Route::middleware('auth')->group(function () {
     Route::put('/stage/{id}', [StagesController::class, 'update'])->name('stage.update');
 
     Route::get('/validated-hour', [ValidatedHourController::class, 'home'])->name('validated_hour.index');
+    Route::get('/validated-hour/search', [ValidatedHourController::class, 'search'])->name('validated_hour.search');
     Route::post('/validated-hour', [ValidatedHourController::class, 'store'])->name('validated_hour.store');
     Route::get('/validated-hour/{id}/edit', [ValidatedHourController::class, 'edit'])->name('validated_hour.edit');
     Route::post('/validated-hour/{id}', [ValidatedHourController::class, 'update'])->name('validated_hour.update');
     Route::delete('/validated-hour/{id}/destroy', [ValidatedHourController::class, 'destroy'])->name('validated_hour.destroy');
 
     Route::get('/export-validated-hours', [ValidatedHourController::class, 'exportToExcel']);
+    Route::get('/search-validated-hours', [ValidatedHourController::class, 'search'])->name('search.validated_hours');
+
 
 
 
