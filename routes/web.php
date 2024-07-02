@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/private-data', [ApiController::class, 'getUserData']);
 Route::get('/production-data', [ApiController::class, 'getProductionData']);
+Route::get('/export-data', [ValidatedHourController::class, 'exportToExcel'])->name('exportToExcel');
+
 
 Route::middleware('auth')->group(function () {
     Route::resource('roles', RoleController::class);
@@ -79,7 +81,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/validated-hour/{id}', [ValidatedHourController::class, 'update'])->name('validated_hour.update');
     Route::delete('/validated-hour/{id}/destroy', [ValidatedHourController::class, 'destroy'])->name('validated_hour.destroy');
 
-    Route::get('/export-validated-hours', [ValidatedHourController::class, 'exportToExcel']);
     Route::get('/search-validated-hours', [ValidatedHourController::class, 'search'])->name('search.validated_hours');
 
 

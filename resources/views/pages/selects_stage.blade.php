@@ -263,7 +263,7 @@
 
 <script>
     function exportToExcel() {
-        window.location.href = '/export-validated-hours';
+        window.location.href = '/export-data';
     }
 </script>
 
