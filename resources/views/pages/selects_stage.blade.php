@@ -267,3 +267,72 @@
     }
 </script>
 
+<script>
+    function exportMsg() {
+        // Afficher un toast pour indiquer que le processus commence
+        const startToast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+
+        startToast.fire({
+            icon: "info",
+            title: "Préparation de votre fichier, veuillez patienter..."
+        });
+
+        // Effectuer la requête AJAX pour l'exportation vers Excel
+        $.ajax({
+            url: "{{ route('exportToExcel') }}",
+            method: 'GET',
+            success: function(response) {
+                // Masquer le toast de préparation
+                startToast.close();
+
+                // Afficher un toast de succès lorsque l'exportation est terminée
+                const successToast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+
+                successToast.fire({
+                    icon: "success",
+                    title: "Exportation vers Excel réussie, votre fichier va être téléchargé, veuillez patienter..."
+                });
+
+                // Ici vous pourriez éventuellement rediriger ou télécharger directement le fichier Excel
+            },
+            error: function(xhr, status, error) {
+                console.error('Erreur lors de l\'exportation vers Excel:', error);
+
+                // Afficher un toast d'erreur si l'exportation échoue
+                const errorToast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+
+                errorToast.fire({
+                    icon: "error",
+                    title: "Erreur lors de l'exportation vers Excel"
+                });
+            }
+        });
+    }
+
+
+</script>
+

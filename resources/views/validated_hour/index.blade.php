@@ -194,7 +194,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Tableau des heures</h6>
             </div>
             <div class="card-body">
-                <a
+                <a onclick="exportMsg()"
                    href="{{ route('exportToExcel') }}"
                    class="btn btn-info btn-icon-split">
                     <span class="icon text-white-50">

@@ -3,6 +3,8 @@
 <script src="{{asset("bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 <!-- Core plugin JavaScript-->
 <script src="{{asset("jquery-easing/jquery.easing.min.js")}}"></script>
+<!-- CDN pour SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- Custom scripts for all pages-->
 <script src="{{asset("js/sb-admin-2.min.js")}}"></script>

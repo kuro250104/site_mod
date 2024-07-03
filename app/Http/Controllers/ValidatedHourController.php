@@ -99,76 +99,127 @@ class ValidatedHourController extends Controller
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        // Définir les largeurs des colonnes de manière optimisée
-        $columns = range('A', 'AH');
-        foreach ($columns as $column) {
-            $sheet->getColumnDimension($column)->setWidth(60);
-        }
-        $sheet->getColumnDimension('A')->setWidth(20);
+        $sheet->getColumnDimension('A')->setWidth(10);
+        $sheet->getColumnDimension('B')->setWidth(30);
+        $sheet->getColumnDimension('C')->setWidth(30);
+        $sheet->getColumnDimension('D')->setWidth(30);
+        $sheet->getColumnDimension('E')->setWidth(30);
+        $sheet->getColumnDimension('F')->setWidth(30);
+        $sheet->getColumnDimension('G')->setWidth(30);
+        $sheet->getColumnDimension('H')->setWidth(30);
+        $sheet->getColumnDimension('I')->setWidth(30);
+        $sheet->getColumnDimension('J')->setWidth(30);
+        $sheet->getColumnDimension('K')->setWidth(30);
+        $sheet->getColumnDimension('L')->setWidth(30);
+        $sheet->getColumnDimension('M')->setWidth(30);
+        $sheet->getColumnDimension('N')->setWidth(30);
+        $sheet->getColumnDimension('O')->setWidth(30);
+        $sheet->getColumnDimension('P')->setWidth(30);
+        $sheet->getColumnDimension('Q')->setWidth(30);
+        $sheet->getColumnDimension('R')->setWidth(30);
+        $sheet->getColumnDimension('T')->setWidth(30);
+        $sheet->getColumnDimension('U')->setWidth(30);
+        $sheet->getColumnDimension('V')->setWidth(30);
+        $sheet->getColumnDimension('W')->setWidth(30);
+        $sheet->getColumnDimension('X')->setWidth(30);
+        $sheet->getColumnDimension('Y')->setWidth(30);
+        $sheet->getColumnDimension('Z')->setWidth(30);
+        $sheet->getColumnDimension('AA')->setWidth(30);
+        $sheet->getColumnDimension('AB')->setWidth(30);
+        $sheet->getColumnDimension('AC')->setWidth(30);
+        $sheet->getColumnDimension('AD')->setWidth(30);
+        $sheet->getColumnDimension('AE')->setWidth(30);
+        $sheet->getColumnDimension('AF')->setWidth(30);
+        $sheet->getColumnDimension('AG')->setWidth(30);
+        $sheet->getColumnDimension('AH')->setWidth(30);
+        // Add header row
+        $sheet->setCellValue('A1', 'ID');
+        $sheet->setCellValue('B1', 'Nom/Prénom');
+        $sheet->setCellValue('C1', 'Poste');
+        $sheet->setCellValue('D1', 'Date');
+        $sheet->setCellValue('E1', 'Equipe');
+        $sheet->setCellValue('F1', 'Temps tache 1');
+        $sheet->setCellValue('G1', 'Tache 1');
+        $sheet->setCellValue('H1', 'Sous tache 1');
+        $sheet->setCellValue('I1', 'Numéro d\'OP 1 ');
+        $sheet->setCellValue('J1', 'Projet 1');
+        $sheet->setCellValue('K1', 'Stade 1 ');
+        $sheet->setCellValue('L1', 'Commentaire 1');
+        $sheet->setCellValue('M1', 'Temps tache 2');
+        $sheet->setCellValue('N1', 'Tache 2');
+        $sheet->setCellValue('O1', 'Sous tache 2');
+        $sheet->setCellValue('P1', 'Numéro d\'OP 2');
+        $sheet->setCellValue('Q1', 'Projet 2');
+        $sheet->setCellValue('R1', 'Stade 2');
+        $sheet->setCellValue('T1', 'Commentaire 2');
+        $sheet->setCellValue('U1', 'Temps tache 3');
+        $sheet->setCellValue('V1', 'Tache 3');
+        $sheet->setCellValue('W1', 'Sous tache 3');
+        $sheet->setCellValue('X1', 'Numéro d\'OP 3');
+        $sheet->setCellValue('Y1', 'Projet 3');
+        $sheet->setCellValue('Z1', 'Stade 3');
+        $sheet->setCellValue('AA1', 'Commentaire 3');
+        $sheet->setCellValue('AB1', 'Temps tache 4');
+        $sheet->setCellValue('AC1', 'Tache 4');
+        $sheet->setCellValue('AD1', 'Sous tache 4');
+        $sheet->setCellValue('AE1', 'Numéro d\'OP 4');
+        $sheet->setCellValue('AF1', 'Projet 4');
+        $sheet->setCellValue('AG1', 'Stade 4');
+        $sheet->setCellValue('AH1', 'Commentaire 4');
 
-        // Ajouter la ligne d'en-tête
-        $headers = [
-            'A1' => 'ID', 'B1' => 'User ID', 'C1' => 'Hours', 'D1' => 'Date',
-            'E1' => 'Team', 'F1' => 'Timer One', 'G1' => 'Task One', 'H1' => 'Subtask One',
-            'I1' => 'Number One', 'J1' => 'Project One', 'K1' => 'Stage One', 'L1' => 'Comment One',
-            'M1' => 'Timer Two', 'N1' => 'Task Two', 'O1' => 'Subtask Two', 'P1' => 'Number Two',
-            'Q1' => 'Project Two', 'R1' => 'Stage Two', 'T1' => 'Comment Two', 'U1' => 'Timer Three',
-            'V1' => 'Task Three', 'W1' => 'Subtask Three', 'X1' => 'Number Three', 'Y1' => 'Project Three',
-            'Z1' => 'Stage Three', 'AA1' => 'Comment Three', 'AB1' => 'Timer Four', 'AC1' => 'Task Four',
-            'AD1' => 'Subtask Four', 'AE1' => 'Number Four', 'AF1' => 'Project Four', 'AG1' => 'Stage Four',
-            'AH1' => 'Comment Four'
-        ];
 
-        foreach ($headers as $cell => $text) {
-            $sheet->setCellValue($cell, $text);
-        }
-
-        // Récupérer les données par lots
-        $batchSize = 1000; // Taille du lot, ajustez selon vos besoins
-        $totalRecords = ValidatedHour::count();
+        // Add data rows
+        $valid_hours = ValidatedHour::all();
         $row = 2;
+        foreach ($valid_hours as $valid_hour) {
+            $sheet->setCellValue('A' . $row, $valid_hour->id); #id
+            $sheet->setCellValue('D' . $row, $valid_hour->date);#date
+            $sheet->setCellValue('C' . $row, $valid_hour->hour->name);#poste
+            $sheet->setCellValue('B' . $row, $valid_hour->user->name); #nom
+            $sheet->setCellValue('E' . $row, $valid_hour->user->team->name); #equipe
 
-        for ($offset = 0; $offset < $totalRecords; $offset += $batchSize) {
-            $valid_hours = ValidatedHour::skip($offset)->take($batchSize)->get();
+            $sheet->setCellValue('F' . $row, $valid_hour->timer_one);#temps tache 1
+            $sheet->setCellValue('G' . $row, $valid_hour->taskOne->name);#tache 1
+            $sheet->setCellValue('H' . $row, $valid_hour->subtaskOne->name);#sous tache 1
+            $sheet->setCellValue('I' . $row, $valid_hour->number_one);#OP 1
+            $sheet->setCellValue('J' . $row, $valid_hour->projectOne->name);#projet 1
+            $sheet->setCellValue('K' . $row, $valid_hour->stageOne->name);#stade 1
+            $sheet->setCellValue('L' . $row, $valid_hour->coment_one);#commentaire 1
 
-            foreach ($valid_hours as $valid_hour) {
-                $user = $valid_hour->user;
-                $team = $user->team;
-                $hour = $valid_hour->hour;
+            $sheet->setCellValue('M' . $row, $valid_hour->timer_two);#temps tache 1
+            $sheet->setCellValue('N' . $row, $valid_hour->taskTwo->name);#temps tache 1
+            $sheet->setCellValue('O' . $row, $valid_hour->subtaskTwo->name);#temps tache 1
+            $sheet->setCellValue('P' . $row, $valid_hour->number_two);#temps tache 1
+            $sheet->setCellValue('Q' . $row, $valid_hour->projectTwo->name);#temps tache 1
+            $sheet->setCellValue('R' . $row, $valid_hour->stageTwo->name);#temps tache 1
+            $sheet->setCellValue('T' . $row, $valid_hour->coment_two);#temps tache 1
 
-                $sheet->setCellValue('A' . $row, $valid_hour->id);
-                $sheet->setCellValue('B' . $row, $user->name);
-                $sheet->setCellValue('C' . $row, $hour->name);
-                $sheet->setCellValue('D' . $row, $valid_hour->date);
-                $sheet->setCellValue('E' . $row, $team->name);
+            $sheet->setCellValue('U' . $row, $valid_hour->timer_three);#temps tache 1
+            $sheet->setCellValue('V' . $row, $valid_hour->taskThree->name);#temps tache 1
+            $sheet->setCellValue('W' . $row, $valid_hour->subtaskThree->name);#temps tache 1
+            $sheet->setCellValue('X' . $row, $valid_hour->number_three);#temps tache 1
+            $sheet->setCellValue('Y' . $row, $valid_hour->projectThree->name);#temps tache 1
+            $sheet->setCellValue('Z' . $row, $valid_hour->stageThree->name);#temps tache 1
+            $sheet->setCellValue('AA' . $row,$valid_hour->coment_three);#temps tache 1
 
-                $tasks = [
-                    ['F', 'G', 'H', 'I', 'J', 'K', 'L', 'timer_one', 'taskOne', 'subtaskOne', 'number_one', 'projectOne', 'stageOne', 'coment_one'],
-                    ['M', 'N', 'O', 'P', 'Q', 'R', 'T', 'timer_two', 'taskTwo', 'subtaskTwo', 'number_two', 'projectTwo', 'stageTwo', 'coment_two'],
-                    ['U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'timer_three', 'taskThree', 'subtaskThree', 'number_three', 'projectThree', 'stageThree', 'coment_three'],
-                    ['AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'timer_four', 'taskFour', 'subtaskFour', 'number_four', 'projectFour', 'stageFour', 'coment_four']
-                ];
-
-                foreach ($tasks as $task) {
-                    $sheet->setCellValue($task[0] . $row, $valid_hour->{$task[7]});
-                    $sheet->setCellValue($task[1] . $row, $valid_hour->{$task[8]}->name);
-                    $sheet->setCellValue($task[2] . $row, $valid_hour->{$task[9]}->name);
-                    $sheet->setCellValue($task[3] . $row, $valid_hour->{$task[10]});
-                    $sheet->setCellValue($task[4] . $row, $valid_hour->{$task[11]}->name);
-                    $sheet->setCellValue($task[5] . $row, $valid_hour->{$task[12]}->name);
-                    $sheet->setCellValue($task[6] . $row, $valid_hour->{$task[13]});
-                }
-                $row++;
-            }
+            $sheet->setCellValue('AB' . $row, $valid_hour->timer_four);#temps tache 1
+            $sheet->setCellValue('AC' . $row, $valid_hour->taskFour->name);#temps tache 1
+            $sheet->setCellValue('AD' . $row, $valid_hour->subtaskFour->name);#temps tache 1
+            $sheet->setCellValue('AE' . $row, $valid_hour->number_four);#temps tache 1
+            $sheet->setCellValue('AF' . $row, $valid_hour->projectFour->name);#temps tache 1
+            $sheet->setCellValue('AG' . $row, $valid_hour->stageFour->name);#temps tache 1
+            $sheet->setCellValue('AH' . $row, $valid_hour->coment_four);#temps tache 1
+            $row++;
         }
 
         $writer = new Xlsx($spreadsheet);
+//
         $response = new StreamedResponse(function() use ($writer) {
             $writer->save('php://output');
         });
 
         $response->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        $response->headers->set('Content-Disposition', 'attachment;filename="Tableau_MOD.xlsx"');
+        $response->headers->set('Content-Disposition', 'attachment;filename="Tableau MOD.xlsx"');
         $response->headers->set('Cache-Control', 'max-age=0');
 
         return $response;
