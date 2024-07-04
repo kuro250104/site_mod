@@ -31,17 +31,19 @@ class ValidatedHourController extends Controller
         $hours = Hour::all();
         $subtasks = Subtask::all();
         $user = Auth::user();
+
         if($user->can('user_manage',)){
 
-            $valid_hours = ValidatedHour::paginate(50);
+            $valid_hours = ValidatedHour::orderBy("id", "desc")->paginate(50);
         }
         else if($user->can('finance_manage',)){
 
-        $valid_hours = ValidatedHour::paginate(50);
+        $valid_hours = ValidatedHour::orderBy('id','desc')->paginate(50);
         }
         else{
             $valid_hours = ValidatedHour::where('user_id', $user->id)->get();
         }
+
         return view('validated_hour.index', compact('valid_hours', 'projects','user', 'teams', 'stages', 'tasks', 'hours', 'subtasks'));
     }
 
@@ -50,7 +52,6 @@ class ValidatedHourController extends Controller
     {
         $user = Auth::user();
         $valid_hours = ValidatedHour::where('user_id', $user->id)->get();
-        $valid_hours = ValidatedHour::where('date', )->get();
 
 
 
