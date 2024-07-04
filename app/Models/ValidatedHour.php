@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,10 @@ class ValidatedHour extends Model
     public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class, 'team_id')->withDefault();
+    }
+    public function getDateAttribute($value)
+    {
+     return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
     }
     public function hour(): BelongsTo
     {

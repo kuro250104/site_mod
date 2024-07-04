@@ -26,8 +26,7 @@
 
         }
     });
-</script>
-<script>
+
     document.addEventListener('DOMContentLoaded', function () {
         var stageOptions = {
             @foreach($projects as $project)
@@ -70,9 +69,7 @@
             })(i);
         }
     });
-</script>
 
-<script>
     document.addEventListener('DOMContentLoaded', function () {
         var taskOptions = {
             @foreach($tasks as $task)
@@ -126,10 +123,7 @@
             })(i);
         }
     });
-</script>
 
-
-<script>
     function fieldCondition() {
         const taskOne = document.getElementById("task_one");
         const taskTwo = document.getElementById("task_two");
@@ -194,11 +188,9 @@
         return true;
     }
 
-</script>
 
 
 
-<script>
     function verifyTimer() {
         let hourId = parseInt(document.getElementById('hour_id').value);
         let fields = ['timer_one', 'timer_two', 'timer_three', 'timer_four', 'timer_five'];
@@ -257,17 +249,14 @@
         field.addEventListener('input', verifyTimer);
     });
 
-</script>
 
 
 
-<script>
+
     function exportToExcel() {
         window.location.href = '/export-data';
     }
-</script>
 
-<script>
     function exportMsg() {
         // Afficher un toast pour indiquer que le processus commence
         const startToast = Swal.mixin({
@@ -334,5 +323,5 @@
     }
 
 
-</script>
+</>
 

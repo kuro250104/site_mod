@@ -50,6 +50,7 @@ class ValidatedHourController extends Controller
     {
         $user = Auth::user();
         $valid_hours = ValidatedHour::where('user_id', $user->id)->get();
+        $valid_hours = ValidatedHour::where('date', )->get();
 
 
 

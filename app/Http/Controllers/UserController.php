@@ -37,7 +37,8 @@ class UserController extends Controller
     {
         $roles = Role::pluck('name','name')->all();
         $teams = Team::all();
-         return view('users.create',compact('roles', 'teams'));
+        $status = Status::all();
+         return view('users.create',compact('roles', 'teams', 'status'));
     }
 
 
@@ -48,7 +49,8 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required',
-            'teams' => 'required'
+            'teams' => 'required',
+            'status' => 'required'
         ]);
 
         $input = $request->all();

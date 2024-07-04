@@ -74,6 +74,17 @@
                         </select>
                     </div>
                 </div>
+                <div class="col-xs-12 mb-3">
+                    <div class="form-group">
+                        <strong>Status:</strong>
+                        <select name="status" class="form-control multiple">
+                            <option>Veuillez sélectionnez un status</option>
+                            @foreach ($status as $statu)
+                                <option value="{{ $statu->id }}">{{ $statu->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <div class="col-xs-12 mb-3 text-center">
                     <button type="submit" class="btn btn-primary">Envoyer</button>
                 </div>
