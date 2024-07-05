@@ -133,35 +133,42 @@
     });
 
     function fieldCondition() {
-        function element(name){
-            return document.getElementsByName(name)[0]
+        function element(name) {
+            return document.getElementsByName(name)[0];
         }
 
         let errorMessage = "";
 
+        const numberOne = element("number_one");
+        const numberTwo = element("number_two");
+        const numberThree = element("number_three");
+        const numberFour = element("number_four");
+
         const fields = [
-            { task: element("task_one"), subtask: element("subtask_one"), number: element("number_one"), taskNumber: 1},
-            { task: element("task_two"), subtask: element("subtask_two"), number: element("number_two"), taskNumber: 2},
-            { task: element("task_three"), subtask: element("subtask_three"), number: element("number_three"), taskNumber: 3},
-            { task: element("task_four"), subtask: element("subtask_four"), number: element("number_four"), taskNumber: 4},
+            { task: element("task_one"), subtask: element("subtask_one"), number: numberOne, taskNumber: 1 },
+            { task: element("task_two"), subtask: element("subtask_two"), number: numberTwo, taskNumber: 2 },
+            { task: element("task_three"), subtask: element("subtask_three"), number: numberThree, taskNumber: 3 },
+            { task: element("task_four"), subtask: element("subtask_four"), number: numberFour, taskNumber: 4 },
         ];
 
         fields.forEach(field => {
             field.task.classList.remove('errorFields');
             field.subtask.classList.remove('errorFields');
-            field.number.classList.remove('errorFields');
+            if (field.number) {
+                field.number.classList.remove('errorFields');
+            }
 
             if (field.task.value.trim() !== "") {
                 if (field.subtask.value.trim() === "") {
                     errorMessage += `Veuillez sélectionner une sous-tâche pour la tâche ${field.taskNumber}.\n`;
                     field.subtask.classList.add('errorFields');
-                }
-            }
-
-            if (field.subtask.value.trim() !== "") {
-                if (["1", "2", "3", "6", "7", "8"].includes(field.subtask.value.trim())) {
-                    errorMessage += `Veuillez sélectionner un numéro d'OP valide pour la tâche ${field.taskNumber}.\n`;
-                    field.number.classList.add('errorFields');
+                } else if (["1", "2", "3", "6", "7", "8"].includes(field.subtask.value.trim())) {
+                    if (field.number && field.number.value.trim() === "") {
+                        errorMessage += `Veuillez sélectionner un numéro d'OP pour la tâche ${field.taskNumber}.\n`;
+                        if (field.number) {
+                            field.number.classList.add('errorFields');
+                        }
+                    }
                 }
             }
         });
@@ -172,6 +179,7 @@
         }
         return true;
     }
+
 
 
 

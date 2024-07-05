@@ -68,7 +68,7 @@
                                         <option value="{{$subtask->id}}">{{$subtask->name}}</option>
                                     @endforeach
                                 </select>
-                                <input type="text" name="number_one" class="form-control bg-light border small"
+                                <input type="text" id="number_one" name="number_one" class="form-control bg-light border small"
                                        value="{{old('number_one')}}"
                                        placeholder="Numéro de l'OP" aria-label="Search" aria-describedby="basic-addon2">
                                 <select type="text" name="project_one" id="project_one"
