@@ -124,67 +124,52 @@
         }
     });
 
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("hourForm").addEventListener("submit", function(event) {
+            if (!fieldCondition()) {
+                event.preventDefault();
+            }
+        });
+    });
+
     function fieldCondition() {
-        const taskOne = document.getElementById("task_one");
-        const taskTwo = document.getElementById("task_two");
-        const taskThree = document.getElementById("task_three");
-        const taskFour = document.getElementById("task_four");
-
-        const subtaskOne = document.getElementById("subtask_one")
-        const subtaskTwo = document.getElementById("subtask_two")
-        const subtaskThree = document.getElementById("subtask_three")
-        const subtaskFour = document.getElementById("subtask_three")
-
-        const numberOne = document.getElementsByName("number_one")[0];
-        const numberTwo = document.getElementsByName("number_two")[0];
-        const numberThree = document.getElementsByName("number_three")[0];
-        const numberFour = document.getElementsByName("number_four")[0];
-
-        numberOne.required = false;
-        numberTwo.required = false;
-        numberThree.required = false;
-        numberFour.required = false;
+        function element(name){
+            return document.getElementsByName(name)[0]
+        }
 
         let errorMessage = "";
 
-        if (taskOne.value === "1" || taskOne.value === "2"|| taskOne.value ==="3" ) {
-            if(subtaskOne.value ==="1"||subtaskOne.value ==="2"||subtaskOne.value ==="3"||subtaskOne.value ==="6"||subtaskOne.value ==="7"||subtaskOne.value ==="8"){
-                if (numberOne.value.trim() === "") {
-                    errorMessage += "Veuillez remplir le champs numéro d'OP de la tâche 1.\n";
+        const fields = [
+            { task: element("task_one"), subtask: element("subtask_one"), number: element("number_one"), taskNumber: 1},
+            { task: element("task_two"), subtask: element("subtask_two"), number: element("number_two"), taskNumber: 2},
+            { task: element("task_three"), subtask: element("subtask_three"), number: element("number_three"), taskNumber: 3},
+            { task: element("task_four"), subtask: element("subtask_four"), number: element("number_four"), taskNumber: 4},
+        ];
+
+        fields.forEach(field => {
+            field.task.classList.remove('errorFields');
+            field.subtask.classList.remove('errorFields');
+            field.number.classList.remove('errorFields');
+
+            if (field.task.value.trim() !== "") {
+                if (field.subtask.value.trim() === "") {
+                    errorMessage += `Veuillez sélectionner une sous-tâche pour la tâche ${field.taskNumber}.\n`;
+                    field.subtask.classList.add('errorFields');
                 }
             }
-        }
 
-        if (taskTwo.value === "1"  || taskTwo.value === "2" || taskTwo.value ==="3") {
-            if (subtaskTwo.value === "1" || subtaskTwo.value === "2" || subtaskTwo.value === "3" || subtaskTwo.value === "6" || subtaskTwo.value === "7" || subtaskTwo.value === "8"){
-                if (numberTwo.value === "") {
-                    errorMessage += "Veuillez remplir le champs numéro d'OP de la tâche 2.\n";
+            if (field.subtask.value.trim() !== "") {
+                if (["1", "2", "3", "6", "7", "8"].includes(field.subtask.value.trim())) {
+                    errorMessage += `Veuillez sélectionner un numéro d'OP valide pour la tâche ${field.taskNumber}.\n`;
+                    field.number.classList.add('errorFields');
                 }
             }
-        }
-
-        if (taskThree.value === "1"  || taskThree.value === "2"||taskThree.value ==="3") {
-            if(subtaskThree.value ==="1"||subtaskThree.value ==="2"||subtaskThree.value ==="3"||subtaskThree.value ==="6"||subtaskThree.value ==="7"||subtaskThree.value ==="8"){
-                if (numberThree.value.trim() === "") {
-                    errorMessage += "Veuillez remplir le champs numéro d'OP de la tâche 3.\n";
-                }
-            }
-        }
-
-        if (taskFour.value === "1"|| taskFour.value === "2" || taskFour.value === "3") {
-            if(subtaskFour.value ==="1" ||subtaskFour.value ==="2" ||subtaskFour.value ==="3" ||subtaskFour.value ==="1" ||subtaskFour.value ==="7" ||subtaskFour.value ==="8" )
-            if (numberFour.value.trim() === "") {
-                errorMessage += "Veuillez remplir le champs numéro d'OP de la tâche 4.\n";
-            }
-        }
+        });
 
         if (errorMessage !== "") {
             alert(errorMessage);
-            console.log('oui')
             return false;
         }
-
-
         return true;
     }
 

@@ -11,6 +11,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="{{asset('js/datatableedit.js')}}" rel="stylesheet">

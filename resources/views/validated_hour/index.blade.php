@@ -25,8 +25,8 @@
                 </a>
                 <div class="collapse-show" id="collapseCardExample">
                     <div class="card-body">
-                        <form action="{{route('validated_hour.store')}}" method="POST"
-                              onsubmit="return fieldCondition()">
+                        <form id="hourForm" action="{{route('validated_hour.store')}}" method="POST"
+                              onsubmit="fieldCondition()">
                             @csrf
                             <div class="input-group">
                                 <input name="user_id" type="hidden" value="{{Auth::user()->id}}">

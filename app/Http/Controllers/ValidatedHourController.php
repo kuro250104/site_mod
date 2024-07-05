@@ -119,6 +119,7 @@ class ValidatedHourController extends Controller
         $sheet->getColumnDimension('P')->setWidth(30);
         $sheet->getColumnDimension('Q')->setWidth(30);
         $sheet->getColumnDimension('R')->setWidth(30);
+        $sheet->getColumnDimension('S')->setWidth(30);
         $sheet->getColumnDimension('T')->setWidth(30);
         $sheet->getColumnDimension('U')->setWidth(30);
         $sheet->getColumnDimension('V')->setWidth(30);
@@ -133,12 +134,11 @@ class ValidatedHourController extends Controller
         $sheet->getColumnDimension('AE')->setWidth(30);
         $sheet->getColumnDimension('AF')->setWidth(30);
         $sheet->getColumnDimension('AG')->setWidth(30);
-        $sheet->getColumnDimension('AH')->setWidth(30);
         // Add header row
         $sheet->setCellValue('A1', 'ID');
-        $sheet->setCellValue('B1', 'Nom/Prénom');
+        $sheet->setCellValue('B1', 'Date');
         $sheet->setCellValue('C1', 'Poste');
-        $sheet->setCellValue('D1', 'Date');
+        $sheet->setCellValue('D1', 'Nom/prénom');
         $sheet->setCellValue('E1', 'Equipe');
         $sheet->setCellValue('F1', 'Temps tache 1');
         $sheet->setCellValue('G1', 'Tache 1');
@@ -153,21 +153,21 @@ class ValidatedHourController extends Controller
         $sheet->setCellValue('P1', 'Numéro d\'OP 2');
         $sheet->setCellValue('Q1', 'Projet 2');
         $sheet->setCellValue('R1', 'Stade 2');
-        $sheet->setCellValue('T1', 'Commentaire 2');
-        $sheet->setCellValue('U1', 'Temps tache 3');
-        $sheet->setCellValue('V1', 'Tache 3');
-        $sheet->setCellValue('W1', 'Sous tache 3');
-        $sheet->setCellValue('X1', 'Numéro d\'OP 3');
-        $sheet->setCellValue('Y1', 'Projet 3');
-        $sheet->setCellValue('Z1', 'Stade 3');
-        $sheet->setCellValue('AA1', 'Commentaire 3');
-        $sheet->setCellValue('AB1', 'Temps tache 4');
-        $sheet->setCellValue('AC1', 'Tache 4');
-        $sheet->setCellValue('AD1', 'Sous tache 4');
-        $sheet->setCellValue('AE1', 'Numéro d\'OP 4');
-        $sheet->setCellValue('AF1', 'Projet 4');
-        $sheet->setCellValue('AG1', 'Stade 4');
-        $sheet->setCellValue('AH1', 'Commentaire 4');
+        $sheet->setCellValue('S1', 'Commentaire 2');
+        $sheet->setCellValue('T1', 'Temps tache 3');
+        $sheet->setCellValue('U1', 'Tache 3');
+        $sheet->setCellValue('V1', 'Sous tache 3');
+        $sheet->setCellValue('W1', 'Numéro d\'OP 3');
+        $sheet->setCellValue('X1', 'Projet 3');
+        $sheet->setCellValue('Y1', 'Stade 3');
+        $sheet->setCellValue('Z1', 'Commentaire 3');
+        $sheet->setCellValue('AA1', 'Temps tache 4');
+        $sheet->setCellValue('AB1', 'Tache 4');
+        $sheet->setCellValue('AC1', 'Sous tache 4');
+        $sheet->setCellValue('AD1', 'Numéro d\'OP 4');
+        $sheet->setCellValue('AE1', 'Projet 4');
+        $sheet->setCellValue('AF1', 'Stade 4');
+        $sheet->setCellValue('AG1', 'Commentaire 4');
 
 
         // Add data rows
@@ -175,9 +175,9 @@ class ValidatedHourController extends Controller
         $row = 2;
         foreach ($valid_hours as $valid_hour) {
             $sheet->setCellValue('A' . $row, $valid_hour->id); #id
-            $sheet->setCellValue('D' . $row, $valid_hour->date);#date
+            $sheet->setCellValue('B' . $row, $valid_hour->date);#date
             $sheet->setCellValue('C' . $row, $valid_hour->hour->name);#poste
-            $sheet->setCellValue('B' . $row, $valid_hour->user->name); #nom
+            $sheet->setCellValue('D' . $row, $valid_hour->user->name); #nom
             $sheet->setCellValue('E' . $row, $valid_hour->user->team->name); #equipe
 
             $sheet->setCellValue('F' . $row, $valid_hour->timer_one);#temps tache 1
@@ -194,23 +194,23 @@ class ValidatedHourController extends Controller
             $sheet->setCellValue('P' . $row, $valid_hour->number_two);#temps tache 1
             $sheet->setCellValue('Q' . $row, $valid_hour->projectTwo->name);#temps tache 1
             $sheet->setCellValue('R' . $row, $valid_hour->stageTwo->name);#temps tache 1
-            $sheet->setCellValue('T' . $row, $valid_hour->coment_two);#temps tache 1
+            $sheet->setCellValue('S' . $row, $valid_hour->coment_two);#temps tache 1
 
-            $sheet->setCellValue('U' . $row, $valid_hour->timer_three);#temps tache 1
-            $sheet->setCellValue('V' . $row, $valid_hour->taskThree->name);#temps tache 1
-            $sheet->setCellValue('W' . $row, $valid_hour->subtaskThree->name);#temps tache 1
-            $sheet->setCellValue('X' . $row, $valid_hour->number_three);#temps tache 1
-            $sheet->setCellValue('Y' . $row, $valid_hour->projectThree->name);#temps tache 1
-            $sheet->setCellValue('Z' . $row, $valid_hour->stageThree->name);#temps tache 1
-            $sheet->setCellValue('AA' . $row,$valid_hour->coment_three);#temps tache 1
+            $sheet->setCellValue('T' . $row, $valid_hour->timer_three);#temps tache 1
+            $sheet->setCellValue('U' . $row, $valid_hour->taskThree->name);#temps tache 1
+            $sheet->setCellValue('V' . $row, $valid_hour->subtaskThree->name);#temps tache 1
+            $sheet->setCellValue('W' . $row, $valid_hour->number_three);#temps tache 1
+            $sheet->setCellValue('X' . $row, $valid_hour->projectThree->name);#temps tache 1
+            $sheet->setCellValue('Y' . $row, $valid_hour->stageThree->name);#temps tache 1
+            $sheet->setCellValue('Z' . $row,$valid_hour->coment_three);#temps tache 1
 
-            $sheet->setCellValue('AB' . $row, $valid_hour->timer_four);#temps tache 1
-            $sheet->setCellValue('AC' . $row, $valid_hour->taskFour->name);#temps tache 1
-            $sheet->setCellValue('AD' . $row, $valid_hour->subtaskFour->name);#temps tache 1
-            $sheet->setCellValue('AE' . $row, $valid_hour->number_four);#temps tache 1
-            $sheet->setCellValue('AF' . $row, $valid_hour->projectFour->name);#temps tache 1
-            $sheet->setCellValue('AG' . $row, $valid_hour->stageFour->name);#temps tache 1
-            $sheet->setCellValue('AH' . $row, $valid_hour->coment_four);#temps tache 1
+            $sheet->setCellValue('AA' . $row, $valid_hour->timer_four);#temps tache 1
+            $sheet->setCellValue('AB' . $row, $valid_hour->taskFour->name);#temps tache 1
+            $sheet->setCellValue('AC' . $row, $valid_hour->subtaskFour->name);#temps tache 1
+            $sheet->setCellValue('AD' . $row, $valid_hour->number_four);#temps tache 1
+            $sheet->setCellValue('AE' . $row, $valid_hour->projectFour->name);#temps tache 1
+            $sheet->setCellValue('AF' . $row, $valid_hour->stageFour->name);#temps tache 1
+            $sheet->setCellValue('AG' . $row, $valid_hour->coment_four);#temps tache 1
             $row++;
         }
 

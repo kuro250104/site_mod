@@ -1,0 +1,6 @@
+#hourForm select.errorFields{
+    border: 2px solid red !important;
+}
+#hourForm input.errorFields{
+    border: 2px solid red !important;
+}
