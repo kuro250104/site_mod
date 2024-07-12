@@ -66,7 +66,7 @@
                             @foreach($stages as $stage)
                                 <tr>
                                     <td style="width: 50%;">{{$stage->name}}</td>
-                                    <td style="width: 50%;">{{$stage->project->name}}</td>
+                                    <td style="width: 50%;">{{$stage->project->name ?? 'NON RELIÉ'}}</td>
                                     <td class="custom-td">
                                         <a href="{{route('stage.edit', $stage->id)}}"
                                            class="btn btn-light btn-icon-split" spellcheck="false">

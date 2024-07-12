@@ -1,17 +1,5 @@
 @extends('pages.app')
-<style>
-    .hidden {
-        display: none;
-    }
 
-    .pagination {
-        cursor: pointer;
-        padding: 5px;
-        margin: 2px;
-        background-color: #f0f0f0;
-        border: 1px solid #ddd;
-    }
-</style>
 @section('content')
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -30,12 +18,12 @@
                             @csrf
                             <div class="input-group">
                                 <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
-                                {{--                            <select type="text" name="user_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">--}}
-                                {{--                                <option value="">Sélectionnez un opérateur</option>--}}
-                                {{--                                @foreach($users as $user)--}}
-                                {{--                                    <option value="{{ $user->id }}">{{ $user->name }}</option>--}}
-                                {{--                                @endforeach--}}
-                                {{--                            </select>--}}
+{{--                                                            <select type="text" name="user_id" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">--}}
+{{--                                                                <option value="">Sélectionnez un opérateur</option>--}}
+{{--                                                                @foreach($operators as $operator)--}}
+{{--                                                                    <option value="{{ $operator->id }}">{{ $operator->name }}</option>--}}
+{{--                                                                @endforeach--}}
+{{--                                                            </select>--}}
                                 <select type="text" name="hour_id" id="hour_id"
                                         class="form-control bg-light border small" oninput="verifyTimer()"
                                         value="{{old('time')}}"
@@ -254,27 +242,58 @@
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tableau des heures</h6>
             </div>
+
+
             <div class="card-body">
-                <a onclick="exportMsg()"
-                   href="{{ route('exportToExcel') }}"
-                   class="btn btn-info btn-icon-split">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-info-circle"></i>
-                    </span>
-                    <span class="text">Exporter sur Excel</span>
-                </a>
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Filtres de recherches</h6>
+                </div>
+                <form id="searchForm" method="GET" action="{{ route('validated_hour.search') }}">
+                    <div class="input-group">
+                        <select id="search_team" name="search_team" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <option value="">Sélectionnez une équipe</option>
+                            @foreach($teams as $team)
+                                <option value="{{ $team->id }}" {{ request('search_team') == $team->id ? 'selected' : '' }}>
+                                    {{ $team->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <select id="search_operator" name="search_operator" class="form-control bg-light border small" aria-label="Search" aria-describedby="basic-addon2">
+                            <option value="">Sélectionnez un opérateur</option>
+                            @foreach($operators as $operator)
+                                <option value="{{ $operator->id }}" {{ request('search_operator') == $operator->id ? 'selected' : '' }}>
+                                    {{ $operator->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <input id="search_date" name="search_date" type="month" class="form-control bg-light border small">
+                    </div>
+
+                    <div class="input-group-append">
+                        <button id="submitBtn" type="submit" class="btn btn-success btn-icon-split" spellcheck="false">
+                            <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+                            <span class="text">Valider</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="card-body">
+                    <a onclick="exportMsg()"
+                        id="exportBtn"
+                        href="{{ route('exportToExcel', ['search_team' => request('search_team'), 'search_operator' => request('search_operator'), 'search_date' => request('search_date')]) }}"
+                        class="btn btn-info btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                        <span class="text">Exporter sur Excel</span>
+                    </a>
+                </div>
             </div>
-
             <div class="card-body">
-
                 <div class="table-responsive">
-
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-
                         <div class="row">
                             <div class="col-sm-12">
-                                {{--                                <input type="text" id="searchInput"  placeholder="Rechercher...">--}}
-
                                 <table id="" class="table table-bordered" aria-describedby="" style="width: 100%;">
                                     <thead>
                                     <tr>
@@ -362,7 +381,6 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                             @if(Gate::any(['user_manage', 'finance_manage']))
                                 {{ $valid_hours->links('pages.pagination') }}

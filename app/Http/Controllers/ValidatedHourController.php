@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Http\Requests\StoreValidatedHourRequest;
 use App\Http\Requests\UpdateValidatedHourRequest;
 use App\Models\Hour;
@@ -14,6 +15,7 @@ use App\Models\User;
 use App\Models\ValidatedHour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -30,32 +32,78 @@ class ValidatedHourController extends Controller
         $tasks = Task::all();
         $hours = Hour::all();
         $subtasks = Subtask::all();
-        $user = Auth::user();
+        $users = Auth::user();
+        $operators = User::all();
 
-        if($user->can('user_manage',)){
+        if($users->can('user_manage',)){
 
             $valid_hours = ValidatedHour::orderBy("id", "desc")->paginate(50);
         }
-        else if($user->can('finance_manage',)){
+        else if($users->can('finance_manage',)){
 
         $valid_hours = ValidatedHour::orderBy('id','desc')->paginate(50);
         }
         else{
-            $valid_hours = ValidatedHour::where('user_id', $user->id)->get();
+            $valid_hours = ValidatedHour::where('user_id', $users->id)->get();
         }
 
-        return view('validated_hour.index', compact('valid_hours', 'projects','user', 'teams', 'stages', 'tasks', 'hours', 'subtasks'));
+        return view('validated_hour.index', compact('valid_hours', 'projects','users', 'teams', 'stages', 'tasks', 'hours', 'subtasks', 'operators'));
     }
 
 
     public function index()
     {
         $user = Auth::user();
+        $operators = User::all();
+
         $valid_hours = ValidatedHour::where('user_id', $user->id)->get();
 
 
 
-        return view('validated_hour.index', ['valid_hours'=> $valid_hours]);
+        return view('validated_hour.index', ['valid_hours'=> $valid_hours], compact('operators'));
+    }
+
+    public function search(Request $request){
+
+        $date = $request->input('search_date');
+        $selected_operator = $request->input('search_operator');
+        $selected_team = $request->input('search_team');
+        $query = ValidatedHour::query();
+
+        if($selected_operator){
+            $query->where('user_id', $selected_operator);
+        }
+        if($selected_team){
+            $query->whereHas('user', function($q) use($selected_team){
+                $q->where('team_id', $selected_team);
+            });
+        }
+        if($date){
+            try {
+                $dateObj = new DateTime($date);
+                $year = $dateObj->format('Y');
+                $month = $dateObj->format('m');
+
+                $query->whereYear('date', $year);
+                $query->whereMonth('date', $month);
+
+            } catch (\Exception $e) {}
+
+        }
+
+        $valid_hours = $query->paginate(50);
+
+        $teams = Team::all();
+        $stages = Stages::all();
+        $projects = Projects::all();
+        $tasks = Task::all();
+        $hours = Hour::all();
+        $subtasks = Subtask::all();
+        $users = Auth::user();
+        $operators = User::all();
+
+        return view('validated_hour.index',
+            compact('teams', 'stages', 'projects', 'tasks', 'hours', 'subtasks', 'operators', 'users', 'valid_hours', 'selected_team', 'selected_operator' ));
     }
     public function store(StoreValidatedHourRequest $request)
     {
@@ -96,8 +144,38 @@ class ValidatedHourController extends Controller
 
         return redirect()->route("validated_hour.index");
     }
-    public function exportToExcel()
+
+    public function exportToExcel(Request $request)
     {
+        $date = $request->input('search_date');
+        $selected_operator = $request->input('search_operator');
+        $selected_team = $request->input('search_team');
+        $query = ValidatedHour::query();
+
+        if ($selected_operator) {
+            $query->where('user_id', $selected_operator);
+        }
+        if ($selected_team) {
+            $query->whereHas('user', function ($q) use ($selected_team) {
+                $q->where('team_id', $selected_team);
+            });
+        }
+        if($date){
+            try {
+                $dateObj = new DateTime($date);
+                $year = $dateObj->format('Y');
+                $month = $dateObj->format('m');
+
+                $query->whereYear('date', $year);
+                $query->whereMonth('date', $month);
+
+            } catch (\Exception $e) {}
+
+        }
+
+
+        $valid_hours = $query->get();
+//        dd($valid_hours);
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
@@ -171,7 +249,6 @@ class ValidatedHourController extends Controller
 
 
         // Add data rows
-        $valid_hours = ValidatedHour::all();
         $row = 2;
         foreach ($valid_hours as $valid_hour) {
             $sheet->setCellValue('A' . $row, $valid_hour->id); #id
@@ -215,8 +292,7 @@ class ValidatedHourController extends Controller
         }
 
         $writer = new Xlsx($spreadsheet);
-//
-        $response = new StreamedResponse(function() use ($writer) {
+        $response = new StreamedResponse(function () use ($writer) {
             $writer->save('php://output');
         });
 

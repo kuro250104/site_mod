@@ -7,7 +7,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-flask"></i>
         </div>
-        <div class="sidebar-brand-text mx-3" href="" >Zach System</div>
+        <div class="sidebar-text mx-3" href="" >Zach System</div>
     </a>
 
 
@@ -68,7 +68,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Gestion de la production</h6>
                 <a class="collapse-item" href="{{route("project.index")}}">Projets</a>
-                @can('SuperAdmin')
+                @can('production_manage')
                 <a class="collapse-item" href="{{route("task.index")}}">Taches</a>
                 @endcan
                 <a class="collapse-item" href={{route("stage.index")}}>Stades</a>

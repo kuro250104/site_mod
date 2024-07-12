@@ -26,6 +26,46 @@
 
         }
     });
+    document.addEventListener('DOMContentLoaded', function (){
+        var operatorOptions = {
+            @foreach($teams as $team)
+            '{{  $team->id}}': [
+                @foreach($operators->where('team_id', $team->id) as $operator)
+                {id : '{{$operator->id}}', name:'{{$operator->name}}'},
+                @endforeach
+            ],
+            @endforeach
+        }
+
+        function uOO(teamSelect, operatorSelect) {
+            var tSO = teamSelect.value;
+
+            operatorSelect.innerHTML = '<option value="">Séléctionnez un opérateur</option>'
+            if(operatorOptions[tSO]) {
+                operatorOptions[tSO].forEach(function (opertor){
+                    var option = document.createElement('option');
+                    option.value = opertor.id;
+                    option.text = opertor.name;
+                    operatorSelect.add(option)
+                });
+            }
+        }
+        var operator = ['search_operator'];
+        var team = ['search_team'];
+
+        for(var i = 0; i < team.length; i++) {
+            (function (index){
+                var teamSelect = document.getElementById(team[index]);
+                var operatorSelect  = document.getElementById(operator[index]);
+
+                teamSelect.addEventListener('change', function (){
+                    uOO(teamSelect, operatorSelect);
+                });
+                uOO(teamSelect, operatorSelect);
+            })(i);
+        }
+
+    })
 
     document.addEventListener('DOMContentLoaded', function () {
         var stageOptions = {
@@ -40,7 +80,6 @@
 
         function updateStageOptions(projectSelect, stageSelect) {
             var selectedProject = projectSelect.value;
-
 
             stageSelect.innerHTML = '<option value="">Choisissez un stade</option>';
             if (stageOptions[selectedProject]) {
@@ -104,16 +143,6 @@
             (function (index) {
                 var taskSelect = document.getElementById(tasks[index]);
                 var subtaskSelect = document.getElementById(subtasks[index]);
-
-                // if (!taskSelect) {
-                //     alert('L\'élément taskSelect avec l\'id ' + tasks[index] + ' n\'existe pas.');
-                //     return;
-                // }
-                //
-                // if (!subtaskSelect) {
-                //     alert('L\'élément subtaskSelect avec l\'id ' + subtasks[index] + ' n\'existe pas.');
-                //     return;
-                // }
 
                 taskSelect.addEventListener('change', function () {
                     updateSubtaskOptions(taskSelect, subtaskSelect);
@@ -234,24 +263,13 @@
             document.getElementById('sumDisplay').innerText = 'Total des heures : ' + sum;
         });
     }
-
     verifyTimer();
-
     let fields = document.querySelectorAll('[id^="timer_"]');
     fields.forEach(function(field) {
         field.addEventListener('input', verifyTimer);
     });
 
-
-
-
-
-    function exportToExcel() {
-        window.location.href = '/export-data';
-    }
-
     function exportMsg() {
-        // Afficher un toast pour indiquer que le processus commence
         const startToast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -266,10 +284,8 @@
             icon: "info",
             title: "Préparation de votre fichier, veuillez patienter..."
         });
-
-        // Effectuer la requête AJAX pour l'exportation vers Excel
         $.ajax({
-            url: "{{ route('exportToExcel') }}",
+            url: "<?php echo e(route('exportToExcel')); ?>",
             method: 'GET',
             success: function(response) {
                 // Masquer le toast de préparation
@@ -290,13 +306,10 @@
                     icon: "success",
                     title: "Exportation vers Excel réussie, votre fichier va être téléchargé, veuillez patienter..."
                 });
-
-                // Ici vous pourriez éventuellement rediriger ou télécharger directement le fichier Excel
             },
             error: function(xhr, status, error) {
                 console.error('Erreur lors de l\'exportation vers Excel:', error);
 
-                // Afficher un toast d'erreur si l'exportation échoue
                 const errorToast = Swal.mixin({
                     toast: true,
                     position: "top-end",
@@ -306,12 +319,29 @@
                         toast.addEventListener('mouseleave', Swal.resumeTimer);
                     }
                 });
-
                 errorToast.fire({
                     icon: "error",
                     title: "Erreur lors de l'exportation vers Excel"
                 });
+                window.stop()
             }
         });
     }
+
+    let searchTeam = '';
+
+    let searchOperator = '';
+
+    let searchDate = '';
+
+
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+    });
+
+        document.getElementById('exportBtn').addEventListener('click', function(event) {
+        event.preventDefault();
+
+            // Redirigez vers l'URL construite
+        window.location.href = '{{ route("exportToExcel") }}' + '?search_team=' + searchTeam + '&search_operator=' + searchOperator + '&search_date=' + searchDate;
+    });
 </script>

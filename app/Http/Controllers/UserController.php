@@ -38,7 +38,7 @@ class UserController extends Controller
         $roles = Role::pluck('name','name')->all();
         $teams = Team::all();
         $status = Status::all();
-         return view('users.create',compact('roles', 'teams', 'status'));
+        return view('users.create',compact('roles', 'teams', 'status'));
     }
 
 
