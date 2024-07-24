@@ -119,7 +119,7 @@ class ValidatedHourController extends Controller
         $valid_hours = ValidatedHour::find($validHoursId);
 
         $teams = Team::all();
-        $users = User::all();
+        $operators = User::all();
         $stages = Stages::all();
         $projects = Projects::all();
         $tasks = Task::all();
@@ -128,7 +128,7 @@ class ValidatedHourController extends Controller
 
 
 
-        return view('validated_hour.edit', compact('valid_hours', 'projects', 'teams', 'users', 'stages', 'tasks', 'hours', 'subtasks'));
+        return view('validated_hour.edit', compact('valid_hours', 'projects', 'teams', 'operators', 'stages', 'tasks', 'hours', 'subtasks'));
     }
 
     public function update(UpdateValidatedHourRequest $request, int $valid_hour)
