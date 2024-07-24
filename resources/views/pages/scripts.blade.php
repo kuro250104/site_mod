@@ -288,10 +288,8 @@
             url: "<?php echo e(route('exportToExcel')); ?>",
             method: 'GET',
             success: function(response) {
-                // Masquer le toast de préparation
                 startToast.close();
 
-                // Afficher un toast de succès lorsque l'exportation est terminée
                 const successToast = Swal.mixin({
                     toast: true,
                     position: "top-end",
@@ -341,7 +339,6 @@
         document.getElementById('exportBtn').addEventListener('click', function(event) {
         event.preventDefault();
 
-            // Redirigez vers l'URL construite
         window.location.href = '{{ route("exportToExcel") }}' + '?search_team=' + searchTeam + '&search_operator=' + searchOperator + '&search_date=' + searchDate;
     });
 </script>

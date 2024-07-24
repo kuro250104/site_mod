@@ -23,6 +23,7 @@
                                 <option value="{{$hour->id}}"> {{$hour->name}}</option>
                             @endforeach
                         </select>
+
                         <input type="date" class="form-control bg-light border small" id="start" name="date"
                                value="{{$valid_hours->date}}" min="2000-01-01" max="2050-12-31"/>
                     </div>
@@ -247,6 +248,4 @@
             </div>
         @endif
     </div>
-    @include('pages.scripts')
-
 @endsection
